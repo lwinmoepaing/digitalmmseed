@@ -1,12 +1,15 @@
 import PropTypes from 'prop-types'
 import {
-  Row, Col, Card,
+  Row, Col,
 } from 'antd'
 import Layout from '../layouts/Layout'
 import { withTranslation } from '../i18n'
 
 import HomeSectionOne from '../components/Home/HomeSectionOne'
-
+import DataSecurityGetMoney from '../components/Common/SVG/DataSecurityGetMoney'
+import DataWorkingTree from '../components/Common/SVG/DataWorkingTree'
+import DataConfirm from '../components/Common/SVG/DataConfirm'
+import DataChoose from '../components/Common/SVG/DataChoose'
 
 const Index = ({ t }) => {
   const name = 'Something'
@@ -29,25 +32,33 @@ const Index = ({ t }) => {
             <Row gutter={[16, 16]}>
               <Col xs={{ span: 12 }} md={{ span: 6 }}>
                 <div className="CustomCardStyle">
-                  <p className="CardLeft">div content</p>
+                  <p className="CardLeft">
+                    <DataSecurityGetMoney />
+                  </p>
                   <p className="CardRight">div content</p>
                 </div>
               </Col>
               <Col xs={{ span: 12 }} md={{ span: 6 }}>
                 <div className="CustomCardStyle">
-                  <p className="CardLeft">div content</p>
+                  <p className="CardLeft">
+                    <DataWorkingTree />
+                  </p>
                   <p className="CardRight">div content</p>
                 </div>
               </Col>
               <Col xs={{ span: 12 }} md={{ span: 6 }}>
                 <div className="CustomCardStyle">
-                  <p className="CardLeft">div content</p>
+                  <p className="CardLeft">
+                    <DataConfirm />
+                  </p>
                   <p className="CardRight">div content</p>
                 </div>
               </Col>
               <Col xs={{ span: 12 }} md={{ span: 6 }}>
                 <div className="CustomCardStyle">
-                  <p className="CardLeft">div content</p>
+                  <p className="CardLeft">
+                    <DataChoose />
+                  </p>
                   <p className="CardRight">div content</p>
                 </div>
               </Col>
@@ -95,7 +106,8 @@ const Index = ({ t }) => {
 
 					.CardLeft {
 						flex: 2;
-						display: 'flex'
+						display: 'flex';
+						height: 120px;
 					}
 
 					.CardRight {
@@ -106,6 +118,11 @@ const Index = ({ t }) => {
 					@media screen and (max-width: 767px) {
 						.SectionTwoContainer {
 							max-height: 460px;
+						}
+
+						.CardLeft {
+							flex: 3;
+							display: 'flex';
 						}
 					}
 				`}
