@@ -64,3 +64,4 @@ node_modules
 #Next
 .next
 out
+package-lock.json
