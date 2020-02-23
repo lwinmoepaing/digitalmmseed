@@ -5,10 +5,9 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"dev": "nodemon ./server/app.js",
-		"build": "next build ./src",
-		"export": "next export ./src && cp -R ./locales  ./src/out",
-		"heroku-prebuild": "npm run build && npm run export",
-		"start": "serve ./src/out -s"
+		"build": "next build ./src && next export ./src && cp -R ./locales ./src/out",
+		"export": "next export ./src && cp -R ./locales ./src/out",
+		"start": "node ./server/app "
 	},
 	"dependencies": {
 		"@material-ui/core": "^4.9.3",
