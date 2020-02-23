@@ -2,10 +2,11 @@ import NextI18Next from 'next-i18next'
 // import path from 'path'
 
 const NextI18NextInstance = new NextI18Next({
+  preload: ['en', 'mm'],
   defaultLanguage: 'en',
   otherLanguages: ['mm'],
   localePath: 'locales',
-  preload: ['en', 'mm'],
+  keySeparator: false,
 })
 
 export default NextI18NextInstance

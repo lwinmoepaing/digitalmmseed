@@ -4,8 +4,12 @@ import { withTranslation, i18n } from '../i18n'
 
 
 const Index = ({ t }) => {
-  const changeLanguage = () => i18n.changeLanguage(i18n.language === 'en' ? 'mm' : 'en')
-
+  const changeLanguage = () => {
+    if (!i18n.language) {
+      return false
+    }
+    return i18n.changeLanguage(i18n.language === 'en' ? 'mm' : 'en')
+  }
   return (
     <Layout>
       <h1>
@@ -14,7 +18,7 @@ const Index = ({ t }) => {
       </h1>
       <div>
         <button type="button" onClick={changeLanguage}>
-          {i18n.language}
+          { i18n.language ? i18n.language : 'en' }
         </button>
       </div>
       <div>

@@ -34,7 +34,17 @@ const Layout = ({ children }) => (
 				}
 				footer {
 					color: blue;
+				},
+				@font-face {
+					font-family: 'GTWalsheimProRegular';
+					src: url('/fonts/GT-Walsheim-Pro-Regular.eot');
+					src: url('/fonts/GT-Walsheim-Pro-Regular.eot?#iefix') format('embedded-opentype'),
+							url('/fonts/GT-Walsheim-Pro-Regular.woff2') format('woff2'),
+							url('/fonts/GT-Walsheim-Pro-Regular.woff') format('woff'),
+							url('/fonts/GT-Walsheim-Pro-Regular.ttf')  format('truetype'),
+							url('/fonts/GT-Walsheim-Pro-Regular.svg#GTWalsheimProRegular') format('svg');
 				}
+
 			`}
     </style>
   </div>

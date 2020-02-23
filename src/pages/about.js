@@ -1,4 +1,5 @@
 import Layout from '../layouts/Layout'
+import { withTranslation } from '../i18n'
 
 const About = () => (
   <Layout>
@@ -6,4 +7,9 @@ const About = () => (
   </Layout>
 )
 
-export default About
+About.getInitialProps = async () => ({
+  namespacesRequired: ['common'],
+})
+
+
+export default withTranslation('common')(About)

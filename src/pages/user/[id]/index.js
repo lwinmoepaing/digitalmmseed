@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Layout from '../../../layouts/Layout'
+import { withTranslation } from '../../../i18n'
 
 const UserProfile = () => {
   const router = useRouter()
@@ -22,4 +23,9 @@ const UserProfile = () => {
   )
 }
 
-export default UserProfile
+UserProfile.getInitialProps = async () => ({
+  namespacesRequired: ['common'],
+})
+
+
+export default withTranslation('common')(UserProfile)
