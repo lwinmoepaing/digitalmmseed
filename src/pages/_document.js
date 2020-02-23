@@ -11,8 +11,14 @@ class AppDocument extends Document {
             name="description"
             content="Lwin Moe Paing | Pofolio"
           />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <link href="/font.css" rel="stylesheet" />
+          <link
+            rel="stylesheet"
+            href="/css/ngprogress.css"
+          />
           <link href="https://fonts.googleapis.com/css?family=Padauk&display=swap" rel="stylesheet" />
+
         </Head>
 
         <body>

@@ -1,17 +1,8 @@
 import PropTypes from 'prop-types'
 import Head from 'next/head'
-import Router, { withRouter } from 'next/router'
-import Nprogress from 'nprogress'
+import { withRouter } from 'next/router'
 import { Layout } from 'antd'
-import GuestNavbar from '../components/Common/GuestNavbar'
-// import { useState } from 'react'
-
-
-Router.onRouteChangeStart = () => Nprogress.start()
-
-Router.onRouteChangeComplete = () => Nprogress.done()
-
-Router.onRouteChangeError = () => Nprogress.done()
+import GuestNavbar from '../components/Common/Navbar/GuestNavbar'
 
 /**
  * Style
@@ -19,10 +10,14 @@ Router.onRouteChangeError = () => Nprogress.done()
 
 const styles = {
   ContentWrapper: {
-    margin: '24px 16px',
-    padding: 24,
     background: '#fff',
-    minHeight: 280,
+    minHeight: '100vh',
+    width: '100%',
+    maxWidth: 1400,
+    marginTop: 4,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    padding: '1rem',
   },
 }
 
@@ -31,12 +26,7 @@ const DefaultLayout = ({ children, router }) => {
   return (
     <div className="root">
       <Head>
-        <title> Digital MM Farm</title>
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/nprogress@0.2.0/nprogress.css"
-        />
-
+        <title> Digital MM Farm </title>
       </Head>
       <Layout>
         <GuestNavbar Layout={Layout} router={router} />
