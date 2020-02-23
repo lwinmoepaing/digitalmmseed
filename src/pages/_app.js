@@ -1,11 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react'
 import App from 'next/app'
-import stylesheet from 'antd/dist/antd.css'
+import 'antd/dist/antd.min.css'
 import { appWithTranslation } from '../i18n'
-
-const Console = console
-Console.log(stylesheet)
 
 class MyApp extends App {
   render() {
