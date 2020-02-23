@@ -28,8 +28,8 @@ const HomeSectionOne = () => {
               support farmers and earn up to 30% return on investment.
             </p>
             <div>
-              <Button style={{ marginRight: 3 }} shape="round" type="primary"> Invest Now </Button>
-              <Button style={{ marginRight: 3 }} shape="round"> Ask Me </Button>
+              <Button style={{ marginRight: 3 }} shape="round" type="primary" icon="align-right"> Invest Now </Button>
+              <Button style={{ marginRight: 3 }} shape="round"> Ask Me ?</Button>
             </div>
           </div>
         </div>

@@ -1,12 +1,12 @@
-import { Menu } from 'antd'
+import { Menu, Icon } from 'antd'
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
 import { Link } from '../../../i18n'
 
 const links = [
-  { name: 'Home', url: '/' },
-  { name: 'About', url: '/about' },
-  { name: 'Login', url: '/login' },
+  { name: 'Home', url: '/', icon: 'home' },
+  { name: 'About', url: '/about', icon: 'read' },
+  { name: 'Login', url: '/login', icon: 'login' },
 ]
 
 const styles = {
@@ -40,6 +40,7 @@ const GuestNavbar = ({ Layout, router }) => {
               <Menu.Item key={link.url}>
                 <Link href={link.url}>
                   <a href="#!">
+                    <Icon type={link.icon} />
                     {link.name}
                   </a>
                 </Link>
