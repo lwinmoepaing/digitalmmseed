@@ -8,6 +8,7 @@ const Index = ({ t }) => (
   <Layout>
     <Button type="primary" style={{ marginLeft: 8 }}>
       Primary Button
+      {t('home')}
     </Button>
   </Layout>
 )
