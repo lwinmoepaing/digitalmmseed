@@ -1,35 +1,16 @@
 import PropTypes from 'prop-types'
+import { Button } from 'antd'
 import Layout from '../layouts/Layout'
-import { withTranslation, i18n } from '../i18n'
+import { withTranslation } from '../i18n'
 
 
-const Index = ({ t }) => {
-  const changeLanguage = () => {
-    if (!i18n.language) {
-      return false
-    }
-    return i18n.changeLanguage(i18n.language === 'en' ? 'mm' : 'en')
-  }
-  return (
-    <Layout>
-      <h1>
-        Hello World
-
-      </h1>
-      <div>
-        {t('home')}
-      </div>
-      <div>
-        <button type="button" onClick={changeLanguage}>
-          { i18n.language ? i18n.language : 'en' }
-        </button>
-      </div>
-      <div>
-        <img style={{ width: 100, height: 'auto' }} src="/Wallpaper.jpg" alt="Wallpaper	" />
-      </div>
-    </Layout>
-  )
-}
+const Index = ({ t }) => (
+  <Layout>
+    <Button type="primary" style={{ marginLeft: 8 }}>
+      Primary Button
+    </Button>
+  </Layout>
+)
 
 Index.getInitialProps = async () => ({
   namespacesRequired: ['common'],

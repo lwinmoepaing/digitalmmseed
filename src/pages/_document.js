@@ -16,6 +16,7 @@ class AppDocument extends Document {
         </Head>
 
         <body>
+          {/* <style dangerouslySetInnerHTML={{ __html: stylesheet }} /> */}
           <Main />
           <NextScript />
         </body>
@@ -24,7 +25,9 @@ class AppDocument extends Document {
         <style global jsx>
           {`
 						body {
-							/* background: red; */
+							padding: 0;
+							margin: 0;
+							font-family: 'GTWalsheimProRegular';
 						}
 					`}
         </style>
