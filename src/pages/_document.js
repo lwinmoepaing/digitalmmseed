@@ -11,6 +11,8 @@ class AppDocument extends Document {
             name="description"
             content="Lwin Moe Paing | Pofolio"
           />
+          <link href="/font.css" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css?family=Padauk&display=swap" rel="stylesheet" />
         </Head>
 
         <body>

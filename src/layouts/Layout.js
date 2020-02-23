@@ -18,13 +18,14 @@ const Layout = ({ children }) => (
         rel="stylesheet"
         href="https://unpkg.com/nprogress@0.2.0/nprogress.css"
       />
+
     </Head>
     <Navbar />
     <header> Header </header>
     {children}
     <footer> Footer </footer>
 
-    <style jsx>
+    <style global jsx>
       {`
 				.root {
 					padding: 1rem;
@@ -35,6 +36,7 @@ const Layout = ({ children }) => (
 				footer {
 					color: blue;
 				},
+
 				@font-face {
 					font-family: 'GTWalsheimProRegular';
 					src: url('/fonts/GT-Walsheim-Pro-Regular.eot');
@@ -45,6 +47,9 @@ const Layout = ({ children }) => (
 							url('/fonts/GT-Walsheim-Pro-Regular.svg#GTWalsheimProRegular') format('svg');
 				}
 
+				body {
+					font-family: 'GTWalsheimProRegular'
+				}
 			`}
     </style>
   </div>

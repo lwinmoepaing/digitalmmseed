@@ -14,8 +14,11 @@ const Index = ({ t }) => {
     <Layout>
       <h1>
         Hello World
-        {t('home')}
+
       </h1>
+      <div>
+        {t('home')}
+      </div>
       <div>
         <button type="button" onClick={changeLanguage}>
           { i18n.language ? i18n.language : 'en' }
