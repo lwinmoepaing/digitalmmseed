@@ -10,14 +10,12 @@ import GuestNavbar from '../components/Common/Navbar/GuestNavbar'
 
 const styles = {
   ContentWrapper: {
-    background: '#fff',
     minHeight: '100vh',
     width: '100%',
     maxWidth: 1400,
     marginTop: 4,
     marginLeft: 'auto',
     marginRight: 'auto',
-    padding: '1rem',
   },
 }
 
