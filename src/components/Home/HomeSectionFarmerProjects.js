@@ -69,7 +69,7 @@ const HomeSectionFarmerProjects = ({ t }) => {
       <style jsx>
         {`
 				.DivContainer {
-					background-color: #f7f7f7;
+					background-color: #f2ffed;
     			padding: 2rem .5rem;
 				}
 			`}
