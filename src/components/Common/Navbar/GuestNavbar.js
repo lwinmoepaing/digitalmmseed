@@ -1,7 +1,8 @@
-import { Menu, Icon } from 'antd'
+import { Menu, Icon, Radio } from 'antd'
 import PropTypes from 'prop-types'
-import { useState, useEffect } from 'react'
-import { Link } from '../../../i18n'
+import { useState, useEffect, memo } from 'react'
+import { Link, withTranslation } from '../../../i18n'
+
 
 const links = [
   { name: 'Home', url: '/', icon: 'home' },
@@ -14,19 +15,30 @@ const styles = {
   MenuLineHeight: { lineHeight: '50px', textAlign: 'right', paddingRight: '1.5rem' },
 }
 
-const GuestNavbar = ({ Layout, router }) => {
+const GuestNavbar = ({
+  Layout, router, i18n, t,
+}) => {
   const [state, setstate] = useState(router.pathname)
-
   useEffect(() => {
     setstate(router.pathname)
   }, [router.pathname])
+
+
+  const changeLocale = ({ target: { value } }) => {
+    if (!i18n.language) {
+      return false
+    }
+    return i18n.changeLanguage(value)
+  }
 
 
   return (
     <Layout.Header style={styles.LayoutHeader}>
       <div className="Container">
         <div className="logo">
-          <h3> Digital MM Farm </h3>
+          <h3>
+            Digital MM Farm
+          </h3>
         </div>
 
         <div className="MenuContainer">
@@ -41,11 +53,25 @@ const GuestNavbar = ({ Layout, router }) => {
                 <Link href={link.url}>
                   <a href="#!">
                     <Icon type={link.icon} />
-                    {link.name}
+
+                    {t(link.name)}
+
                   </a>
                 </Link>
               </Menu.Item>
             ))}
+            <Menu.Item style={{ border: 'none' }}>
+              <div>
+                <Radio.Group defaultValue={i18n.language || 'mm'} onChange={changeLocale} size="small">
+                  <Radio.Button key="en" value="en">
+                    en
+                  </Radio.Button>
+                  <Radio.Button key="cn" value="mm">
+                    mm
+                  </Radio.Button>
+                </Radio.Group>
+              </div>
+            </Menu.Item>
           </Menu>
         </div>
 
@@ -87,6 +113,10 @@ GuestNavbar.propTypes = {
     PropTypes.object,
     PropTypes.func,
   ]).isRequired,
+  i18n: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.func,
+  ]).isRequired,
 }
 
-export default GuestNavbar
+export default memo(withTranslation('common')(GuestNavbar))

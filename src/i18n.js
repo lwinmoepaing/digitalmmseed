@@ -4,8 +4,8 @@ const languages = ['en', 'mm']
 
 const options = {
   preload: languages,
-  defaultLanguage: 'en',
-  otherLanguages: ['mm'],
+  defaultLanguage: 'mm',
+  otherLanguages: ['en'],
   localePath: 'locales',
   keySeparator: false,
 }
@@ -13,6 +13,7 @@ const options = {
 const NextI18NextInstance = new NextI18Next(options)
 
 NextI18NextInstance.i18n.languages = languages
+NextI18NextInstance.i18n.language = 'mm'
 
 export default NextI18NextInstance
 

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 import Layout from '../layouts/Layout'
-import { withTranslation } from '../i18n'
+import { withTranslation, i18n } from '../i18n'
 
 import HomeSectionOne from '../components/Home/HomeSectionOne'
 import HomeSectionTwo from '../components/Home/HomeSectionTwo'
@@ -9,7 +9,7 @@ import HomeSectionThree from '../components/Home/HomeSectionThree'
 import HomeSectionFarmerProjects from '../components/Home/HomeSectionFarmerProjects'
 
 const Index = ({ t }) => (
-  <Layout>
+  <Layout i18n={i18n}>
     <div className="Container">
       <HomeSectionOne />
       <HomeSectionTwo />

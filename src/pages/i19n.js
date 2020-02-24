@@ -12,7 +12,7 @@ const Index = ({ t }) => {
     return i18n.changeLanguage(i18n.language === 'en' ? 'mm' : 'en')
   }
   return (
-    <Layout>
+    <Layout i18n={i18n}>
       <h1>
         Hello World
         {t('home')}

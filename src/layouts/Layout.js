@@ -19,7 +19,7 @@ const styles = {
   },
 }
 
-const DefaultLayout = ({ children, router }) => {
+const DefaultLayout = ({ children, router, i18n }) => {
   const { Content } = Layout
   return (
     <div className="root">
@@ -27,7 +27,7 @@ const DefaultLayout = ({ children, router }) => {
         <title> Digital MM Farm </title>
       </Head>
       <Layout>
-        <GuestNavbar Layout={Layout} router={router} />
+        <GuestNavbar Layout={Layout} router={router} i18n={i18n} />
         <Content
           style={styles.ContentWrapper}
         >
@@ -45,6 +45,10 @@ DefaultLayout.propTypes = {
     PropTypes.node,
   ]).isRequired,
   router: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.func,
+  ]).isRequired,
+  i18n: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.func,
   ]).isRequired,

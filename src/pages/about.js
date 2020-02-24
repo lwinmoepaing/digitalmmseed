@@ -1,8 +1,8 @@
 import Layout from '../layouts/Layout'
-import { withTranslation } from '../i18n'
+import { withTranslation, i18n } from '../i18n'
 
 const About = () => (
-  <Layout>
+  <Layout i18n={i18n}>
     <> About </>
   </Layout>
 )
