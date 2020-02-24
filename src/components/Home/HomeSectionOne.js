@@ -8,9 +8,9 @@ const { Title, Text } = Typography
 
 const HomeSectionOne = () => {
   const imgArr = [
+    { title: 'Farming', url: '/Index/Home2.jpg' },
     { title: 'Animal Husbandry', url: '/Index/Home3.jpg' },
     { title: 'Agriculture', url: '/Index/Home1.jpg' },
-    { title: 'Farming', url: '/Index/Home2.jpg' },
   ]
 
 

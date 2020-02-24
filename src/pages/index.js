@@ -6,6 +6,7 @@ import { withTranslation } from '../i18n'
 import HomeSectionOne from '../components/Home/HomeSectionOne'
 import HomeSectionTwo from '../components/Home/HomeSectionTwo'
 import HomeSectionThree from '../components/Home/HomeSectionThree'
+import HomeSectionFarmerProjects from '../components/Home/HomeSectionFarmerProjects'
 
 const Index = ({ t }) => (
   <Layout>
@@ -13,6 +14,7 @@ const Index = ({ t }) => (
       <HomeSectionOne />
       <HomeSectionTwo />
       <HomeSectionThree />
+      <HomeSectionFarmerProjects />
     </div>
 
     <style jsx>

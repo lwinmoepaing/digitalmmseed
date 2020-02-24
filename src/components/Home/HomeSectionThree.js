@@ -12,7 +12,7 @@ const HomeSectionOne = () => (
           <div className="CarouselImgContainer">
             <Text style={{
               position: 'absolute',
-              bottom: '20%',
+              bottom: '0',
               left: '50%',
               transform: 'translate(-50%, -50%)',
               color: 'white',
@@ -54,8 +54,6 @@ const HomeSectionOne = () => (
 						height: 460px;
 						display: block;
 						max-width: 500px;
-						text-align: center;
-						margin: 0 auto;
 					}
 
 					@media screen and (max-width: 767px) {

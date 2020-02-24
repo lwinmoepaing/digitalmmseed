@@ -4,15 +4,15 @@
 }
 
 #nprogress .bar {
-  background: #52c41a;
-
+  background: #368011;
+	border-radius: 3px;
   position: fixed;
   z-index: 1031;
   top: 0;
   left: 0;
 
   width: 100%;
-  height: 2px;
+  height: 4px;
 }
 
 /* Fancy blur effect */
@@ -22,7 +22,7 @@
   right: 0px;
   width: 100px;
   height: 100%;
-  box-shadow: 0 0 10px #52c41a, 0 0 5px #52c41a;
+  box-shadow: 0 0 10px #368011, 0 0 5px #368011;
   opacity: 1.0;
 
   -webkit-transform: rotate(3deg) translate(0px, -4px);
@@ -45,8 +45,8 @@
   box-sizing: border-box;
 
   border: solid 2px transparent;
-  border-top-color: #52c41a;
-  border-left-color: #52c41a;
+  border-top-color: #368011;
+  border-left-color: #368011;
   border-radius: 50%;
 
   -webkit-animation: nprogress-spinner 400ms linear infinite;
