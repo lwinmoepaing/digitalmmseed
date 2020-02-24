@@ -80,7 +80,7 @@ const HomeSectionTwo = () => (
 					position: absolute;
 					top: 0;
 					left: 0;
-					background-color: #e0ffd6;
+					background-color: #f2ffed;
 					width: 100%;
 					height: 80%;
 					display: block;

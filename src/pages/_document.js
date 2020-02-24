@@ -18,6 +18,10 @@ class AppDocument extends Document {
             rel="stylesheet"
             href="/css/ngprogress.css"
           />
+          <link
+            rel="stylesheet"
+            href="/css/carousel.css"
+          />
           <link href="https://fonts.googleapis.com/css?family=Padauk&display=swap" rel="stylesheet" />
 
         </Head>

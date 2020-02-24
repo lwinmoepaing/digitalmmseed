@@ -43,11 +43,7 @@ const nextConfig = {
 }
 
 const plugins = [
-  withCss({
-		webpack(config, options) {
-			return config;
-		},
-	}),
+	withCss,
   withSass,
   withLess({
 		lessLoaderOptions: {

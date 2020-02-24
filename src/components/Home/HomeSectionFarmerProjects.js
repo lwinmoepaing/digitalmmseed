@@ -6,7 +6,7 @@ const HomeSectionFarmerProjects = () => (
       {`
 				.HomeSectionFarmerContainer {
 					min-height: 50vh;
-					background: #e0ffd6;
+					background: #f2ffed;
 				}
 			`}
     </style>

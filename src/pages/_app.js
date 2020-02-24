@@ -4,8 +4,6 @@ import App from 'next/app'
 import Router from 'next/router'
 import Nprogress from 'nprogress'
 import { appWithTranslation } from '../i18n'
-import 'react-multi-carousel/lib/styles.css'
-
 
 Router.onRouteChangeStart = () => Nprogress.start()
 Router.onRouteChangeComplete = () => Nprogress.done()
