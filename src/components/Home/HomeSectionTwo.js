@@ -101,7 +101,7 @@ const HomeSectionTwo = () => (
 					display: flex;
 					background: rgb(255, 255, 255);
 					padding: 1rem;
-					border-radius: 1rem;
+					border-radius: .5rem;
 					width: 100%;
 					min-height: 150px;
 					border: 1px solid #dfdfdf;
