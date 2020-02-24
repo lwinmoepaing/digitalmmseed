@@ -3,6 +3,7 @@ import {
 } from 'antd'
 
 import Tree from '../Common/SVG/Tree'
+import Triangle from '../Common/SVG/Triangle'
 
 const { Title, Text } = Typography
 
@@ -29,14 +30,19 @@ const HomeSectionOne = () => {
                 support farmers and earn up to 30% return on investment.
               </p>
               <div>
-                <Button style={{ marginRight: 3 }} shape="round" type="primary" icon="align-right"> Invest Now </Button>
-                <Button style={{ marginRight: 3 }} shape="round"> Ask Me ?</Button>
+                <Button className="heartBeat" style={{ marginRight: 3 }} shape="round" type="primary" icon="align-right"> Invest Now </Button>
+                <Button className="heartBeat" style={{ marginRight: 3 }} shape="round"> Ask Me ?</Button>
               </div>
             </div>
           </div>
         </Col>
         <Col xs={{ span: 24 }} md={{ span: 12 }}>
           <div className="RightImageContainer">
+            <div className="TriangleRotate">
+              <span className="HeHe">
+                <Triangle />
+              </span>
+            </div>
             <Carousel autoplay>
               { imgArr.map((data) => (
                 <div className="CarouselImgContainer" key={`${data.url}i`}>
@@ -126,6 +132,44 @@ const HomeSectionOne = () => {
 						background-position: center top;
 						background-repeat: no-repeat;
 						background-size: auto;
+					}
+
+					.TriangleRotate {
+						width: 100px;
+						height: 100px;
+						position: absolute;
+						top: -41px;
+						left: -50px;
+						animation: rotate 20s linear infinite alternate;
+					}
+
+					.TriangleRotate > .HeHe {
+						display: inline-block;
+						width: 100%;
+						height: 100%;
+						transform: rotate(20deg);
+						animation: triAppear 2s ease-in-out forwards ;
+					}
+
+					@keyframes rotate {
+						0% {
+							transform: rotate(0deg)
+						}
+
+						100% {
+							transform: rotate(360deg)
+						}
+					}
+
+					@keyframes triAppear {
+						0% {
+							opacity: 0;
+							transform: rotate(20deg) scale(0.4);
+						}
+						100% {
+							opacity: 1;
+							transform: rotate(20deg) scale(1);
+						}
 					}
 				`}
       </style>

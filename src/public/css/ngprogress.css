@@ -71,3 +71,24 @@
   0%   { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+
+
+@keyframes heartBeat {
+	0% {
+			-webkit-transform: scale(0.9);
+			transform: scale(0.9)
+	}
+	50% {
+			-webkit-transform: scale(1.05);
+			transform: scale(1.05)
+	}
+	70% {
+			-webkit-transform: scale(1);
+			transform: scale(1)
+	}
+}
+
+.heartBeat:hover {
+	animation: heartBeat 0.3s ease-in-out forwards;
+}

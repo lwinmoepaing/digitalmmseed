@@ -12,6 +12,7 @@ class AppDocument extends Document {
             content="Lwin Moe Paing | Pofolio"
           />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <link rel="preload" as="font" href="/fonts/GT-Walsheim-Pro-Regular.woff" type="font/woff2" crossOrigin="anonymous" />
           <link href="/font.css" rel="stylesheet" />
           <link
             rel="stylesheet"
