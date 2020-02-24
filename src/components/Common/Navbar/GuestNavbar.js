@@ -62,12 +62,12 @@ const GuestNavbar = ({
             ))}
             <Menu.Item style={{ border: 'none' }}>
               <div>
-                <Radio.Group defaultValue={i18n.language || 'mm'} onChange={changeLocale} size="small">
+                <Radio.Group defaultValue={i18n.language || 'mm'} onChange={changeLocale} buttonStyle="solid" size="small">
                   <Radio.Button key="en" value="en">
-                    en
+                    <img style={{ width: 25, height: 15 }} src="/svg/en.svg" alt="enimage" />
                   </Radio.Button>
                   <Radio.Button key="cn" value="mm">
-                    mm
+                    <img style={{ width: 35, height: 14 }} src="/svg/mm.svg" alt="mmimage" />
                   </Radio.Button>
                 </Radio.Group>
               </div>
