@@ -15,53 +15,54 @@ const HomeSectionOne = () => {
 
 
   return (
-    <Row>
-      <Col xs={{ span: 24 }} md={{ span: 12 }}>
-        <div className="InvestContainer">
-          <div className="child">
-            <div className="SvgContainer">
-              <Tree />
-            </div>
-            <Title level={2} style={{ color: '#52c41a' }}>Invest in agriculture</Title>
-            <p>
-              We help you invest in farming to increase food production,
-              support farmers and earn up to 30% return on investment.
-            </p>
-            <div>
-              <Button style={{ marginRight: 3 }} shape="round" type="primary" icon="align-right"> Invest Now </Button>
-              <Button style={{ marginRight: 3 }} shape="round"> Ask Me ?</Button>
+    <div className="HomeSectionOneContainer">
+      <Row>
+        <Col xs={{ span: 24 }} md={{ span: 12 }}>
+          <div className="InvestContainer">
+            <div className="child">
+              <div className="SvgContainer">
+                <Tree />
+              </div>
+              <Title level={2} style={{ color: '#52c41a' }}>Invest in agriculture</Title>
+              <p>
+                We help you invest in farming to increase food production,
+                support farmers and earn up to 30% return on investment.
+              </p>
+              <div>
+                <Button style={{ marginRight: 3 }} shape="round" type="primary" icon="align-right"> Invest Now </Button>
+                <Button style={{ marginRight: 3 }} shape="round"> Ask Me ?</Button>
+              </div>
             </div>
           </div>
-        </div>
-      </Col>
-      <Col xs={{ span: 24 }} md={{ span: 12 }}>
-        <div className="RightImageContainer">
-          <Carousel autoplay>
-            { imgArr.map((data) => (
-              <div className="CarouselImgContainer" key={`${data.url}i`}>
-                <Text style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  color: 'white',
-                  fontSize: '2rem',
-                  fontWeight: 'bold',
-                  backgroundColor: 'rgba(0,0,0,0.3)',
-                  display: 'inline-block',
-                  borderRadius: 3,
-                  padding: '1rem',
-                }}
-                >
-                  {data.title}
-                </Text>
-                <img src={data.url} alt={data.url} />
-              </div>
-            ))}
-          </Carousel>
-        </div>
-      </Col>
-
+        </Col>
+        <Col xs={{ span: 24 }} md={{ span: 12 }}>
+          <div className="RightImageContainer">
+            <Carousel autoplay>
+              { imgArr.map((data) => (
+                <div className="CarouselImgContainer" key={`${data.url}i`}>
+                  <Text style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    color: 'white',
+                    fontSize: '2rem',
+                    fontWeight: 'bold',
+                    backgroundColor: 'rgba(0,0,0,0.3)',
+                    display: 'inline-block',
+                    borderRadius: 3,
+                    padding: '1rem',
+                  }}
+                  >
+                    {data.title}
+                  </Text>
+                  <img src={data.url} alt={data.url} />
+                </div>
+              ))}
+            </Carousel>
+          </div>
+        </Col>
+      </Row>
       <style jsx>
         {`
 					.Container {
@@ -97,6 +98,7 @@ const HomeSectionOne = () => {
 						margin: 0 auto;
 						position: relative;
 						bottom: -5rem;
+						z-index: 2;
 					}
 
 					.CarouselImgContainer {
@@ -118,10 +120,16 @@ const HomeSectionOne = () => {
 						margin: 0 auto;
 					}
 
+					.HomeSectionOneContainer {
+						background-color: #fff;
+						background-image: url(/Index/Background.svg);
+						background-position: center top;
+						background-repeat: no-repeat;
+						background-size: auto;
+					}
 				`}
       </style>
-
-    </Row>
+    </div>
   )
 }
 
