@@ -9,9 +9,11 @@ const CustomCard = ({ payload }) => (
       <div className="CardHeader">
         <img className="CardImage" src={`${BASE_API_URL}/${payload.headImg}`} alt="CardImage" />
         <div className="CardProfile">
-          <img className="CardImage" src="/Index/Home1.jpg" alt="CardImage" />
+          <img className="CardImage" src={`${BASE_API_URL}/${payload.user.image}`} alt="CardImage" />
         </div>
-        <div className="CardUserName"> Lwin Moe Paing</div>
+        <div className="CardUserName">
+          { payload.user.name }
+        </div>
         <div className="CardCategory">
           <span className="CardCategoryText">
             {payload.projectCategory}
@@ -36,16 +38,17 @@ const CustomCard = ({ payload }) => (
       {`
 					.CardContainer {
 						min-height: 150px;
-						background: #fff;
 					}
 
 					.Card {
-						border-radius: 3px;
+						border-radius: 7px;
 						max-width: 216px;
 						height: 290px;
 						margin: 0 auto;
 						border: 1px solid #dfdfdf;
-						cursor: default;
+						cursor: pointer;
+						background: #fff;
+						overflow: hidden;
 					}
 
 					.CardHeader {
@@ -66,7 +69,7 @@ const CustomCard = ({ payload }) => (
 
 					.CardProfile {
 						display: inline-block;
-						background: red;
+						background: #eee;
 						width: 40px;
 						height: 40px;
 						position: absolute;
