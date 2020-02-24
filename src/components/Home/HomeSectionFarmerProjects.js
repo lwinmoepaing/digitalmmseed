@@ -51,7 +51,7 @@ const HomeSectionFarmerProjects = ({ t }) => {
     <div className="DivContainer">
 
       <div>
-        <Title level={2} style={{ color: '#52c41a', textAlign: 'center', marginBottom: '2rem' }}> Latest Project From Farmers</Title>
+        <Title level={2} style={{ color: '#777777', textAlign: 'center', marginBottom: '2rem' }}> Latest Project From Farmers</Title>
       </div>
 
       { projects.length === 0 && isLoading
