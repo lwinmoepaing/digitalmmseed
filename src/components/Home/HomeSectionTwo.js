@@ -122,6 +122,10 @@ const HomeSectionTwo = ({ t }) => (
 				}
 
 				@media screen and (max-width: 767px) {
+					.CustomCardStyle {
+						flex-direction: column;
+						min-height: 280px;
+					}
 					.CardLeft {
 						flex: 1;
 						display: flex;
@@ -134,6 +138,7 @@ const HomeSectionTwo = ({ t }) => (
 				}
 
 				@media screen and (max-width: 420px) {
+
 					.CardLeft {
 						width: 100%;
 					}

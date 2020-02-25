@@ -7,6 +7,7 @@ import HomeSectionOne from '../components/Home/HomeSectionOne'
 import HomeSectionTwo from '../components/Home/HomeSectionTwo'
 import HomeSectionThree from '../components/Home/HomeSectionThree'
 import HomeSectionFarmerProjects from '../components/Home/HomeSectionFarmerProjects'
+import HomeWorry from '../components/Home/HomeWorry'
 import CardLoading from '../components/Common/Card/CardLoading'
 
 const Index = ({ t }) => (
@@ -16,6 +17,7 @@ const Index = ({ t }) => (
       <HomeSectionTwo t={t} />
       <HomeSectionThree t={t} />
       <HomeSectionFarmerProjects t={t} />
+      <HomeWorry t={t} />
       <CardLoading />
     </div>
 

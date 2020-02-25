@@ -29,8 +29,8 @@ const HomeSectionOne = ({ t }) => {
                 { t('WelcomeText') }
               </p>
               <div>
-                <Button className="heartBeat" style={{ marginRight: 3 }} shape="round" type="primary" icon="align-right"> Invest Now </Button>
-                <Button className="heartBeat" style={{ marginRight: 3 }} shape="round"> Ask Me ?</Button>
+                <Button className="heartBeat font-en" style={{ marginRight: 3 }} shape="round" type="primary" icon="align-right"> Invest Now </Button>
+                <Button className="heartBeat font-en" style={{ marginRight: 3 }} shape="round"> Ask Me ?</Button>
               </div>
             </div>
           </div>

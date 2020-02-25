@@ -12,7 +12,7 @@ const links = [
 
 const styles = {
   LayoutHeader: {
-    padding: 0, height: '50px', backgroundColor: '#fff', position: 'fixed', width: '100%', zIndex: '10', top: 0,
+    padding: 0, height: '50px', backgroundColor: '#fff', position: 'fixed', width: '100%', zIndex: '10', top: 0, borderBottom: '1px solid #dfdfdf',
   },
   MenuLineHeight: { lineHeight: '50px', textAlign: 'right', paddingRight: '1.5rem' },
 }

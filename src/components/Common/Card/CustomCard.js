@@ -18,7 +18,7 @@ const CustomCard = ({ payload }) => {
             { payload.user.name }
           </div>
           <div className="CardCategory">
-            <span className="CardCategoryText">
+            <span className="CardCategoryText font-en">
               {payload.projectCategory}
             </span>
           </div>

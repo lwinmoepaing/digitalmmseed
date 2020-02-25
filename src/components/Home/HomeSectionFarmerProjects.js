@@ -54,7 +54,7 @@ const HomeSectionFarmerProjects = ({ t }) => {
         {`
 				.DivContainer {
 					background-color: #f7fff4;
-    			padding: 2rem .5rem;
+    			padding: 3rem .5rem;
 				}
 			`}
 

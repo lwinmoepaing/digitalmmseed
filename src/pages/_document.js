@@ -9,7 +9,7 @@ class AppDocument extends Document {
           <meta name="robots" content="nofollow, noindex" />
           <meta
             name="description"
-            content="Lwin Moe Paing | Pofolio"
+            content="Digital Myanmar Farming"
           />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <link rel="preload" as="font" href="/fonts/GT-Walsheim-Pro-Regular.woff" type="font/woff2" crossOrigin="anonymous" />
