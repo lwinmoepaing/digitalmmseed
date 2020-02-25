@@ -1,8 +1,9 @@
 import Carousel from 'react-multi-carousel'
 import { useState, useEffect } from 'react'
 import fetch from 'isomorphic-unfetch'
-import { Spin, Typography } from 'antd'
+import { Typography } from 'antd'
 import CustomCard from '../Common/Card/CustomCard'
+import CardLoading from '../Common/Card/CardLoading'
 import { CarouselResponsive, BASE_API_URL } from '../../../config'
 
 const HomeSectionFarmerProjects = ({ t }) => {
@@ -21,32 +22,6 @@ const HomeSectionFarmerProjects = ({ t }) => {
     fetchData()
   }, [])
 
-  const Loading = () => (
-    <div className="LoadingContainer">
-      <div className="SpinContainer">
-        <Spin spinning tip="Loading..." size="large" />
-      </div>
-      <style jsx>
-        {`
-						.LoadingContainer {
-							min-height: 290px;
-							width: 100%;
-							position: relative
-						}
-						.SpinContainer {
-							display: inline-block;
-							margin: 0 auto;
-							position: absolute;
-							left: 50%;
-							top: 50%;
-							transform: translate(-50%, -50%);
-						}
-				`}
-
-      </style>
-    </div>
-  )
-
   return (
     <div className="DivContainer">
 
@@ -55,7 +30,7 @@ const HomeSectionFarmerProjects = ({ t }) => {
       </div>
 
       { projects.length === 0 && isLoading
-        ? <Loading />
+        ? <CardLoading />
         :				(
           <Carousel
             responsive={CarouselResponsive}
@@ -69,7 +44,7 @@ const HomeSectionFarmerProjects = ({ t }) => {
       <style jsx>
         {`
 				.DivContainer {
-					background-color: #f2ffed;
+					background-color: #f7fff4;
     			padding: 2rem .5rem;
 				}
 			`}

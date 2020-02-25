@@ -13,7 +13,7 @@ const Index = ({ t }) => (
     <div className="Container">
       <HomeSectionOne />
       <HomeSectionTwo />
-      <HomeSectionThree />
+      <HomeSectionThree t={t} />
       <HomeSectionFarmerProjects />
     </div>
 

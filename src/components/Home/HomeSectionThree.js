@@ -1,10 +1,11 @@
 import {
   Row, Col, Typography,
 } from 'antd'
+import PropTypes from 'prop-types'
 
 const { Title, Text } = Typography
 
-const HomeSectionOne = () => (
+const HomeSectionOne = ({ t }) => (
   <div className="HomeSectionThreeContainer">
     <Row>
       <Col xs={{ span: 24 }} md={{ span: 12 }}>
@@ -35,8 +36,10 @@ const HomeSectionOne = () => (
           <div className="child">
             <Title level={2} style={{ color: '#52c41a' }}>Our Goals</Title>
             <p>
-              We help you invest in farming to increase food production,
-              support farmers and earn up to 30% return on investment.
+              {t('Goal')}
+            </p>
+            <p className="text-success">
+              {t('GoalMessage')}
             </p>
           </div>
         </div>
@@ -53,24 +56,25 @@ const HomeSectionOne = () => (
 					.InvestContainer {
 						height: 460px;
 						display: block;
-						max-width: 500px;
-					}
-
-					@media screen and (max-width: 767px) {
-						.InvestContainer {
-							height: 360px;
-						}
-
-						.InvestContainer > .child {
-							height: 300px;
-						}
 					}
 
 					.InvestContainer > .child {
 						display: table-cell;
 						vertical-align: middle;
-						height: 470px;
+						height: 100%;
+						padding: 0 .5rem;
+						max-width: 620px;
+						margin: 0 auto;
 					}
+
+					@media screen and (max-width: 767px) {
+						.InvestContainer > .child {
+							display: block;
+							text-align: center;
+						}
+					}
+
+
 
 					.RightImageContainer {
 						max-width: 380px;
@@ -101,9 +105,21 @@ const HomeSectionOne = () => (
 
 					.HomeSectionOneContainer {
 					}
+
+					.text-success {
+						color: #52c41a;
+						padding: 0.4rem;
+						border-radius: 4px;
+						background: #f7f7f7;
+					}
+
 				`}
     </style>
   </div>
 )
+
+HomeSectionOne.propTypes = {
+  t: PropTypes.func.isRequired,
+}
 
 export default HomeSectionOne
