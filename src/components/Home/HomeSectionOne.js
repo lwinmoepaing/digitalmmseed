@@ -4,6 +4,7 @@ import {
 import PropTypes from 'prop-types'
 import Tree from '../Common/SVG/Tree'
 import Triangle from '../Common/SVG/Triangle'
+import Bird from '../Common/Bird/Bird'
 
 const { Title, Text } = Typography
 
@@ -17,6 +18,7 @@ const HomeSectionOne = ({ t }) => {
 
   return (
     <div className="HomeSectionOneContainer">
+      <Bird />
       <Row>
         <Col xs={{ span: 24 }} md={{ span: 12 }}>
           <div className="InvestContainer">
@@ -70,6 +72,7 @@ const HomeSectionOne = ({ t }) => {
       </Row>
       <style jsx>
         {`
+
 					.Container {
 						background-color: #fff;
 					}
@@ -131,6 +134,7 @@ const HomeSectionOne = ({ t }) => {
 						background-position: center top;
 						background-repeat: no-repeat;
 						background-size: auto;
+						position: relative;
 					}
 
 					.TriangleRotate {
