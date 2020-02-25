@@ -12,7 +12,7 @@ const Index = ({ t }) => (
   <Layout i18n={i18n}>
     <div className="Container">
       <HomeSectionOne t={t} />
-      <HomeSectionTwo />
+      <HomeSectionTwo t={t} />
       <HomeSectionThree t={t} />
       <HomeSectionFarmerProjects />
     </div>

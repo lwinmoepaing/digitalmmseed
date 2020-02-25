@@ -2,17 +2,18 @@ import {
   Row, Col,
 } from 'antd'
 
+import PropTypes from 'prop-types'
 import DataSecurityGetMoney from '../Common/SVG/DataSecurityGetMoney'
 import DataWorkingTree from '../Common/SVG/DataWorkingTree'
 import DataConfirm from '../Common/SVG/DataConfirm'
 import DataChoose from '../Common/SVG/DataChoose'
 
-const HomeSectionTwo = () => (
+const HomeSectionTwo = ({ t }) => (
   <div className="SectionTwoContainer">
     <div className="BackgroundOverLay" />
     <div className="HowItWorksContainer">
       <h1>
-        How It Works
+        {t('HowWorks')}
       </h1>
       <p>
         Using practical experience in farming, our strategies are focused on
@@ -28,7 +29,7 @@ const HomeSectionTwo = () => (
               <DataChoose />
             </p>
             <p className="CardRight">
-              1st, Craeting Project By Farmers Or Our Customers
+              {t('FirstStep')}
             </p>
           </div>
         </Col>
@@ -38,7 +39,7 @@ const HomeSectionTwo = () => (
               <DataConfirm />
             </p>
             <p className="CardRight">
-              2nd, Contact Your Project And Our Staffs will check everything you okay
+              {t('SecondStep')}
             </p>
           </div>
         </Col>
@@ -48,8 +49,7 @@ const HomeSectionTwo = () => (
               <DataWorkingTree />
             </p>
             <p className="CardRight">
-              3rd, Working Duration ( Farming or Animal Husbandry ) of Project
-              Get Money By %
+              {t('ThirdStep')}
             </p>
           </div>
         </Col>
@@ -59,8 +59,7 @@ const HomeSectionTwo = () => (
               <DataSecurityGetMoney />
             </p>
             <p className="CardRight">
-              4th, After Work Done,
-              You will Get Secure 100% Get Money
+              {t('FourthStep')}
             </p>
           </div>
         </Col>
@@ -150,5 +149,9 @@ const HomeSectionTwo = () => (
   </div>
 
 )
+
+HomeSectionTwo.propTypes = {
+  t: PropTypes.func.isRequired,
+}
 
 export default HomeSectionTwo
