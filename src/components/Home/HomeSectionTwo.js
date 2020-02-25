@@ -16,9 +16,7 @@ const HomeSectionTwo = ({ t }) => (
         {t('HowWorks')}
       </h1>
       <p>
-        Using practical experience in farming, our strategies are focused on
-        optimizing financial performance while
-        achieving our goal of increasing local production.
+        {t('HowWorksText')}
       </p>
     </div>
     <div style={{ width: '100%', overflow: 'hidden', padding: '0 1.5rem' }}>

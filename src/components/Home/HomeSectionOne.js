@@ -24,7 +24,7 @@ const HomeSectionOne = ({ t }) => {
               <div className="SvgContainer">
                 <Tree />
               </div>
-              <Title level={2} style={{ color: '#52c41a' }}>{t('Welcome')}</Title>
+              <Title level={2} style={{ color: '#52c41a', fontFamily: 'GTWalsheimProRegular' }}>{t('Welcome')}</Title>
               <p>
                 { t('WelcomeText') }
               </p>

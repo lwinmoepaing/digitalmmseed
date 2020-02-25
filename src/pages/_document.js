@@ -40,6 +40,17 @@ class AppDocument extends Document {
 							margin: 0;
 							font-family: 'GTWalsheimProRegular';
 						}
+
+						.font-mm {
+							font-family: 'Padauk';
+							font-weight: bold;
+							line-height: 1.7em;
+						}
+
+						.font-en {
+							font-family: 'GTWalsheimProRegular';
+							line-height: 1.5em;
+						}
 					`}
         </style>
       </html>

@@ -3,39 +3,43 @@
 import { Button } from 'antd'
 import { BASE_API_URL } from '../../../../config'
 
-const CustomCard = ({ payload }) => (
-  <div className="CardContainer" key={`${Math.random()}`}>
-    <div className="Card">
-      <div className="CardHeader">
-        <img className="CardImage" src={`${BASE_API_URL}/${payload.headImg}`} alt="CardImage" />
-        <div className="CardProfile">
-          <img className="CardImage" src={`${BASE_API_URL}/${payload.user.image}`} alt="CardImage" />
+const CustomCard = ({ payload }) => {
+  const profileImage = `${BASE_API_URL}${payload.user.image}`
+  const headImage = `${BASE_API_URL}${payload.headImg}`
+  return (
+    <div className="CardContainer" key={`${Math.random()}`}>
+      <div className="Card">
+        <div className="CardHeader">
+          <img className="CardImage" src={headImage} alt="CardImage" />
+          <div className="CardProfile">
+            <img className="CardImage" src={profileImage} alt="CardImage" />
+          </div>
+          <div className="CardUserName">
+            { payload.user.name }
+          </div>
+          <div className="CardCategory">
+            <span className="CardCategoryText">
+              {payload.projectCategory}
+            </span>
+          </div>
         </div>
-        <div className="CardUserName">
-          { payload.user.name }
-        </div>
-        <div className="CardCategory">
-          <span className="CardCategoryText">
-            {payload.projectCategory}
-          </span>
+        <div className="CardBody">
+          <div className="CardTitle">
+            { payload.title }
+          </div>
+          <div className="CardParaContainer">
+            <p className="CardParaText">
+              {/* { payload.body.join('. ')} */}
+              { profileImage }
+            </p>
+          </div>
+          <div className="CardFooter">
+            <Button className="heartBeat" size="small" shape="round" type="primary" icon="check"> Invest Now </Button>
+          </div>
         </div>
       </div>
-      <div className="CardBody">
-        <div className="CardTitle">
-          { payload.title }
-        </div>
-        <div className="CardParaContainer">
-          <p className="CardParaText">
-            { payload.body.join('. ')}
-          </p>
-        </div>
-        <div className="CardFooter">
-          <Button className="heartBeat" size="small" shape="round" type="primary" icon="check"> Invest Now </Button>
-        </div>
-      </div>
-    </div>
-    <style jsx>
-      {`
+      <style jsx>
+        {`
 					.CardContainer {
 						min-height: 150px;
 					}
@@ -175,11 +179,9 @@ const CustomCard = ({ payload }) => (
 						text-align: center;
 					}
 				`}
-    </style>
+      </style>
 
-  </div>
-
-
-)
-
+    </div>
+  )
+}
 export default CustomCard

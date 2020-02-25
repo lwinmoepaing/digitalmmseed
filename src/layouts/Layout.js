@@ -26,7 +26,7 @@ const DefaultLayout = ({ children, router, i18n }) => {
       <Head>
         <title> Digital MM Farm </title>
       </Head>
-      <Layout>
+      <Layout style={{ marginTop: 52 }}>
         <GuestNavbar Layout={Layout} router={router} i18n={i18n} />
         <Content
           style={styles.ContentWrapper}

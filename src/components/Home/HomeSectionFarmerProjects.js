@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import Carousel from 'react-multi-carousel'
 import { useState, useEffect } from 'react'
 import fetch from 'isomorphic-unfetch'
@@ -13,10 +14,14 @@ const HomeSectionFarmerProjects = ({ t }) => {
   useEffect(() => {
     async function fetchData() {
       const url = `${BASE_API_URL}/api/v1/project/farmer/status?status=Pending`
-      const res = await fetch(url)
-      const { data } = await res.json()
-      setProject(data)
-      setLoading(false)
+      try {
+        const res = await fetch(url)
+        const { data } = await res.json()
+        setProject(data)
+        setLoading(false)
+      } catch (e) {
+        setLoading(false)
+      }
     }
 
     fetchData()
@@ -26,7 +31,11 @@ const HomeSectionFarmerProjects = ({ t }) => {
     <div className="DivContainer">
 
       <div>
-        <Title level={2} style={{ color: '#777777', textAlign: 'center', marginBottom: '2rem' }}> Latest Project From Farmers</Title>
+        <Title level={2} style={{ color: '#777777', textAlign: 'center', marginBottom: '2rem' }}>
+
+          {t('LatestProjectFromFarmer')}
+
+        </Title>
       </div>
 
       { projects.length === 0 && isLoading
@@ -52,6 +61,10 @@ const HomeSectionFarmerProjects = ({ t }) => {
       </style>
     </div>
   )
+}
+
+HomeSectionFarmerProjects.propTypes = {
+  t: PropTypes.func.isRequired,
 }
 
 export default HomeSectionFarmerProjects

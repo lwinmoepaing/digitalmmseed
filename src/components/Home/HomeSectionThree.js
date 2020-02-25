@@ -56,7 +56,6 @@ const HomeSectionOne = ({ t }) => (
 					}
 
 					.InvestContainer {
-						height: 460px;
 						display: block;
 					}
 
