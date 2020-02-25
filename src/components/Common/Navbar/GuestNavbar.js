@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { Menu, Icon, Radio } from 'antd'
 import PropTypes from 'prop-types'
@@ -82,7 +83,6 @@ const GuestNavbar = ({
           <div
             className="ImgContainer"
             onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'mm' : 'en')}
-            onKeyDown={() => i18n.changeLanguage(i18n.language === 'en' ? 'mm' : 'en')}
           >
             {
 							i18n.language === 'en' ? (<img src="/svg/mm.svg" alt="enimage" />) : (<img src="/svg/en.svg" alt="enimage" />)
@@ -125,7 +125,7 @@ const GuestNavbar = ({
 						height: 26px;
 						position: relative;
 						top: 10px;
-						right: 0;
+						right: .3em;
 						background: black;
 						display: inline-block;
 						border-radius: 1rem;
