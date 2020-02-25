@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { Menu, Icon, Radio } from 'antd'
 import PropTypes from 'prop-types'
 import { useState, useEffect, memo } from 'react'
@@ -80,8 +81,6 @@ const GuestNavbar = ({
         <div className="RightNavigator">
           <div
             className="ImgContainer"
-            tabIndex={0}
-            role="button"
             onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'mm' : 'en')}
             onKeyDown={() => i18n.changeLanguage(i18n.language === 'en' ? 'mm' : 'en')}
           >
@@ -91,7 +90,6 @@ const GuestNavbar = ({
           </div>
         </div>
       </div>
-      ``
       <style jsx>
         {`
 					.logo {
