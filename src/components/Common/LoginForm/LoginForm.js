@@ -33,7 +33,7 @@ const LoginForm = () => {
             onClick={() => setLoading(!isLoading)}
             htmlType="submit"
             loading={isLoading}
-            style={{ display: 'block', width: '100%' }}
+            style={{ display: 'block', width: '100%',	backgroundColor: '#1890ff' }}
           >
             Log in
           </Button>
@@ -49,13 +49,13 @@ const LoginForm = () => {
 						border: 1px solid #dfdfdf;
 						padding: 1rem;
 						border-radius: 5px;
-						margin: 0 auto;
+						margin: 1rem auto;
 					}
 
 					.LoginFormButton {
 						display: block;
 						width: 100%;
-						background: #1890ff;
+					;
 					}
 				`}
       </style>
