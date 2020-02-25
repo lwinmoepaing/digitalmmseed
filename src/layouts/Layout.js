@@ -33,6 +33,9 @@ const DefaultLayout = ({ children, router, i18n }) => {
         >
           { children }
         </Content>
+        <footer>
+          footer
+        </footer>
       </Layout>
     </div>
   )

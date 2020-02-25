@@ -78,9 +78,20 @@ const GuestNavbar = ({
         </div>
 
         <div className="RightNavigator">
-          {/*  */}
+          <div
+            className="ImgContainer"
+            tabIndex={0}
+            role="button"
+            onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'mm' : 'en')}
+            onKeyDown={() => i18n.changeLanguage(i18n.language === 'en' ? 'mm' : 'en')}
+          >
+            {
+							i18n.language === 'en' ? (<img src="/svg/mm.svg" alt="enimage" />) : (<img src="/svg/en.svg" alt="enimage" />)
+						}
+          </div>
         </div>
       </div>
+      ``
       <style jsx>
         {`
 					.logo {
@@ -102,6 +113,35 @@ const GuestNavbar = ({
 						.MenuContainer {
 							display: block !important;
 						}
+						.RightNavigator {
+							display: none;
+						}
+					}
+
+					.RightNavigator {
+						float: right;
+					}
+
+					.RightNavigator > .ImgContainer {
+						width: 26px;
+						height: 26px;
+						position: relative;
+						top: 10px;
+						right: 0;
+						background: black;
+						display: inline-block;
+						border-radius: 1rem;
+						overflow: hidden;
+					}
+
+					.RightNavigator > .ImgContainer > img {
+						width: 100%;
+						object-fit: cover;
+						display: inline-block;
+						height: 100%;
+						position: absolute;
+						top: 0;
+						left: 0;
 					}
 				`}
       </style>
