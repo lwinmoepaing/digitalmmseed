@@ -34,7 +34,9 @@ const HomeSectionOne = ({ t }) => (
       <Col xs={{ span: 24 }} md={{ span: 12 }}>
         <div className="InvestContainer">
           <div className="child">
-            <Title level={2} style={{ color: '#52c41a' }}>Our Goals</Title>
+            <Title level={2} style={{ color: '#52c41a' }}>
+              { t('OurGoals') }
+            </Title>
             <p>
               {t('Goal')}
             </p>

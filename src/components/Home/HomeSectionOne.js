@@ -1,13 +1,13 @@
 import {
   Row, Col, Carousel, Button, Typography,
 } from 'antd'
-
+import PropTypes from 'prop-types'
 import Tree from '../Common/SVG/Tree'
 import Triangle from '../Common/SVG/Triangle'
 
 const { Title, Text } = Typography
 
-const HomeSectionOne = () => {
+const HomeSectionOne = ({ t }) => {
   const imgArr = [
     { title: 'Farming', url: '/Index/Home2.jpg' },
     { title: 'Animal Husbandry', url: '/Index/Home3.jpg' },
@@ -24,7 +24,7 @@ const HomeSectionOne = () => {
               <div className="SvgContainer">
                 <Tree />
               </div>
-              <Title level={2} style={{ color: '#52c41a' }}>Invest in agriculture</Title>
+              <Title level={2} style={{ color: '#52c41a' }}>{t('Welcome')}</Title>
               <p>
                 We help you invest in farming to increase food production,
                 support farmers and earn up to 30% return on investment.
@@ -175,6 +175,10 @@ const HomeSectionOne = () => {
       </style>
     </div>
   )
+}
+
+HomeSectionOne.propTypes = {
+  t: PropTypes.func.isRequired,
 }
 
 export default HomeSectionOne

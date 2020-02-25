@@ -11,7 +11,7 @@ import HomeSectionFarmerProjects from '../components/Home/HomeSectionFarmerProje
 const Index = ({ t }) => (
   <Layout i18n={i18n}>
     <div className="Container">
-      <HomeSectionOne />
+      <HomeSectionOne t={t} />
       <HomeSectionTwo />
       <HomeSectionThree t={t} />
       <HomeSectionFarmerProjects />
