@@ -26,8 +26,7 @@ const HomeSectionOne = ({ t }) => {
               </div>
               <Title level={2} style={{ color: '#52c41a' }}>{t('Welcome')}</Title>
               <p>
-                We help you invest in farming to increase food production,
-                support farmers and earn up to 30% return on investment.
+                { t('WelcomeText') }
               </p>
               <div>
                 <Button className="heartBeat" style={{ marginRight: 3 }} shape="round" type="primary" icon="align-right"> Invest Now </Button>

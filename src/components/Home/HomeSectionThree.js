@@ -37,11 +37,11 @@ const HomeSectionOne = ({ t }) => (
             <Title level={2} style={{ color: '#52c41a' }}>
               { t('OurGoals') }
             </Title>
-            <p>
-              {t('Goal')}
-            </p>
             <p className="text-success">
               {t('GoalMessage')}
+            </p>
+            <p>
+              {t('Goal')}
             </p>
           </div>
         </div>
@@ -110,11 +110,14 @@ const HomeSectionOne = ({ t }) => (
 
 					.text-success {
 						color: #52c41a;
-						padding: 0.4rem;
+						padding: 0.6rem;
 						border-radius: 4px;
 						background: #f7f7f7;
 					}
 
+					p {
+						line-height: 1.7em;
+					}
 				`}
     </style>
   </div>
