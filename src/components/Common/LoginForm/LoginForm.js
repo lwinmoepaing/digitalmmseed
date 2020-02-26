@@ -29,11 +29,12 @@ const LoginForm = () => {
         </Form.Item>
         <Form.Item>
           <Button
-            type="success"
             onClick={() => setLoading(!isLoading)}
             htmlType="submit"
             loading={isLoading}
-            style={{ display: 'block', width: '100%',	backgroundColor: '#1890ff' }}
+            style={{
+              display: 'block', width: '100%',	backgroundColor: '#1890ff', color: '#fff',
+            }}
           >
             Log in
           </Button>
