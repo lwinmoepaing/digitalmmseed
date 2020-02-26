@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 import Layout from '../layouts/Layout'
 import { withTranslation, i18n } from '../i18n'
@@ -31,12 +32,20 @@ const Index = ({ t }) => (
   </Layout>
 )
 
-Index.getInitialProps = async () => ({
-  namespacesRequired: ['common'],
-})
+Index.getInitialProps = async (context) => {
+  const Console = console
+  if (context.isServer) {
+    Console.log('is Server')
+  } else {
+    Console.log('Error')
+  }
+  return {
+    namespacesRequired: ['common'],
+  }
+}
 
 Index.propTypes = {
   t: PropTypes.func.isRequired,
 }
 
-export default withTranslation('common')(Index)
+export default connect((state) => state)(withTranslation('common')(Index))

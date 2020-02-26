@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types'
 import Carousel from 'react-multi-carousel'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, memo } from 'react'
 import fetch from 'isomorphic-unfetch'
 import { Typography } from 'antd'
+
+
 import CustomCard from '../Common/Card/CustomCard'
 import CardLoading from '../Common/Card/CardLoading'
 import { CarouselResponsive, BASE_API_URL } from '../../../config'
@@ -20,6 +22,7 @@ const HomeSectionFarmerProjects = ({ t }) => {
         setProject(data)
         setLoading(false)
       } catch (e) {
+        setProject([])
         setLoading(false)
       }
     }
@@ -67,4 +70,4 @@ HomeSectionFarmerProjects.propTypes = {
   t: PropTypes.func.isRequired,
 }
 
-export default HomeSectionFarmerProjects
+export default memo(HomeSectionFarmerProjects)

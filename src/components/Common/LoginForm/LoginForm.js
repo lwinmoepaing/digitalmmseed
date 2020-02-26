@@ -1,17 +1,36 @@
 import {
   Form, Icon, Input, Button,
 } from 'antd'
+import PropTypes from 'prop-types'
+// import { useState } from 'react'
 
-import { useState } from 'react'
+const ButtonStyle = {
+  display: 'block',
+  width: '100%',
+  backgroundColor: '#1890ff',
+  color: '#fff',
+  border: 'none',
+}
 
-const LoginForm = () => {
-  const [isLoading, setLoading] = useState(false)
-
+const LoginForm = ({
+  Auth,
+  onSubmitAuth,
+}) => {
+  // const { name, age } = Auth.info
+  const Console = console
+  Console.log('Auth', Auth)
+  Console.log('Store', onSubmitAuth)
   return (
     <div className="LoginFormContainer">
-      <h3> Login Page</h3>
+      <h3> Login Page </h3>
 
-      <Form onSubmit={() => {}} className="login-form">
+      <p>
+        {
+					Auth.authInfo ? Auth.authInfo.name + Auth.authInfo.age : 'Mashi'
+				}
+      </p>
+
+      <Form className="login-form">
         <Form.Item>
 
           <Input
@@ -26,18 +45,18 @@ const LoginForm = () => {
             type="password"
             placeholder="Password"
           />
+
         </Form.Item>
+        <Button
+          onClick={() => onSubmitAuth()}
+          htmlType="button"
+          loading={Auth.isLoading}
+          style={ButtonStyle}
+        >
+          Log in
+        </Button>
         <Form.Item>
-          <Button
-            onClick={() => setLoading(!isLoading)}
-            htmlType="submit"
-            loading={isLoading}
-            style={{
-              display: 'block', width: '100%',	backgroundColor: '#1890ff', color: '#fff',
-            }}
-          >
-            Log in
-          </Button>
+
           Or
           <a href="#!">register now!</a>
         </Form.Item>
@@ -56,7 +75,14 @@ const LoginForm = () => {
 					.LoginFormButton {
 						display: block;
 						width: 100%;
-					;
+					}
+
+					.CustomButton {
+						display: block;
+						width: 100%;
+						border-radius: 3px;
+						border: 1px solid #dfdfdf;
+						cursor: pointer;
 					}
 				`}
       </style>
@@ -64,5 +90,11 @@ const LoginForm = () => {
   )
 }
 
+LoginForm.propTypes = {
+  Auth: PropTypes.oneOfType([
+    PropTypes.object,
+  ]).isRequired,
+  onSubmitAuth: PropTypes.func.isRequired,
+}
 
 export default LoginForm

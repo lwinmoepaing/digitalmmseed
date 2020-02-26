@@ -23,4 +23,10 @@ class MyApp extends App {
   }
 }
 
+MyApp.getInitialProps = async ({ Component, ctx }) => {
+  // we can dispatch from here too
+  const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {}
+  return { pageProps }
+}
+
 export default withRedux(configStore, { debug: process.NODE_ENV !== 'production' })(appWithTranslation(MyApp))

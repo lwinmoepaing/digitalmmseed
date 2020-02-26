@@ -2,7 +2,10 @@ import { LOGIN_FAIL, LOGIN_SENDING, LOGIN_SUCCESS } from '../actions/actionTypes
 
 const initialState = {
   isLoading: false,
-  authInfo: null,
+  authInfo: {
+    name: 'Default Name',
+    age: 20,
+  },
   errors: null,
 }
 
