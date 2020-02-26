@@ -6,6 +6,7 @@ const initialState = {
     name: 'Default Name',
     age: 20,
   },
+  token: null,
   errors: null,
 }
 
@@ -16,8 +17,9 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         isLoading: false,
         authInfo: {
-          ...payload,
+          ...payload.authInfo,
         },
+        token: payload.token,
         errors: null,
       }
 

@@ -6,12 +6,9 @@ export const loginSending = () => ({
   type: LOGIN_SENDING,
 })
 
-export const loginSuccess = () => ({
+export const loginSuccess = (payload) => ({
   type: LOGIN_SUCCESS,
-  payload: {
-    name: 'Lwin Moe Paing',
-    email: 'lwinmoepaing@gmail.com',
-  },
+  payload,
 })
 
 export const loginFail = (e) => ({
@@ -26,19 +23,32 @@ export const loginFail = (e) => ({
 // ===========================
 
 export const onSubmitAuth = (email = '', password = '') => async (dispatch) => {
+  // eslint-disable-next-line no-alert
   const Console = console
   Console.log(email, password)
   // dispath Sending First
   dispatch(loginSending())
   try {
-    const response = await fetch(BASE_API_URL, {})
-    if (!response.ok) throw new Error('Message')
+    const response = await fetch(`${BASE_API_URL}/api/v1/auth/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+    if (!response.ok) throw response
     const data = await response.json()
-    if (data.auth) {
-      dispatch(loginSuccess())
-      return
+    const payload = {
+      authInfo: data.data,
+      token: data.token,
     }
+    dispatch(loginSuccess(payload))
+    return payload
   } catch (e) {
-    throw new Error('Login Fail')
+    dispatch(loginFail(e))
+    throw e
   }
 }

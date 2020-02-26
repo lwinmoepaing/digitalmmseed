@@ -1,8 +1,17 @@
 import {
-  Form, Icon, Input, Button,
+  Form, Icon, Button, notification,
 } from 'antd'
 import PropTypes from 'prop-types'
-// import { useState } from 'react'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+
+
+const openNotificationWithIcon = (type, title, message) => {
+  notification[type]({
+    message: title,
+    description: message,
+  })
+}
 
 const ButtonStyle = {
   display: 'block',
@@ -16,59 +25,99 @@ const LoginForm = ({
   Auth,
   onSubmitAuth,
 }) => {
-  // const { name, age } = Auth.info
-  const Console = console
-  Console.log('Auth', Auth)
-  Console.log('Store', onSubmitAuth)
+  const router = useRouter()
+  const [userName, setUserName] = useState('')
+  const [userPassword, setUserPassword] = useState('')
+  const IconStyle = {
+    color: 'rgba(0,0,0,.25)',
+    position: 'absolute',
+    left: 4,
+    top: 7,
+    display: 'inline-block',
+    zIndex: 2,
+  }
+
+  const onSubmit = async () => {
+    const Console = console
+
+    try {
+      const res = await onSubmitAuth(userName, userPassword)
+      Console.log('res', res)
+      router.push(`/${res.authInfo.role}`)
+    } catch (e) {
+      const errorMessage = await (e.text())
+      const { message = '', data = [] } = await JSON.parse(errorMessage)
+      let mes = message
+      if (data && data.length > 0) {
+        mes = data.map(({ message: me }) => me).join('<br>')
+      }
+      openNotificationWithIcon('error', 'Login Info', mes)
+    }
+  }
   return (
     <div className="LoginFormContainer">
-      <h3> Login Page </h3>
+      <h3 className="text-center"> Login Page </h3>
 
-      <p>
-        {
-					Auth.authInfo ? Auth.authInfo.name + Auth.authInfo.age : 'Mashi'
-				}
-      </p>
+      <div className="InputContainer">
 
-      <Form className="login-form">
-        <Form.Item>
+        <Icon
+          type="user"
+          style={IconStyle}
+        />
 
-          <Input
-            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-            placeholder="Username"
-          />
-        </Form.Item>
-        <Form.Item>
+        <input
+          className="Input"
+          placeholder="Username"
+          onChange={(e) => {
+            setUserName(e.target.value)
+          }}
+        />
+      </div>
 
-          <Input
-            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-            type="password"
-            placeholder="Password"
-          />
+      <div className="InputContainer">
 
-        </Form.Item>
-        <Button
-          onClick={() => onSubmitAuth()}
-          htmlType="button"
-          loading={Auth.isLoading}
-          style={ButtonStyle}
-        >
-          Log in
-        </Button>
-        <Form.Item>
+        <Icon
+          type="lock"
+          style={IconStyle}
+        />
 
+        <input
+          className="Input"
+          placeholder="Password"
+          onChange={(e) => {
+            setUserPassword(e.target.value)
+          }}
+        />
+      </div>
+
+
+      <Button
+        disabled={!(userPassword && userName)}
+        onClick={onSubmit}
+        htmlType="button"
+        loading={Auth.isLoading}
+        style={ButtonStyle}
+      >
+        Log in
+      </Button>
+      <Form.Item>
+
+        <span>
           Or
-          <a href="#!">register now!</a>
-        </Form.Item>
-      </Form>
+          <a href="#!" style={{ marginLeft: 3 }}>Register now!</a>
+        </span>
+      </Form.Item>
       <style jsx>
         {`
+					.text-center {
+						text-align: center;
+					}
 					.LoginFormContainer {
 						max-width: 300px;
 						background-color: #fff;
 						border: 1px solid #dfdfdf;
 						padding: 1rem;
-						border-radius: 5px;
+						border-radius: .8rem;
 						margin: 1rem auto;
 					}
 
@@ -83,6 +132,28 @@ const LoginForm = ({
 						border-radius: 3px;
 						border: 1px solid #dfdfdf;
 						cursor: pointer;
+					}
+
+					.InputContainer {
+						position: relative;
+						margin-bottom: 1rem;
+					}
+
+					.Input {
+						width: 100%;
+						display: block;
+						position: relative;
+						padding: 3px 20px;
+						border: 1px solid #dfdfdf;
+						border-radius: 3px;
+					}
+
+					.Input::-webkit-input-placeholder {
+						color: #dfdfdf;
+					}
+
+					.Input::placeholder  {
+						color: #dfdfdf;
 					}
 				`}
       </style>

@@ -8,8 +8,8 @@ import { onSubmitAuth } from '../../store/actions/authAction'
 
 
 const Login = (props) => {
-  const Console = console
-  Console.log('In Login Component', props)
+  // const Console = console
+  // Console.log('In Login Component', props)
   const { t, Auth, onSubmitAuth: onSubmitLogin } = props
   return (
     <Layout i18n={i18n}>
@@ -17,11 +17,18 @@ const Login = (props) => {
         <title> Login Page </title>
       </Head>
       <div>
+
         <LoginForm
           t={t}
           onSubmitAuth={onSubmitLogin}
           Auth={Auth}
         />
+
+        <p>
+          { Auth
+            ? `${JSON.stringify(Auth.authInfo, undefined, 4) + Auth.token}`
+            : ''}
+        </p>
       </div>
     </Layout>
   )
@@ -40,8 +47,6 @@ Login.getInitialProps = async ({ store }) => {
   const payLoad = {
     Auth,
   }
-  const Console = console
-  Console.log('payLoad', payLoad)
   return ({
     namespacesRequired: ['common'],
     ...payLoad,
