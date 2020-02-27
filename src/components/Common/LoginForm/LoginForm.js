@@ -43,7 +43,7 @@ const LoginForm = ({
     try {
       const res = await onSubmitAuth(userName, userPassword)
       Console.log('res', res)
-      router.push(`/${res.authInfo.role}`)
+      router.push(`/${res.authInfo.role.toLowerCase()}`)
     } catch (e) {
       const errorMessage = await (e.text())
       const { message = '', data = [] } = await JSON.parse(errorMessage)

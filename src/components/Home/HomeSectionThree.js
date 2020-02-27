@@ -51,7 +51,7 @@ const HomeSectionOne = ({ t }) => (
     <style jsx>
       {`
 					.HomeSectionThreeContainer {
-						background: #fff;
+						background: #f5f5f5;
 						padding-bottom: 2rem;
 					}
 

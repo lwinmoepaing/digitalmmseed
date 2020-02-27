@@ -23,12 +23,6 @@ const Login = (props) => {
           onSubmitAuth={onSubmitLogin}
           Auth={Auth}
         />
-
-        <p>
-          { Auth
-            ? `${JSON.stringify(Auth.authInfo, undefined, 4) + Auth.token}`
-            : ''}
-        </p>
       </div>
     </Layout>
   )
@@ -43,14 +37,11 @@ Login.propTypes = {
 }
 
 Login.getInitialProps = async (ctx) => {
-  const Console = console
+  // const Console = console
   const { isValid, authInfo } = await isAuthMiddleware(ctx)
-  const Auth = JSON.parse(JSON.stringify(authInfo))
-  Console.log('is From Client??', Auth)
-  Console.log('is Valid', isValid)
+  // Console.log('is Valid', isValid)
   const payLoad = {
-    Auth,
-    hello: 'Lwin',
+    Auth: isValid === true ? JSON.parse(JSON.stringify(authInfo)) : null,
   }
   return ({
     namespacesRequired: ['common'],

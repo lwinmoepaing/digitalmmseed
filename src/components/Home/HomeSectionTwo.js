@@ -70,14 +70,14 @@ const HomeSectionTwo = ({ t }) => (
 					padding-top: 5.5rem;
 					padding-bottom: 2rem;
 					position: relative;
-					background: #fff;
+					background: #f5f5f5;
 				}
 
 				.SectionTwoContainer > .BackgroundOverLay {
 					position: absolute;
 					top: 0;
 					left: 0;
-					background-color: #f2ffed;
+					background-color: #d5ffc5;
 					width: 100%;
 					height: 80%;
 					display: block;

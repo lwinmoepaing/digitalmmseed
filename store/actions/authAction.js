@@ -1,6 +1,8 @@
 import fetch from 'isomorphic-unfetch'
 import Cookies from 'js-cookie'
-import { LOGIN_FAIL, LOGIN_SENDING, LOGIN_SUCCESS } from './actionTypes'
+import {
+  LOGIN_FAIL, LOGIN_SENDING, LOGIN_SUCCESS, LOGOUT,
+} from './actionTypes'
 import { BASE_API_URL } from '../../config'
 
 export const loginSending = () => ({
@@ -18,6 +20,14 @@ export const loginFail = (e) => ({
     message: e.message,
   },
 })
+
+export const logout = () => {
+  Cookies.remove('authInfo')
+  Cookies.remove('token')
+  return {
+    type: LOGOUT,
+  }
+}
 
 // ===========================
 // Async Thunk Example

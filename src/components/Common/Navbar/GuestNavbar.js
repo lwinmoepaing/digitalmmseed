@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { Menu, Icon, Radio } from 'antd'
@@ -5,6 +6,7 @@ import PropTypes from 'prop-types'
 import { useState, useEffect, memo } from 'react'
 import { connect } from 'react-redux'
 import { Link, withTranslation } from '../../../i18n'
+import { logout } from '../../../../store/actions/authAction'
 
 
 const links = [
@@ -22,7 +24,7 @@ const styles = {
 const GuestNavbar = (props) => {
   const {
     // eslint-disable-next-line react/prop-types
-    Layout, router, i18n, t, Auth,
+    Layout, router, i18n, t, Auth, logout,
   } = props
 
   const Console = console
@@ -72,17 +74,22 @@ const GuestNavbar = (props) => {
             ))}
             { Auth && Auth.token ? (
               <Menu.Item>
-                <a href="#!">
-                  <Icon type="logout" />
-                  {t('logout')}
-                </a>
+                <Link href="#!">
+                  <a href="#!" onClick={() => logout()}>
+                    <Icon type="logout" />
+                    {t('logout')}
+                    !!
+                  </a>
+                </Link>
               </Menu.Item>
             ) : (
               <Menu.Item>
-                <a href="/login">
-                  <Icon type="login" />
-                  {t('Login')}
-                </a>
+                <Link href="/login">
+                  <a href="#!">
+                    <Icon type="login" />
+                    {t('Login')}
+                  </a>
+                </Link>
               </Menu.Item>
             ) }
 
@@ -181,4 +188,4 @@ GuestNavbar.propTypes = {
   ]).isRequired,
 }
 
-export default memo(connect((state) => state)(withTranslation('common')(GuestNavbar)))
+export default memo(connect((state) => state, { logout })(withTranslation('common')(GuestNavbar)))
