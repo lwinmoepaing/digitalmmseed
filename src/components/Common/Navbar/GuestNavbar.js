@@ -3,13 +3,13 @@
 import { Menu, Icon, Radio } from 'antd'
 import PropTypes from 'prop-types'
 import { useState, useEffect, memo } from 'react'
+import { connect } from 'react-redux'
 import { Link, withTranslation } from '../../../i18n'
 
 
 const links = [
   { name: 'Home', url: '/', icon: 'home' },
   { name: 'About', url: '/about', icon: 'read' },
-  { name: 'Login', url: '/login', icon: 'login' },
 ]
 
 const styles = {
@@ -19,9 +19,15 @@ const styles = {
   MenuLineHeight: { lineHeight: '50px', textAlign: 'right', paddingRight: '1.5rem' },
 }
 
-const GuestNavbar = ({
-  Layout, router, i18n, t,
-}) => {
+const GuestNavbar = (props) => {
+  const {
+    // eslint-disable-next-line react/prop-types
+    Layout, router, i18n, t, Auth,
+  } = props
+
+  const Console = console
+  Console.log('Inside Nav', props)
+
   const [state, setstate] = useState(router.pathname)
   useEffect(() => {
     setstate(router.pathname)
@@ -64,6 +70,22 @@ const GuestNavbar = ({
                 </Link>
               </Menu.Item>
             ))}
+            { Auth && Auth.token ? (
+              <Menu.Item>
+                <a href="#!">
+                  <Icon type="logout" />
+                  {t('logout')}
+                </a>
+              </Menu.Item>
+            ) : (
+              <Menu.Item>
+                <a href="/login">
+                  <Icon type="login" />
+                  {t('Login')}
+                </a>
+              </Menu.Item>
+            ) }
+
             <Menu.Item style={{ border: 'none' }}>
               <div>
                 <Radio.Group defaultValue={i18n.language || 'mm'} onChange={changeLocale} buttonStyle="solid" size="small">
@@ -159,4 +181,4 @@ GuestNavbar.propTypes = {
   ]).isRequired,
 }
 
-export default memo(withTranslation('common')(GuestNavbar))
+export default memo(connect((state) => state)(withTranslation('common')(GuestNavbar)))

@@ -5,11 +5,12 @@ import Layout from '../layouts/Layout'
 import LoginForm from '../components/Common/LoginForm/LoginForm'
 import { withTranslation, i18n } from '../i18n'
 import { onSubmitAuth } from '../../store/actions/authAction'
+import isAuthMiddleware from '../../lib/middleware/isAuthMiddleware'
 
 
 const Login = (props) => {
-  // const Console = console
-  // Console.log('In Login Component', props)
+  const Console = console
+  Console.log('In Login Component', props)
   const { t, Auth, onSubmitAuth: onSubmitLogin } = props
   return (
     <Layout i18n={i18n}>
@@ -17,7 +18,6 @@ const Login = (props) => {
         <title> Login Page </title>
       </Head>
       <div>
-
         <LoginForm
           t={t}
           onSubmitAuth={onSubmitLogin}
@@ -42,10 +42,15 @@ Login.propTypes = {
   ]).isRequired,
 }
 
-Login.getInitialProps = async ({ store }) => {
-  const { Auth } = store.getState()
+Login.getInitialProps = async (ctx) => {
+  const Console = console
+  const { isValid, authInfo } = await isAuthMiddleware(ctx)
+  const Auth = JSON.parse(JSON.stringify(authInfo))
+  Console.log('is From Client??', Auth)
+  Console.log('is Valid', isValid)
   const payLoad = {
     Auth,
+    hello: 'Lwin',
   }
   return ({
     namespacesRequired: ['common'],

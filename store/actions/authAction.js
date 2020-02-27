@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-unfetch'
+import Cookies from 'js-cookie'
 import { LOGIN_FAIL, LOGIN_SENDING, LOGIN_SUCCESS } from './actionTypes'
 import { BASE_API_URL } from '../../config'
 
@@ -40,11 +41,14 @@ export const onSubmitAuth = (email = '', password = '') => async (dispatch) => {
       }),
     })
     if (!response.ok) throw response
-    const data = await response.json()
+    const { data, token } = await response.json()
+    const authInfo = data
     const payload = {
-      authInfo: data.data,
-      token: data.token,
+      authInfo,
+      token,
     }
+    Cookies.set('authInfo', data)
+    Cookies.set('token', token)
     dispatch(loginSuccess(payload))
     return payload
   } catch (e) {

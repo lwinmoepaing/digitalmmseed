@@ -1,12 +1,16 @@
+import Cookies from 'js-cookie'
+// import { parse } from 'cookie'
 import { LOGIN_FAIL, LOGIN_SENDING, LOGIN_SUCCESS } from '../actions/actionTypes'
+
+
+const authInfo = Cookies.get('authInfo')
+const token = Cookies.get('token')
+
 
 const initialState = {
   isLoading: false,
-  authInfo: {
-    name: 'Default Name',
-    age: 20,
-  },
-  token: null,
+  authInfo: authInfo ? JSON.parse(authInfo) : null,
+  token: token || null,
   errors: null,
 }
 
