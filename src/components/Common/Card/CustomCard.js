@@ -3,6 +3,7 @@
 import { Button } from 'antd'
 import { CheckOutlined } from '@ant-design/icons'
 import { BASE_API_URL } from '../../../../config'
+import { Router } from '../../../i18n'
 
 const CustomCard = ({ payload }) => {
   const profileImage = `${BASE_API_URL}${payload.user.image}`
@@ -35,7 +36,16 @@ const CustomCard = ({ payload }) => {
             </p>
           </div>
           <div className="CardFooter">
-            <Button className="heartBeat" size="small" shape="round" type="primary" icon={<CheckOutlined />}> Invest Now </Button>
+            <Button
+              className="heartBeat"
+              size="small"
+              shape="round"
+              type="primary"
+              icon={<CheckOutlined />}
+              onClick={() => Router.push('/login')}
+            >
+              Invest Now
+            </Button>
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ import { AlignRightOutlined } from '@ant-design/icons'
 import Tree from '../Common/SVG/Tree'
 import Triangle from '../Common/SVG/Triangle'
 import Bird from '../Common/Bird/Bird'
+import { Router } from '../../i18n'
 
 const { Title, Text } = Typography
 
@@ -16,6 +17,9 @@ const HomeSectionOne = ({ t }) => {
     { title: 'Agriculture', url: '/Index/Home1.jpg' },
   ]
 
+  const go = (url) => {
+    Router.push(url)
+  }
 
   return (
     <div className="HomeSectionOneContainer">
@@ -32,8 +36,24 @@ const HomeSectionOne = ({ t }) => {
                 { t('WelcomeText') }
               </p>
               <div>
-                <Button className="heartBeat font-en" style={{ marginRight: 3 }} shape="round" type="primary" icon={<AlignRightOutlined />}> Invest Now </Button>
-                <Button className="heartBeat font-en" style={{ marginRight: 3 }} shape="round"> Ask Me ?</Button>
+                <Button
+                  className="heartBeat font-en"
+                  style={{ marginRight: 3 }}
+                  shape="round"
+                  type="primary"
+                  onClick={() => go('/login')}
+                  icon={<AlignRightOutlined />}
+                >
+                  Invest Now
+                </Button>
+                <Button
+                  className="heartBeat font-en"
+                  style={{ marginRight: 3 }}
+                  shape="round"
+                  onClick={() => go('/about')}
+                >
+                  Ask Me ?
+                </Button>
               </div>
             </div>
           </div>
@@ -88,7 +108,6 @@ const HomeSectionOne = ({ t }) => {
 
 					@media screen and (max-width: 767px) {
 						.InvestContainer {
-							height: 360px;
 						}
 
 						.InvestContainer > .child {
