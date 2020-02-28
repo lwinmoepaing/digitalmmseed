@@ -48,7 +48,7 @@ const LoginForm = ({
       const errorMessage = await (e.text())
       const { message = '', data = [] } = await JSON.parse(errorMessage)
       let mes = message
-      if (data && data.length > 0) {
+      if (data !== null && data.length > 0) {
         mes = data.map(({ message: me }) => me).join('<br>')
       }
       openNotificationWithIcon('error', 'Login Info', mes)
