@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 import { Upload, message, Button } from 'antd'
 import { UploadOutlined } from '@ant-design/icons'
@@ -49,7 +51,7 @@ const FileUpload = ({ token, id, setImage }) => {
 
   return (
     <div className="Container font-en">
-      <Upload {...fileProps} fileList={cusFile} style={{ display: 'block' }}>
+      <Upload {...fileProps} fileList={cusFile}>
         <Button type="dashed" block>
           <UploadOutlined />
           Upload HeadLine Image

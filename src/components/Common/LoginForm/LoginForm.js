@@ -53,7 +53,7 @@ const LoginForm = ({
       const { message = '', data = [] } = await JSON.parse(errorMessage)
       let mes = message
       if (data !== null && data.length > 0) {
-        mes = data.map(({ message: me }) => me).join('<br>')
+        mes = data.map(({ message: me }) => me).join('. \n')
       }
       openNotificationWithIcon('error', 'Login Info', mes)
     }
@@ -89,6 +89,9 @@ const LoginForm = ({
           type="password"
           onChange={(e) => {
             setUserPassword(e.target.value)
+          }}
+          onKeyUp={(e) => {
+            if (e.keyCode === 13) onSubmit()
           }}
         />
       </div>

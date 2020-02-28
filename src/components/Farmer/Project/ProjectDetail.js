@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react'
@@ -8,6 +9,7 @@ import TwoTreeLoading from '../../Common/SVG/TwoTreeLoading'
 import FileUpload from '../../Common/Upload/FileUpload'
 import CreatedBy from '../../Common/Profile/CreatedBy'
 import SomethingWrong from '../../Common/Profile/SomethingWrong'
+import TextEditor from '../../Common/Editor/TextEditor'
 
 
 const ProjectDetail = ({ id, token }) => {
@@ -45,10 +47,18 @@ const ProjectDetail = ({ id, token }) => {
 
   const Loading = ({ type }) => (
     <div className="LoadingContainer">
-      <TwoTreeLoading style={{ width: type === 'sm' ? 100 : 300 }} />
-      <div>
-        Loading ...
-      </div>
+      <TwoTreeLoading style={{
+        width: type === 'sm' ? 80 : type === 'xs' ? 50 : 130,
+        height: 'auto',
+      }}
+      />
+
+      {type === 'xs' ? null : (
+        <div>
+          Loading ...
+        </div>
+      )}
+
       <style jsx>
         {`
 					.LoadingContainer {
@@ -128,23 +138,6 @@ const ProjectDetail = ({ id, token }) => {
   )
 
 
-  const TextEditor = ({ profile }) => (
-    <div className="Container">
-
-
-      <style jsx>
-        {`
-					.Container {
-							border-radius: 1rem;
-							padding: 1rem;
-							background: #fff;
-							background-size: cover;
-							background-position: center center;
-						}
-				`}
-      </style>
-    </div>
-  )
   const _setImage = (img) => {
     setProject({
       ...project,
@@ -158,12 +151,13 @@ const ProjectDetail = ({ id, token }) => {
         <Col xs={{ span: 24 }} sm={{ span: 14 }} md={{ span: 18 }}>
           { !isLoading && isError && <SomethingWrong />}
 
+          { isLoading && <div className="Container"><Loading type="xs" /></div>}
           { isLoading && <div className="Container"><Loading /></div>}
           { isLoading && <div className="Container"><Loading /></div>}
 
           { !isLoading && !isError && <FileUpload token={token} id={id} setImage={_setImage} />}
           { !isLoading && !isError && <ImageContainer />}
-          { !isLoading && !isError && <TextEditor profile={project.user} />}
+          { !isLoading && !isError && <TextEditor project={project} />}
 
         </Col>
 
