@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import { Row, Col } from 'antd'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, memo } from 'react'
 import fetch from 'isomorphic-unfetch'
 import { BASE_API_URL } from '../../../../config'
 import TwoTreeLoading from '../../Common/SVG/TwoTreeLoading'
@@ -177,4 +177,4 @@ const FarmerWidgets = ({ authInfo, token }) => {
   )
 }
 
-export default FarmerWidgets
+export default memo(FarmerWidgets)

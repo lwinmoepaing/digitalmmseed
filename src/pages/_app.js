@@ -29,4 +29,4 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
   return { pageProps }
 }
 
-export default withRedux(configStore, { debug: process.NODE_ENV !== 'production' })(appWithTranslation(MyApp))
+export default withRedux(configStore, { debug: false })(appWithTranslation(MyApp))

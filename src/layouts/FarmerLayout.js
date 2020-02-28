@@ -17,8 +17,6 @@ const FarmerLayout = (props) => {
   const [collapsed, setCollapsed] = useState(false)
   const { children, i18n, router } = props
   const { Header, Sider, Content } = Layout
-  const Console = console
-  Console.log(i18n.languages)
 
   if (typeof window !== 'undefined') {
     window.addEventListener('resize', () => {

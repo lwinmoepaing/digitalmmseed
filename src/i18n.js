@@ -23,4 +23,5 @@ export const {
   withTranslation,
   Link,
   i18n,
+  Router,
 } = NextI18NextInstance

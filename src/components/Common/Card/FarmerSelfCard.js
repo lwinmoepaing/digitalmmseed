@@ -1,15 +1,56 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/aria-role */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { Button } from 'antd'
 import { CheckOutlined } from '@ant-design/icons'
 import { BASE_API_URL } from '../../../../config'
+import { Router } from '../../../i18n'
 
 const FarmerSelfCard = ({ payload }) => {
   const profileImage = `${BASE_API_URL}${payload.user.image}`
   const headImage = `${BASE_API_URL}${payload.headImg}`
+  // const router = useRouter()
+  const goDetail = () => {
+    Router.push(`/farmer/projects/_id?id=${payload._id}`, `/farmer/projects/${payload._id}`, { shallow: true })
+  }
+
+  const Status = () => {
+    const { status } = payload
+    const style = status === 'Pending' ? {
+      background: '#f9dca8',
+    } : status === 'Reject' ? {
+      background: '#ff9a9a',
+    } : status === 'Expired' ? {
+      background: '#dfdfdf',
+    } : status === 'Working' ? {
+      background: '#00effb',
+    } : {
+      background: '#53fb48',
+    }
+
+    return (
+      <span className="Status" style={style}>
+        {payload.status}
+
+        <style jsx>
+          {`.Status {
+						background: red;
+						padding: 0 1rem;
+						border-radius: 1rem;
+					}`}
+
+        </style>
+      </span>
+    )
+  }
+
   return (
-    <div className="CardContainer" key={`${Math.random()}`}>
-      <div className="Card">
+    <div className="CardContainer">
+      <div className="Card" onClick={goDetail}>
         <div className="CardHeader">
           <img className="CardImage" src={headImage} alt="CardImage" />
           <div className="CardProfile">
@@ -34,7 +75,7 @@ const FarmerSelfCard = ({ payload }) => {
             </p>
           </div>
           <div className="CardFooter">
-            <Button className="heartBeat" size="small" shape="round" type="primary" icon={<CheckOutlined />}> Invest Now </Button>
+            <Status />
           </div>
         </div>
       </div>
@@ -47,7 +88,7 @@ const FarmerSelfCard = ({ payload }) => {
 					.Card {
 						border-radius: 7px;
 						max-width: 216px;
-						height: 290px;
+						min-height: 290px;
 						margin: 0 auto;
 						border: 1px solid #dfdfdf;
 						cursor: pointer;
@@ -178,6 +219,8 @@ const FarmerSelfCard = ({ payload }) => {
 					.CardFooter {
 						text-align: center;
 					}
+
+
 				`}
       </style>
 

@@ -38,8 +38,8 @@ const CardTreeLoading = () => (
   <Row gutter={[16, 16]}>
 
     { Arr.map(() => (
-      <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 6 }}>
-        <Card key={`${Math.random().toString()}.zz`} />
+      <Col key={`${Math.random().toString()}_${Date.now()}`} xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 6 }}>
+        <Card />
       </Col>
     ))}
   </Row>
