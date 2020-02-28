@@ -2,19 +2,27 @@
 import { Menu } from 'antd'
 import { useState, useEffect } from 'react'
 import {
-  StepForwardOutlined,
-  HomeOutlined,
+  ProjectOutlined,
+  CopyOutlined,
+  SettingFilled,
+  DashboardOutlined,
+  LogoutOutlined,
 } from '@ant-design/icons'
-import { Link, withTranslation } from '../../../i18n'
+import { connect } from 'react-redux'
 
+import { Link, withTranslation } from '../../../i18n'
+import { logout } from '../../../../store/actions/authAction'
 
 const Hoooome = (props) => {
-  const { router } = props
+  const { router, logout: onLogout } = props
 
   const links = [
-    { name: 'Dashboard', url: '/farmer', icon: StepForwardOutlined },
-    { name: 'Projects', url: '/farmer/projects', icon: HomeOutlined },
+    { name: 'Dashboard', url: '/farmer', icon: DashboardOutlined },
+    { name: 'My Projects', url: '/farmer/projects', icon: ProjectOutlined },
+    { name: 'User Projects', url: '/farmer/user-projects', icon: CopyOutlined },
+    { name: 'Profile', url: '/farmer/profile', icon: SettingFilled },
   ]
+
   const [state, setstate] = useState(router.pathname)
 
   useEffect(() => {
@@ -35,9 +43,20 @@ const Hoooome = (props) => {
             </Link>
           </Menu.Item>
         ))}
+
+        <Menu.Item
+          theme="danger"
+          onClick={async () => {
+            await onLogout()
+            router.push('/')
+          }}
+        >
+          <LogoutOutlined style={{ color: 'red' }} />
+          <span> Logout </span>
+        </Menu.Item>
       </Menu>
     </div>
   )
 }
 
-export default withTranslation('common')(Hoooome)
+export default connect((state) => state, { logout })(withTranslation('common')(Hoooome))

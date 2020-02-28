@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { withRouter } from 'next/router'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import {
   MenuFoldOutlined,
@@ -19,9 +19,31 @@ const FarmerLayout = (props) => {
   const { Header, Sider, Content } = Layout
   const Console = console
   Console.log(i18n.languages)
+
+  if (typeof window !== 'undefined') {
+    window.addEventListener('resize', () => {
+      const width = window.innerWidth
+      if (width < 600 && collapsed === false) {
+        setCollapsed(true)
+      } else if (width > 600 && collapsed === true) {
+        setCollapsed(false)
+      }
+    })
+  }
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const width = window.innerWidth
+      if (width < 600 && collapsed === false) {
+        setCollapsed(true)
+      }
+    }
+  }, [])
+
   const toggle = () => {
     setCollapsed(!collapsed)
   }
+
 
   return (
     <Layout>
@@ -29,7 +51,13 @@ const FarmerLayout = (props) => {
         <title> Farmer Dashboard </title>
       </Head>
       <Sider theme="light" trigger={null} collapsible collapsed={collapsed}>
-        <div className="logo" />
+        <div className="logo">
+          <h3 className="LogoText">
+            {
+							collapsed ? 'DMF' : 'Digital MM Farm'
+						}
+          </h3>
+        </div>
         <FarmerAside router={router} />
       </Sider>
       <Layout className="site-layout">
@@ -41,7 +69,12 @@ const FarmerLayout = (props) => {
         <Content
           className="site-layout-background"
         >
-          { children }
+          <div className={`ContainerWrapper ${i18n.language === 'mm' ? ' font-mm' : ''}`}>
+            <div className="Container">
+              { children }
+            </div>
+          </div>
+
         </Content>
       </Layout>
       <style jsx>
@@ -69,6 +102,30 @@ const FarmerLayout = (props) => {
             margin: '24px 16px';
             padding: 24;
             min-height: 280px;
+					}
+
+					.LogoText {
+						font-size: 1em;
+						padding: 0;
+						margin: 0;
+						height: 40px;
+						line-height: 40px;
+						text-align: center;
+						font-weight: 500;
+						color: rgb(82, 196, 26);
+					}
+
+					.ContainerWrapper {
+						min-height: 100vh;
+						padding: 1rem;
+						max-width: 1300px;
+						margin: 0 auto;
+					}
+
+					.Container {
+						background: #fff;
+						border-radius: 1rem;
+						padding: 1rem;
 					}
 				`}
       </style>

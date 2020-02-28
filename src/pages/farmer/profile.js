@@ -7,11 +7,18 @@ import { withTranslation, i18n } from '../../i18n'
 
 const Index = ({ t }) => (
   <FarmerLayout i18n={i18n}>
-    <p> lorem </p>
+    <div className={`Container ${i18n.language === 'mm' ? ' font-mm' : ''}`}>
+      <p>
+        Profile
+        {t('about')}
+      </p>
+    </div>
 
     <style jsx>
       {`
-
+				.Container {
+					min-height: 160vh;
+				}
 			`}
     </style>
   </FarmerLayout>
