@@ -5,7 +5,7 @@ import { withTranslation, i18n } from '../../../../i18n'
 import isPassAuth from '../../../../../lib/middleware/isPassAuth'
 import ProjectDetail from '../../../../components/Farmer/Project/ProjectDetail'
 
-const UserProfile = () => {
+const UserProfile = ({ token }) => {
   const router = useRouter()
   const { query: { id } } = router
 
@@ -18,7 +18,7 @@ const UserProfile = () => {
         </title>
       </Head>
 
-      <ProjectDetail id={id} />
+      <ProjectDetail id={id} token={token} />
 
       <style jsx>
         {`

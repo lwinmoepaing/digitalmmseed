@@ -1,13 +1,14 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react'
 import { Row, Col } from 'antd'
 import QRCode from 'qrcode.react'
 import { BASE_API_URL } from '../../../../config'
 import TwoTreeLoading from '../../Common/SVG/TwoTreeLoading'
-// var QRCode = require('qrcode.react')
+import FileUpload from '../../Common/Upload/FileUpload'
 
 
-const ProjectDetail = ({ id }) => {
+const ProjectDetail = ({ id, token }) => {
   const [isLoading, setLoading] = useState(true)
   const [project, setProject] = useState(null)
 
@@ -58,14 +59,14 @@ const ProjectDetail = ({ id }) => {
         QrCode
       </h3>
       <div className="text-center pb-1">
-        <QRCode value={id} fgColor="#737373" level="M" />
+        <QRCode value={id} fgColor="#47e847" level="M" bgColor="#ffffff" />
       </div>
       <style jsx>
         {`
 					.Container {
 						border-radius: 1rem;
 						padding: .5rem;
-						background: #fff;
+						background: #ffffff;
 					}
 
 					.text-center {
@@ -88,7 +89,6 @@ const ProjectDetail = ({ id }) => {
       }}
     >
       <img className="img" src={BASE_API_URL + project.headImg} alt="Project Data" />
-
       <style jsx>
         {`
 					.Container {
@@ -98,6 +98,7 @@ const ProjectDetail = ({ id }) => {
 						background-size: cover;
 						background-position: center center;
 						position: relative;
+						margin-bottom: 1rem;
 					}
 
 					.height {
@@ -105,6 +106,9 @@ const ProjectDetail = ({ id }) => {
 					}
 
 					.img {
+						position: absolute;
+						top: 0;
+						left: 0;
 						width: 100%;
 						height: 100%;
 						object-fit: cover;
@@ -116,14 +120,25 @@ const ProjectDetail = ({ id }) => {
     </div>
   )
 
+
+  const _setImage = (img) => {
+    setProject({
+      ...project,
+      headImg: img,
+    })
+  }
+
   return (
     <div>
       <Row gutter={[16, 16]}>
         <Col xs={{ span: 24 }} sm={{ span: 14 }} md={{ span: 18 }}>
 
+          { !isLoading && <FileUpload token={token} id={id} setImage={_setImage} />}
+
           { isLoading && <div className="Container"><Loading /></div>}
 
           { !isLoading && <ImageContainer />}
+
 
         </Col>
         <Col xs={{ span: 24 }} sm={{ span: 8 }} md={{ span: 6 }}>
