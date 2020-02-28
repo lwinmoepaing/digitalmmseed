@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { Button } from 'antd'
+import { CheckOutlined } from '@ant-design/icons'
 import { BASE_API_URL } from '../../../../config'
 
 const CustomCard = ({ payload }) => {
@@ -34,7 +35,7 @@ const CustomCard = ({ payload }) => {
             </p>
           </div>
           <div className="CardFooter">
-            <Button className="heartBeat" size="small" shape="round" type="primary" icon="check"> Invest Now </Button>
+            <Button className="heartBeat" size="small" shape="round" type="primary" icon={<CheckOutlined />}> Invest Now </Button>
           </div>
         </div>
       </div>

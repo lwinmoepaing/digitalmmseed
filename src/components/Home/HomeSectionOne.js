@@ -2,6 +2,7 @@ import {
   Row, Col, Carousel, Button, Typography,
 } from 'antd'
 import PropTypes from 'prop-types'
+import { AlignRightOutlined } from '@ant-design/icons'
 import Tree from '../Common/SVG/Tree'
 import Triangle from '../Common/SVG/Triangle'
 import Bird from '../Common/Bird/Bird'
@@ -31,7 +32,7 @@ const HomeSectionOne = ({ t }) => {
                 { t('WelcomeText') }
               </p>
               <div>
-                <Button className="heartBeat font-en" style={{ marginRight: 3 }} shape="round" type="primary" icon="align-right"> Invest Now </Button>
+                <Button className="heartBeat font-en" style={{ marginRight: 3 }} shape="round" type="primary" icon={<AlignRightOutlined />}> Invest Now </Button>
                 <Button className="heartBeat font-en" style={{ marginRight: 3 }} shape="round"> Ask Me ?</Button>
               </div>
             </div>

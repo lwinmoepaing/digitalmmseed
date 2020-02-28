@@ -13,7 +13,7 @@ import { connect } from 'react-redux'
 import { Link, withTranslation } from '../../../i18n'
 import { logout } from '../../../../store/actions/authAction'
 
-const Hoooome = (props) => {
+const FarmerAside = (props) => {
   const { router, logout: onLogout } = props
 
   const links = [
@@ -52,11 +52,11 @@ const Hoooome = (props) => {
           }}
         >
           <LogoutOutlined style={{ color: 'red' }} />
-          <span> Logout </span>
+          <span style={{ color: 'red' }}> Logout </span>
         </Menu.Item>
       </Menu>
     </div>
   )
 }
 
-export default connect((state) => state, { logout })(withTranslation('common')(Hoooome))
+export default connect((state) => state, { logout })(withTranslation('common')(FarmerAside))
