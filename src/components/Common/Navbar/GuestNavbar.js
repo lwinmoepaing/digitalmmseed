@@ -1,17 +1,22 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import { Menu, Icon, Radio } from 'antd'
+import { Menu, Radio } from 'antd'
 import PropTypes from 'prop-types'
 import { useState, useEffect, memo } from 'react'
 import { connect } from 'react-redux'
+import {
+  HomeOutlined,
+  ReadOutlined,
+  LoginOutlined,
+  LogoutOutlined,
+} from '@ant-design/icons'
 import { Link, withTranslation } from '../../../i18n'
 import { logout } from '../../../../store/actions/authAction'
 
-
 const links = [
-  { name: 'Home', url: '/', icon: 'home' },
-  { name: 'About', url: '/about', icon: 'read' },
+  { name: 'Home', url: '/', icon: HomeOutlined },
+  { name: 'About', url: '/about', icon: ReadOutlined },
 ]
 
 const styles = {
@@ -24,11 +29,11 @@ const styles = {
 const GuestNavbar = (props) => {
   const {
     // eslint-disable-next-line react/prop-types
-    Layout, router, i18n, t, Auth, logout,
+    Layout, router, i18n, t, Auth, logout: onLogout,
   } = props
 
-  const Console = console
-  Console.log('Inside Nav', props)
+  // const Console = console
+  // Console.log('Inside Nav', props)
 
   const [state, setstate] = useState(router.pathname)
   useEffect(() => {
@@ -64,7 +69,7 @@ const GuestNavbar = (props) => {
               <Menu.Item key={link.url}>
                 <Link href={link.url}>
                   <a href="#!">
-                    <Icon type={link.icon} />
+                    <link.icon />
 
                     {t(link.name)}
 
@@ -75,10 +80,12 @@ const GuestNavbar = (props) => {
             { Auth && Auth.token ? (
               <Menu.Item>
                 <Link href="#!">
-                  <a href="#!" onClick={() => logout()}>
-                    <Icon type="logout" />
+                  <a href="#!" onClick={() => onLogout()}>
+
+
+                    <LogoutOutlined />
                     {t('logout')}
-                    !!
+
                   </a>
                 </Link>
               </Menu.Item>
@@ -86,7 +93,7 @@ const GuestNavbar = (props) => {
               <Menu.Item>
                 <Link href="/login">
                   <a href="#!">
-                    <Icon type="login" />
+                    <LoginOutlined />
                     {t('Login')}
                   </a>
                 </Link>

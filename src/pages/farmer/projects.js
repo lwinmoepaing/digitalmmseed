@@ -9,8 +9,8 @@ const Index = ({ t }) => (
   <FarmerLayout i18n={i18n}>
     <div className={`Container ${i18n.language === 'mm' ? ' font-mm' : ''}`}>
       <p>
-        Hello
-        {t('home')}
+        Projects
+        {t('about')}
       </p>
     </div>
 

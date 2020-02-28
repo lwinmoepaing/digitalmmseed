@@ -10,6 +10,7 @@ import HomeSectionThree from '../components/Home/HomeSectionThree'
 import HomeSectionFarmerProjects from '../components/Home/HomeSectionFarmerProjects'
 import HomeWorry from '../components/Home/HomeWorry'
 import CardLoading from '../components/Common/Card/CardLoading'
+import isAuthMiddleware from '../../lib/middleware/isAuthMiddleware'
 
 const Index = ({ t }) => (
   <Layout i18n={i18n}>
@@ -33,12 +34,8 @@ const Index = ({ t }) => (
 )
 
 Index.getInitialProps = async (context) => {
-  const Console = console
-  if (context.isServer) {
-    Console.log('is Server')
-  } else {
-    Console.log('Error')
-  }
+  await isAuthMiddleware(context)
+
   return {
     namespacesRequired: ['common'],
   }

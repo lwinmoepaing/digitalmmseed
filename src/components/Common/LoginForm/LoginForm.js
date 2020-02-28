@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
-
 const openNotificationWithIcon = (type, title, message) => {
   notification[type]({
     message: title,
@@ -43,6 +42,7 @@ const LoginForm = ({
     try {
       const res = await onSubmitAuth(userName, userPassword)
       Console.log('res', res)
+      openNotificationWithIcon('success', 'Login Info', 'Successfully Login')
       router.push(`/${res.authInfo.role.toLowerCase()}`)
     } catch (e) {
       const errorMessage = await (e.text())
