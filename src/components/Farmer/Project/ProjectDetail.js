@@ -6,25 +6,31 @@ import QRCode from 'qrcode.react'
 import { BASE_API_URL } from '../../../../config'
 import TwoTreeLoading from '../../Common/SVG/TwoTreeLoading'
 import FileUpload from '../../Common/Upload/FileUpload'
+import CreatedBy from '../../Common/Profile/CreatedBy'
+import SomethingWrong from '../../Common/Profile/SomethingWrong'
 
 
 const ProjectDetail = ({ id, token }) => {
   const [isLoading, setLoading] = useState(true)
   const [project, setProject] = useState(null)
+  const [isError, setError] = useState(true)
 
   const fetchData = async () => {
     const url = `${BASE_API_URL}/api/v1/project/${id}`
 
-    console.log('Fetching....', url)
     try {
       const res = await fetch(url, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })
+
+      if (!res.ok) {
+        throw new Error(res)
+      }
       const { data } = await res.json()
-      console.log('Data', data)
       setProject(data)
       setLoading(false)
+      setError(false)
     } catch (e) {
       setProject(null)
       setLoading(false)
@@ -54,7 +60,7 @@ const ProjectDetail = ({ id, token }) => {
   )
 
   const MyQrCode = () => (
-    <div className="Container">
+    <div className="Container font-en">
       <h3 className="text-center">
         QrCode
       </h3>
@@ -67,6 +73,7 @@ const ProjectDetail = ({ id, token }) => {
 						border-radius: 1rem;
 						padding: .5rem;
 						background: #ffffff;
+						margin-bottom: 1rem;
 					}
 
 					.text-center {
@@ -121,6 +128,23 @@ const ProjectDetail = ({ id, token }) => {
   )
 
 
+  const TextEditor = ({ profile }) => (
+    <div className="Container">
+
+
+      <style jsx>
+        {`
+					.Container {
+							border-radius: 1rem;
+							padding: 1rem;
+							background: #fff;
+							background-size: cover;
+							background-position: center center;
+						}
+				`}
+      </style>
+    </div>
+  )
   const _setImage = (img) => {
     setProject({
       ...project,
@@ -132,20 +156,23 @@ const ProjectDetail = ({ id, token }) => {
     <div>
       <Row gutter={[16, 16]}>
         <Col xs={{ span: 24 }} sm={{ span: 14 }} md={{ span: 18 }}>
-
-          { !isLoading && <FileUpload token={token} id={id} setImage={_setImage} />}
+          { !isLoading && isError && <SomethingWrong />}
 
           { isLoading && <div className="Container"><Loading /></div>}
+          { isLoading && <div className="Container"><Loading /></div>}
 
-          { !isLoading && <ImageContainer />}
-
+          { !isLoading && !isError && <FileUpload token={token} id={id} setImage={_setImage} />}
+          { !isLoading && !isError && <ImageContainer />}
+          { !isLoading && !isError && <TextEditor profile={project.user} />}
 
         </Col>
+
         <Col xs={{ span: 24 }} sm={{ span: 8 }} md={{ span: 6 }}>
-          { isLoading && <div className="Container"><Loading type="sm" /></div>}
+          { isLoading && <div className="Container min-height-220"><Loading type="sm" /></div>}
+          { isLoading && <div className="Container min-height-220"><Loading type="sm" /></div>}
 
-          { !isLoading && <MyQrCode /> }
-
+          { !isLoading && !isError && <MyQrCode /> }
+          { !isLoading && !isError && <CreatedBy profile={project.user} /> }
         </Col>
       </Row>
 
@@ -157,10 +184,11 @@ const ProjectDetail = ({ id, token }) => {
 						background: #fff;
 						background-size: cover;
 						background-position: center center;
+						margin-bottom: 1rem;
 					}
 
-					.min-height {
-						min-height: 194px;
+					.min-height-220 {
+						min-height: 220px;
 					}
 
 					.text-center {

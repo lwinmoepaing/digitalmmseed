@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { Upload, message, Button } from 'antd'
 import { UploadOutlined } from '@ant-design/icons'
 import { useState } from 'react'
@@ -47,11 +48,11 @@ const FileUpload = ({ token, id, setImage }) => {
   }
 
   return (
-    <div className="Container">
-      <Upload {...fileProps} fileList={cusFile}>
-        <Button type="dash">
+    <div className="Container font-en">
+      <Upload {...fileProps} fileList={cusFile} style={{ display: 'block' }}>
+        <Button type="dashed" block>
           <UploadOutlined />
-          Upload
+          Upload HeadLine Image
         </Button>
       </Upload>
       <style jsx>

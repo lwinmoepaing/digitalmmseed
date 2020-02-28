@@ -1,6 +1,10 @@
 import {
-  Form, Icon, Button, notification,
+  Form, Button, notification,
 } from 'antd'
+import {
+  UserOutlined,
+  LockOutlined,
+} from '@ant-design/icons'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
@@ -60,8 +64,7 @@ const LoginForm = ({
 
       <div className="InputContainer">
 
-        <Icon
-          type="user"
+        <UserOutlined
           style={IconStyle}
         />
 
@@ -76,14 +79,14 @@ const LoginForm = ({
 
       <div className="InputContainer">
 
-        <Icon
-          type="lock"
+        <LockOutlined
           style={IconStyle}
         />
 
         <input
           className="Input"
           placeholder="Password"
+          type="password"
           onChange={(e) => {
             setUserPassword(e.target.value)
           }}
