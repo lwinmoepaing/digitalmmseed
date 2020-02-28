@@ -20,7 +20,7 @@ const Index = ({ t }) => (
       <HomeSectionThree t={t} />
       <HomeSectionFarmerProjects t={t} />
       <HomeWorry t={t} />
-      <CardLoading />
+      {/* <CardLoading /> */}
     </div>
 
     <style jsx>
