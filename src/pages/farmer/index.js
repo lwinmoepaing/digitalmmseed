@@ -9,13 +9,22 @@ import FarmerWidgets from '../../components/Farmer/Dashboard/FarmerWidgets'
 const Index = ({ authInfo, token, t }) => (
   <FarmerLayout i18n={i18n}>
 
-    <FarmerWidgets authInfo={authInfo} token={token} />
+    <div className="Container">
 
-    <style jsx>
-      {`
+      <h3 className="font-en"> Welcome To Digital Myanmar Farm </h3>
 
-			`}
-    </style>
+      <FarmerWidgets authInfo={authInfo} token={token} />
+
+      <style jsx>
+        {`
+					.Container {
+							background: #fff;
+							border-radius: 1rem;
+							padding: 1rem;
+					}
+				`}
+      </style>
+    </div>
   </FarmerLayout>
 )
 

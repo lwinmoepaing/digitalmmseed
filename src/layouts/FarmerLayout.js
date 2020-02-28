@@ -70,9 +70,7 @@ const FarmerLayout = (props) => {
           className="site-layout-background"
         >
           <div className={`ContainerWrapper ${i18n.language === 'mm' ? ' font-mm' : ''}`}>
-            <div className="Container">
-              { children }
-            </div>
+            { children }
           </div>
 
         </Content>
@@ -120,12 +118,6 @@ const FarmerLayout = (props) => {
 						padding: 1rem;
 						max-width: 1300px;
 						margin: 0 auto;
-					}
-
-					.Container {
-						background: #fff;
-						border-radius: 1rem;
-						padding: 1rem;
 					}
 				`}
       </style>

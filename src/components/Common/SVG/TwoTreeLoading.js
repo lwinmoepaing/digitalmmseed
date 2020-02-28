@@ -1,15 +1,11 @@
-const TwoTreeLoading = () => (
+/* eslint-disable react/jsx-props-no-spreading */
+const TwoTreeLoading = (props) => (
   <svg
-    style={{
-      height: '100%',
-      width: '100%',
-      background: '#ffffff',
-    }}
+    {...props}
     viewBox="0 0 128 128"
     y="0px"
     x="0px"
     xmlns="http://www.w3.org/2000/svg"
-    id="圖層_1"
     version="1.1"
     width="128px"
     height="128px"
@@ -24,38 +20,22 @@ const TwoTreeLoading = () => (
       <g className="ldl-ani">
         <style jsx>
           {`
-							 .st0 {
-                    fill: none
-                }
+						.st0 {
+								fill: none
+						}
 
-                .st1,
-                .st2 {
-                    fill: #009245;
-                    stroke: #000;
-                    stroke-width: 3;
-                    stroke-miterlimit: 10
-                }
+						.st1,
+						.st2 {
+								fill: #009245;
+								stroke: #000;
+								stroke-width: 3;
+								stroke-miterlimit: 10
+						}
 
-                .st2 {
-                    fill: #603813
-                }
-
-								@keyframes breath {
-									{
-											animation-timing-function: cubic-bezier(0.9647,0.2413,-0.0705,0.7911);
-											transform: scale(0.9099999999999999);
-									}
-
-									51% {
-											animation-timing-function: cubic-bezier(0.9226,0.2631,-0.0308,0.7628);
-											transform: scale(1.02994);
-									}
-
-									100% {
-											transform: scale(0.9099999999999999);
-									}
-								}
-							 `}
+						.st2 {
+								fill: #603813
+						}
+					`}
         </style>
         <g className="ldl-layer">
           <g

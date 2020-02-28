@@ -29,18 +29,36 @@ const FarmerWidgets = ({ authInfo, token }) => {
 
     fetchData()
   }, [])
+
+  const Loading = () => (
+    <div className="TreeContainer">
+      <div className="TreeLoadingContainer" style={{ textAlign: 'center' }}>
+        <TwoTreeLoading style={{ width: 90, height: 'auth' }} />
+        <div style={{ textAlign: 'center', color: 'green' }}> Loading ...</div>
+      </div>
+      <style jsx>
+        {`
+					.TreeContainer {
+						border: 1px solid #dfdfdf;
+						border-radius: 10px;
+						padding: 1rem;
+					}
+					.TreeLoadingContainer {
+						max-width: 100px;
+						margin: 0 auto;
+					}
+				`}
+      </style>
+    </div>
+  )
+
   return (
     <Row gutter={[16, 16]}>
 
       <Col xs={{ span: 12 }} md={{ span: 8 }}>
         {isLoading
           ? (
-            <div className="TreeContainer">
-              <div className="TreeLoadingContainer">
-                <TwoTreeLoading />
-                <div style={{ textAlign: 'center', color: 'green' }}> Loading ...</div>
-              </div>
-            </div>
+            <Loading />
           )
           : (
             <div className="CustomCardStyle">
@@ -56,12 +74,7 @@ const FarmerWidgets = ({ authInfo, token }) => {
       <Col xs={{ span: 12 }} md={{ span: 8 }}>
         {isLoading
           ? (
-            <div className="TreeContainer">
-              <div className="TreeLoadingContainer">
-                <TwoTreeLoading />
-                <div style={{ textAlign: 'center', color: 'green' }}> Loading ...</div>
-              </div>
-            </div>
+            <Loading />
           )
           : (
             <div className="CustomCardStyle">
@@ -77,12 +90,7 @@ const FarmerWidgets = ({ authInfo, token }) => {
       <Col xs={{ span: 12 }} md={{ span: 8 }}>
         {isLoading
           ? (
-            <div className="TreeContainer">
-              <div className="TreeLoadingContainer">
-                <TwoTreeLoading />
-                <div style={{ textAlign: 'center', color: 'green' }}> Loading ...</div>
-              </div>
-            </div>
+            <Loading />
           )
           : (
             <div className="CustomCardStyle">
@@ -98,12 +106,7 @@ const FarmerWidgets = ({ authInfo, token }) => {
       <Col xs={{ span: 12 }} md={{ span: 8 }}>
         {isLoading
           ? (
-            <div className="TreeContainer">
-              <div className="TreeLoadingContainer">
-                <TwoTreeLoading />
-                <div style={{ textAlign: 'center', color: 'green' }}> Loading ...</div>
-              </div>
-            </div>
+            <Loading />
           )
           : (
             <div className="CustomCardStyle">
@@ -119,12 +122,7 @@ const FarmerWidgets = ({ authInfo, token }) => {
       <Col xs={{ span: 12 }} md={{ span: 8 }}>
         {isLoading
           ? (
-            <div className="TreeContainer">
-              <div className="TreeLoadingContainer">
-                <TwoTreeLoading />
-                <div style={{ textAlign: 'center', color: 'green' }}> Loading ...</div>
-              </div>
-            </div>
+            <Loading />
           )
           : (
             <div className="CustomCardStyle">
@@ -140,12 +138,7 @@ const FarmerWidgets = ({ authInfo, token }) => {
       <Col xs={{ span: 12 }} md={{ span: 8 }}>
         {isLoading
           ? (
-            <div className="TreeContainer">
-              <div className="TreeLoadingContainer">
-                <TwoTreeLoading />
-                <div style={{ textAlign: 'center', color: 'green' }}> Loading ...</div>
-              </div>
-            </div>
+            <Loading />
           )
           : (
             <div className="CustomCardStyle">
@@ -160,15 +153,7 @@ const FarmerWidgets = ({ authInfo, token }) => {
       </Col>
       <style jsx>
         {`
-					.TreeContainer {
-						border: 1px solid #dfdfdf;
-						border-radius: 10px;
-						padding: 1rem;
-					}
-					.TreeLoadingContainer {
-						max-width: 100px;
-						margin: 0 auto;
-					}
+
 					.CustomCardStyle {
 						border-radius: 10px;
 						padding: 1rem;
