@@ -132,7 +132,6 @@ const TextEditor = ({
     marginTop: '1rem',
   }
 
-
   useEffect(() => {
     setEditProject(_deepCopy(project))
   }, [project])

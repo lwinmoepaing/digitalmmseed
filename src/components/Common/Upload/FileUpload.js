@@ -6,12 +6,14 @@ import { UploadOutlined } from '@ant-design/icons'
 import { useState } from 'react'
 import { BASE_API_URL } from '../../../../config'
 
-const FileUpload = ({ token, id, setImage }) => {
+const FileUpload = ({
+  token, id, setImage, align, type,
+}) => {
   const [cusFile, setCusFile] = useState([])
 
   const fileProps = {
     name: 'image',
-    action: `${BASE_API_URL}/api/v1/image?projectId=${id}`,
+    action: `${BASE_API_URL}/api/v1/image?${type}=${id}`,
     headers: {
       authorization: `Bearer ${token}`,
     },
@@ -49,12 +51,19 @@ const FileUpload = ({ token, id, setImage }) => {
     },
   }
 
+  const alignStyle = align === 'center' ? {
+    left: '50%',
+    position: 'absolute',
+    bottom: 73,
+    transform: 'translateX(-50%)',
+  } : {}
+
   return (
     <div className="Container font-en">
       <Upload {...fileProps} fileList={cusFile}>
-        <Button type="dashed" block>
+        <Button type="dashed" style={alignStyle}>
           <UploadOutlined />
-          Upload HeadLine Image
+          Upload Image
         </Button>
       </Upload>
       <style jsx>

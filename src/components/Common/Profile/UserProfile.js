@@ -10,6 +10,7 @@ import {
 import { useState, useEffect } from 'react'
 import fetch from 'isomorphic-unfetch'
 import EditorLoading from '../Editor/EditorLoading'
+import FileUpload from '../Upload/FileUpload'
 import { BASE_API_URL } from '../../../../config'
 
 const UserProfile = ({ token }) => {
@@ -119,6 +120,14 @@ const UserProfile = ({ token }) => {
     }
   }
 
+  const _setImage = (img) => {
+    setProfile({
+      ...profile,
+      image: img,
+    })
+  }
+
+
   useEffect(() => {
     fetchData()
   }, [])
@@ -203,7 +212,14 @@ const UserProfile = ({ token }) => {
           <div className="FieldContainer">
             <h3> Skills </h3>
             {isEdit && (
-            <Select mode="tags" style={{ width: '100%' }} defaultValue={editProfile.skills} placeholder="Tags Mode" onChange={changeSkills} />
+            <Select
+              disabled={inputLoading}
+              mode="tags"
+              style={{ width: '100%' }}
+              defaultValue={editProfile.skills}
+              placeholder="Tags Mode"
+              onChange={changeSkills}
+            />
             )}
             {!isEdit && (
             <p>
@@ -241,9 +257,22 @@ const UserProfile = ({ token }) => {
         </div>
         )}
 
+        { !isLoading && profile && (
         <div className="Container">
-          Lorem
+
+          <div className="imgContainer">
+            <img src={BASE_API_URL + profile.image} alt="profilepicture" />
+          </div>
+
+          <FileUpload
+            token={token}
+            type="userId"
+            id={profile._id}
+            setImage={_setImage}
+            align="center"
+          />
         </div>
+        )}
       </Col>
       <style jsx>
         {`
@@ -298,6 +327,19 @@ const UserProfile = ({ token }) => {
 						border: 1px solid #efefef;
 						border-radius: 3px;
 						padding: 2px 9px;
+					}
+
+					.imgContainer {
+						width: 120px;
+						height: 120px;
+						margin: 0 auto;
+					}
+
+					.imgContainer >img {
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+						object-position: center center;
 					}
 				`}
       </style>

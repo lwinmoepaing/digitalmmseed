@@ -120,6 +120,7 @@ const ProjectDetail = ({ id, token }) => {
           { isLoading === false && project !== null && project.status === 'Pending' && (
             <FileUpload
               token={token}
+              type="projectId"
               id={id}
               setImage={_setImage}
             />
