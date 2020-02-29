@@ -3,11 +3,13 @@
 import { Pagination, Row, Col } from 'antd'
 import { useState, useEffect } from 'react'
 import { BASE_API_URL } from '../../../../config'
-import FarmerSelfCard from '../../Common/Card/FarmerSelfCard'
+import StaffCard from '../../Common/Card/StaffCard'
 import CardTreeLoading from '../../Common/Card/CardTreeLoading'
 
-const AllProjectsForFarmer = (props) => {
-  const { authInfo, token } = props
+const ProjectListByStatus = (props) => {
+  const {
+    authInfo, token, status, userRole,
+  } = props
   const [projects, setProject] = useState([])
   const [isLoading, setLoading] = useState(true)
   const [meta, setMeta] = useState({})
@@ -15,8 +17,7 @@ const AllProjectsForFarmer = (props) => {
 
   const fetchData = async (pageNumber = 1) => {
     setLoading(true)
-    console.log('LWIN')
-    const url = `${BASE_API_URL}/api/v1/project/farmer/status?status=Pending&page=${pageNumber}`
+    const url = `${BASE_API_URL}/api/v1/project/${userRole}/status?status=${status}&page=${pageNumber}`
     try {
       const res = await fetch(url)
       const { data, meta: getMeta } = await res.json()
@@ -39,7 +40,7 @@ const AllProjectsForFarmer = (props) => {
 
   const Card = ({ project }) => (
     <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 6 }}>
-      <FarmerSelfCard payload={project} />
+      <StaffCard userRole="staff" payload={project} />
     </Col>
   )
 
@@ -65,4 +66,4 @@ const AllProjectsForFarmer = (props) => {
     </div>
   )
 }
-export default AllProjectsForFarmer
+export default ProjectListByStatus

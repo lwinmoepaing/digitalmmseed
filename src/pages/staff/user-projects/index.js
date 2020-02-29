@@ -16,27 +16,27 @@ const Index = ({ authInfo, token, t }) => (
     <Tabs defaultActiveKey="Pending" tabBarStyle={{ backgroun: '#ffffff' }}>
       <TabPane tab="Pending" key="Pending">
         <div className="Container">
-          <ProjectListByStatus userRole="farmer" token={token} authInfo={authInfo} status="Pending" />
+          <ProjectListByStatus userRole="user" token={token} authInfo={authInfo} status="Pending" />
         </div>
       </TabPane>
       <TabPane tab="Working" key="Working">
         <div className="Container">
-          <ProjectListByStatus userRole="farmer" token={token} authInfo={authInfo} status="Working" />
+          <ProjectListByStatus userRole="user" token={token} authInfo={authInfo} status="Working" />
         </div>
       </TabPane>
       <TabPane tab="Finished" key="Finished">
         <div className="Container">
-          <ProjectListByStatus userRole="farmer" token={token} authInfo={authInfo} status="Finished" />
+          <ProjectListByStatus userRole="user" token={token} authInfo={authInfo} status="Finished" />
         </div>
       </TabPane>
       <TabPane tab="Reject" key="Reject">
         <div className="Container">
-          <ProjectListByStatus userRole="farmer" token={token} authInfo={authInfo} status="Reject" />
+          <ProjectListByStatus userRole="user" token={token} authInfo={authInfo} status="Reject" />
         </div>
       </TabPane>
       <TabPane tab="Expired" key="Expired">
         <div className="Container">
-          <ProjectListByStatus userRole="farmer" token={token} authInfo={authInfo} status="Expired" />
+          <ProjectListByStatus userRole="user" token={token} authInfo={authInfo} status="Expired" />
         </div>
       </TabPane>
     </Tabs>
