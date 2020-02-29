@@ -21,10 +21,12 @@ const TextEditor = ({
   const [editProject, setEditProject] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
+  const _deepCopy = (str) => JSON.parse(JSON.stringify(str))
+
   const _onEdit = () => {
     const toChange = !isEdit
     if (toChange) {
-      setEditProject(project)
+      setEditProject(_deepCopy(project))
     }
     toggleEdit(toChange)
   }
@@ -34,13 +36,13 @@ const TextEditor = ({
       ...editProject,
     }
     if (key === 'body') {
-      changeEdit[key][0] = e.target.value
+      changeEdit[key][0] = _deepCopy(e.target.value)
     } else if (key === 'projectCategory') {
       changeEdit[key] = e
     } else {
-      changeEdit[key] = e.target.value
+      changeEdit[key] = _deepCopy(e.target.value)
     }
-    setEditProject(JSON.parse(JSON.stringify(changeEdit)))
+    setEditProject(_deepCopy(changeEdit))
   }
 
   const validatePayload = ({ title, body, projectDuration }) => {
@@ -132,8 +134,9 @@ const TextEditor = ({
     marginTop: '1rem',
   }
 
+
   useEffect(() => {
-    setEditProject(JSON.parse(JSON.stringify(project)))
+    setEditProject(_deepCopy(project))
   }, [project])
 
   return (
@@ -171,6 +174,7 @@ const TextEditor = ({
               <label htmlFor="EditBodyText"> Body Text </label>
               {	isEdit && (
               <textarea
+                size="large"
                 type="text"
                 id="EditBodyText"
                 className="CustomInput"
@@ -294,7 +298,6 @@ const TextEditor = ({
 					}
 				`}
       </style>
-
     </div>
   )
 }

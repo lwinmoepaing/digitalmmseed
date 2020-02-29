@@ -337,3 +337,10 @@
 		transform: scale(0.9099999999999999);
 	}
 }
+
+
+.ant-tabs-nav-scroll {
+	background: #ffff;
+	padding: 0.2rem .5rem;
+	border-radius: 1rem;
+}
