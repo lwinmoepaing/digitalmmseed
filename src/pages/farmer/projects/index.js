@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Tabs } from 'antd'
 import FarmerLayout from '../../../layouts/FarmerLayout'
-import isPassAuth from '../../../../lib/middleware/isPassAuth'
+import isFarmerMiddleware from '../../../../lib/middleware/isFarmerMiddleware'
 import { withTranslation, i18n } from '../../../i18n'
 import AllProjectsForFarmer from '../../../components/Farmer/Project/AllProjects'
 import ProjectListByStatus from '../../../components/Farmer/Project/ProjectListByStatus'
@@ -60,7 +60,7 @@ const Index = ({ authInfo, token, t }) => (
 )
 
 Index.getInitialProps = async (context) => {
-  const { authInfo, token } = await isPassAuth(context)
+  const { authInfo, token } = await isFarmerMiddleware(context)
 
   return {
     namespacesRequired: ['common'],

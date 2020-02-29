@@ -1,16 +1,16 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import FarmerLayout from '../../../../layouts/FarmerLayout'
-import { withTranslation, i18n } from '../../../../i18n'
-import isFarmerMiddleware from '../../../../../lib/middleware/isFarmerMiddleware'
-import ContactDetail from '../../../../components/Farmer/Project/ContactDetail'
+import UserLayout from '../../../layouts/UserLayout'
+import { withTranslation, i18n } from '../../../i18n'
+import isPassAuth from '../../../../lib/middleware/isPassAuth'
+import ContactDetail from '../../../components/Farmer/Project/ContactDetail'
 
 const UserProfile = ({ token, authInfo }) => {
   const router = useRouter()
   const { query: { id } } = router
 
   return (
-    <FarmerLayout i18n={i18n}>
+    <UserLayout i18n={i18n}>
       <Head>
         <title>
           Project Data:
@@ -29,12 +29,12 @@ const UserProfile = ({ token, authInfo }) => {
 				}
 			`}
       </style>
-    </FarmerLayout>
+    </UserLayout>
   )
 }
 
 UserProfile.getInitialProps = async (context) => {
-  const { authInfo, token } = await isFarmerMiddleware(context)
+  const { authInfo, token } = await isPassAuth(context)
 
   return {
     namespacesRequired: ['common'],

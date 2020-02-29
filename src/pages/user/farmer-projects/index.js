@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import FarmerLayout from '../../../layouts/FarmerLayout'
-import isFarmerMiddleware from '../../../../lib/middleware/isFarmerMiddleware'
+import UserLayout from '../../../layouts/UserLayout'
+import isPassAuth from '../../../../lib/middleware/isPassAuth'
 import { withTranslation, i18n } from '../../../i18n'
-import ProjectListForContact from '../../../components/Farmer/Project/ProjectListForContact'
+import ProjectListForContact from '../../../components/User/Project/ProjectListForContact'
 
 const Index = ({ authInfo, token, t }) => (
-  <FarmerLayout i18n={i18n}>
+  <UserLayout i18n={i18n}>
     <div className={`Container ${i18n.language === 'mm' ? ' font-mm' : ''}`}>
-      <h3> Projects From User </h3>
-      <ProjectListForContact from="user" token={token} authInfo={authInfo} status="Pending" />
+      <h3> Projects From Farmers </h3>
+      <ProjectListForContact from="farmer" token={token} authInfo={authInfo} status="Pending" />
     </div>
 
     <style jsx>
@@ -22,11 +22,11 @@ const Index = ({ authInfo, token, t }) => (
 				}
 			`}
     </style>
-  </FarmerLayout>
+  </UserLayout>
 )
 
 Index.getInitialProps = async (context) => {
-  const { authInfo, token } = await isFarmerMiddleware(context)
+  const { authInfo, token } = await isPassAuth(context)
 
   return {
     namespacesRequired: ['common'],

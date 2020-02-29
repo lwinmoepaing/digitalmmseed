@@ -3,7 +3,7 @@
 import { Pagination, Row, Col } from 'antd'
 import { useState, useEffect } from 'react'
 import { BASE_API_URL } from '../../../../config'
-import CardContactToUser from '../../Common/Card/CardContactToUser'
+import CardContactToFarmer from '../../Common/Card/CardContactToFarmer'
 import CardTreeLoading from '../../Common/Card/CardTreeLoading'
 
 const AllProjectsForFarmer = (props) => {
@@ -15,7 +15,7 @@ const AllProjectsForFarmer = (props) => {
 
   const fetchData = async (pageNumber = 1) => {
     setLoading(true)
-    const url = `${BASE_API_URL}/api/v1/project/user/status?status=Pending&page=${pageNumber}`
+    const url = `${BASE_API_URL}/api/v1/project/farmer/status?status=Pending&page=${pageNumber}`
     try {
       const res = await fetch(url)
       const { data, meta: getMeta } = await res.json()
@@ -41,7 +41,7 @@ const AllProjectsForFarmer = (props) => {
 
   const Card = ({ project }) => (
     <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 6 }}>
-      <CardContactToUser payload={project} />
+      <CardContactToFarmer payload={project} />
     </Col>
   )
 

@@ -14,7 +14,7 @@ import { BASE_API_URL } from '../../../../config'
 
 
 const TextEditor = ({
-  project, token,
+  project, token, redirect,
 }) => {
   const { Option } = Select
   const Router = useRouter()
@@ -103,7 +103,7 @@ const TextEditor = ({
       if (!response.ok) throw response
       message.success('Successfully Updated')
       setIsLoading(false)
-      Router.push('/farmer/projects')
+      Router.push(`/${redirect}/projects`)
     } catch (e) {
       const errorMessage = await (e.text())
       const { message: mes, data = [] } = await JSON.parse(errorMessage)

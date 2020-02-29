@@ -9,7 +9,7 @@ import FileUpload from '../Upload/FileUpload'
 import CreateTextEditor from '../Editor/CreateTextEditor'
 
 
-const ProjectDetail = ({ token, authInfo }) => {
+const ProjectDetail = ({ token, authInfo, redirect }) => {
   const projectInit = {
     headImg: '/wallpaper/wallpaper.jpg',
     title: '',
@@ -97,7 +97,7 @@ const ProjectDetail = ({ token, authInfo }) => {
 
           { project && <ImageContainer />}
 
-          { project && <CreateTextEditor project={project} authInfo={authInfo} token={token} />}
+          { project && <CreateTextEditor project={project} authInfo={authInfo} token={token} redirect={redirect} />}
 
         </Col>
       </Row>

@@ -5,8 +5,8 @@ import { Tabs } from 'antd'
 import UserLayout from '../../../layouts/UserLayout'
 import isPassAuth from '../../../../lib/middleware/isPassAuth'
 import { withTranslation, i18n } from '../../../i18n'
-import AllProjectsForFarmer from '../../../components/Farmer/Project/AllProjects'
-import ProjectListByStatus from '../../../components/Farmer/Project/ProjectListByStatus'
+import AllProjectsForFarmer from '../../../components/User/Project/AllProjects'
+import ProjectListByStatus from '../../../components/User/Project/ProjectListByStatus'
 
 const { TabPane } = Tabs
 

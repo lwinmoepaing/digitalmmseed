@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import UserLayout from '../../layouts/UserLayout'
 import isPassAuth from '../../../lib/middleware/isPassAuth'
 import { withTranslation, i18n } from '../../i18n'
-import FarmerWidgets from '../../components/Farmer/Dashboard/FarmerWidgets'
+import UserWidgets from '../../components/User/Dashboard/UserWidgets'
 
 const Index = ({ authInfo, token, t }) => (
   <UserLayout i18n={i18n}>
@@ -13,7 +13,7 @@ const Index = ({ authInfo, token, t }) => (
 
       <h3 className="font-en"> Welcome To Digital Myanmar Farm </h3>
 
-      <FarmerWidgets authInfo={authInfo} token={token} />
+      <UserWidgets authInfo={authInfo} token={token} />
 
       <style jsx>
         {`

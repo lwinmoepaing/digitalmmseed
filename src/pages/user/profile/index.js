@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import FarmerLayout from '../../../layouts/FarmerLayout'
-import isFarmerMiddleware from '../../../../lib/middleware/isFarmerMiddleware'
+import UserLayout from '../../../layouts/UserLayout'
+import isPassAuth from '../../../../lib/middleware/isPassAuth'
 import { withTranslation, i18n } from '../../../i18n'
 import UserProfile from '../../../components/Common/Profile/UserProfile'
 
 const Index = ({ authInfo, token, t }) => (
-  <FarmerLayout i18n={i18n}>
+  <UserLayout i18n={i18n}>
 
     <UserProfile token={token} />
 
@@ -20,11 +20,11 @@ const Index = ({ authInfo, token, t }) => (
 				}
 			`}
     </style>
-  </FarmerLayout>
+  </UserLayout>
 )
 
 Index.getInitialProps = async (context) => {
-  const { authInfo, token } = await isFarmerMiddleware(context)
+  const { authInfo, token } = await isPassAuth(context)
 
   return {
     namespacesRequired: ['common'],

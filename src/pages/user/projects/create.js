@@ -2,9 +2,9 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import fetch from 'isomorphic-unfetch'
-import FarmerLayout from '../../../layouts/FarmerLayout'
+import UserLayout from '../../../layouts/UserLayout'
 import { withTranslation, i18n } from '../../../i18n'
-import isFarmerMiddleware from '../../../../lib/middleware/isFarmerMiddleware'
+import isPassAuth from '../../../../lib/middleware/isPassAuth'
 import CreateProject from '../../../components/Common/Project/CreateProject'
 import { BASE_API_URL } from '../../../../config'
 
@@ -12,14 +12,14 @@ const UserProfile = ({ token, authInfo }) => {
   const router = useRouter()
 
   return (
-    <FarmerLayout i18n={i18n}>
+    <UserLayout i18n={i18n}>
       <Head>
         <title>
           Create Project Data:
         </title>
       </Head>
 
-      <CreateProject token={token} authInfo={authInfo} redirect="farmer" />
+      <CreateProject token={token} authInfo={authInfo} redirect="user" />
 
       <style jsx>
         {`
@@ -30,12 +30,12 @@ const UserProfile = ({ token, authInfo }) => {
 				}
 			`}
       </style>
-    </FarmerLayout>
+    </UserLayout>
   )
 }
 
 UserProfile.getInitialProps = async (context) => {
-  const { authInfo, token } = await isFarmerMiddleware(context)
+  const { authInfo, token } = await isPassAuth(context)
   const url = `${BASE_API_URL}/api/v1/auth/me`
 
   const res = await fetch(url, {

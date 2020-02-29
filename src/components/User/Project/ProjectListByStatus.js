@@ -3,7 +3,7 @@
 import { Pagination, Row, Col } from 'antd'
 import { useState, useEffect } from 'react'
 import { BASE_API_URL } from '../../../../config'
-import FarmerSelfCard from '../../Common/Card/FarmerSelfCard'
+import UserSelfCard from '../../Common/Card/UserSelfCard'
 import CardTreeLoading from '../../Common/Card/CardTreeLoading'
 
 const AllProjectsForFarmer = (props) => {
@@ -38,7 +38,7 @@ const AllProjectsForFarmer = (props) => {
 
   const Card = ({ project }) => (
     <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 6 }}>
-      <FarmerSelfCard payload={project} />
+      <UserSelfCard payload={project} />
     </Col>
   )
 

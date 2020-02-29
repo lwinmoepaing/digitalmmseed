@@ -7,7 +7,9 @@ import CardContactToUser from '../../Common/Card/CardContactToUser'
 import CardTreeLoading from '../../Common/Card/CardTreeLoading'
 
 const AllProjectsForFarmer = (props) => {
-  const { authInfo, token, status } = props
+  const {
+    authInfo, token, status, from,
+  } = props
   const [projects, setProject] = useState([])
   const [isLoading, setLoading] = useState(true)
   const [meta, setMeta] = useState(null)
@@ -15,7 +17,7 @@ const AllProjectsForFarmer = (props) => {
 
   const fetchData = async (pageNumber = 1) => {
     setLoading(true)
-    const url = `${BASE_API_URL}/api/v1/project/user/status?status=Pending&page=${pageNumber}`
+    const url = `${BASE_API_URL}/api/v1/project/${from}/status?status=Pending&page=${pageNumber}`
     try {
       const res = await fetch(url)
       const { data, meta: getMeta } = await res.json()
