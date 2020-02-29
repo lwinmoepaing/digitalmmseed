@@ -31,8 +31,7 @@ const CustomCard = ({ payload }) => {
           </div>
           <div className="CardParaContainer">
             <p className="CardParaText">
-              {/* { payload.body.join('. ')} */}
-              { profileImage }
+              { payload.body[0] }
             </p>
           </div>
           <div className="CardFooter">

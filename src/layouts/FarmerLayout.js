@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { withRouter } from 'next/router'
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect, memo } from 'react'
 
 import {
   MenuFoldOutlined,
@@ -138,4 +138,4 @@ FarmerLayout.propTypes = {
   ]).isRequired,
 }
 
-export default withRouter(FarmerLayout)
+export default memo(withRouter(FarmerLayout))

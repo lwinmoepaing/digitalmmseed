@@ -1,102 +1,52 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from 'react'
+import { useEffect, useState, memo } from 'react'
 import { Row, Col } from 'antd'
-import QRCode from 'qrcode.react'
 import { BASE_API_URL } from '../../../../config'
-import TwoTreeLoading from '../../Common/SVG/TwoTreeLoading'
 import FileUpload from '../../Common/Upload/FileUpload'
 import CreatedBy from '../../Common/Profile/CreatedBy'
 import SomethingWrong from '../../Common/Profile/SomethingWrong'
 import TextEditor from '../../Common/Editor/TextEditor'
+import EditorLoading from '../../Common/Editor/EditorLoading'
+import EditorQRCode from '../../Common/Editor/EditorQrCode'
 
 
 const ProjectDetail = ({ id, token }) => {
   const [isLoading, setLoading] = useState(true)
   const [project, setProject] = useState(null)
-  const [isError, setError] = useState(true)
+  const [isError, setError] = useState(false)
+  // Edit Project
+  const [isEdit, setIsEdit] = useState(false)
+  const [editProject, setEditProject] = useState(null)
 
   const fetchData = async () => {
-    const url = `${BASE_API_URL}/api/v1/project/${id}`
+    if (project === null) {
+      const url = `${BASE_API_URL}/api/v1/project/${id}`
+      try {
+        const res = await fetch(url, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' },
+        })
 
-    try {
-      const res = await fetch(url, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      })
-
-      if (!res.ok) {
-        throw new Error(res)
+        if (!res.ok) {
+          throw new Error(res)
+        }
+        const { data } = await res.json()
+        setLoading(false)
+        setProject(data)
+      } catch (e) {
+        setProject(null)
+        setLoading(false)
+        setError(true)
       }
-      const { data } = await res.json()
-      setProject(data)
-      setLoading(false)
-      setError(false)
-    } catch (e) {
-      setProject(null)
-      setLoading(false)
     }
   }
 
   useEffect(() => {
-    setLoading(true)
     fetchData()
   }, [])
 
-
-  const Loading = ({ type }) => (
-    <div className="LoadingContainer">
-      <TwoTreeLoading style={{
-        width: type === 'sm' ? 80 : type === 'xs' ? 50 : 130,
-        height: 'auto',
-      }}
-      />
-
-      {type === 'xs' ? null : (
-        <div>
-          Loading ...
-        </div>
-      )}
-
-      <style jsx>
-        {`
-					.LoadingContainer {
-						text-align: center;
-					}
-				`}
-      </style>
-    </div>
-  )
-
-  const MyQrCode = () => (
-    <div className="Container font-en">
-      <h3 className="text-center">
-        QrCode
-      </h3>
-      <div className="text-center pb-1">
-        <QRCode value={id} fgColor="#47e847" level="M" bgColor="#ffffff" />
-      </div>
-      <style jsx>
-        {`
-					.Container {
-						border-radius: 1rem;
-						padding: .5rem;
-						background: #ffffff;
-						margin-bottom: 1rem;
-					}
-
-					.text-center {
-						text-align: center
-					}
-
-					.pb-1 {
-						padding-bottom: 1rem
-					}
-				`}
-      </style>
-    </div>
-  )
 
   const ImageContainer = () => (
     <div
@@ -145,28 +95,45 @@ const ProjectDetail = ({ id, token }) => {
     })
   }
 
+  const _toggleEdit = (boolean) => {
+    setIsEdit(boolean)
+  }
+
   return (
     <div>
       <Row gutter={[16, 16]}>
         <Col xs={{ span: 24 }} sm={{ span: 14 }} md={{ span: 18 }}>
-          { !isLoading && isError && <SomethingWrong />}
+          { isLoading === false && isError === true && <SomethingWrong />}
 
-          { isLoading && <div className="Container"><Loading type="xs" /></div>}
-          { isLoading && <div className="Container"><Loading /></div>}
-          { isLoading && <div className="Container"><Loading /></div>}
+          { isLoading === true && <div className="Container"><EditorLoading type="xs" /></div>}
+          { isLoading === true && <div className="Container"><EditorLoading /></div>}
+          { isLoading === true && <div className="Container"><EditorLoading /></div>}
 
-          { !isLoading && !isError && <FileUpload token={token} id={id} setImage={_setImage} />}
-          { !isLoading && !isError && <ImageContainer />}
-          { !isLoading && !isError && <TextEditor project={project} />}
+
+          { isLoading === false && project !== null && project.status === 'Pending' && (
+            <FileUpload
+              token={token}
+              id={id}
+              setImage={_setImage}
+            />
+          )}
+
+          { isLoading === false && project !== null && <ImageContainer />}
+          { isLoading === false && project !== null && (
+          <TextEditor
+            project={project}
+            isEdit={isEdit}
+            toggleEdit={_toggleEdit}
+          />
+          )}
 
         </Col>
 
         <Col xs={{ span: 24 }} sm={{ span: 8 }} md={{ span: 6 }}>
-          { isLoading && <div className="Container min-height-220"><Loading type="sm" /></div>}
-          { isLoading && <div className="Container min-height-220"><Loading type="sm" /></div>}
-
-          { !isLoading && !isError && <MyQrCode /> }
-          { !isLoading && !isError && <CreatedBy profile={project.user} /> }
+          { isLoading === true && <div className="Container min-height-220"><EditorLoading type="sm" /></div>}
+          { isLoading === true && <div className="Container min-height-220"><EditorLoading type="sm" /></div>}
+          { isLoading === false && project !== null && <EditorQRCode id={id} /> }
+          { isLoading === false && project !== null && <CreatedBy profile={project.user} /> }
         </Col>
       </Row>
 
@@ -197,4 +164,4 @@ const ProjectDetail = ({ id, token }) => {
     </div>
   )
 }
-export default ProjectDetail
+export default memo(ProjectDetail)

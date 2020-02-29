@@ -10,11 +10,12 @@ import { CheckOutlined } from '@ant-design/icons'
 import { BASE_API_URL } from '../../../../config'
 import { Router } from '../../../i18n'
 
-const FarmerSelfCard = ({ payload }) => {
+const FarmerSelfCard = ({ payload, edit }) => {
   const profileImage = `${BASE_API_URL}${payload.user.image}`
   const headImage = `${BASE_API_URL}${payload.headImg}`
   // const router = useRouter()
   const goDetail = () => {
+    if (edit === true) return
     Router.push(`/farmer/projects/_id?id=${payload._id}`, `/farmer/projects/${payload._id}`, { shallow: true })
   }
 
@@ -71,7 +72,7 @@ const FarmerSelfCard = ({ payload }) => {
           </div>
           <div className="CardParaContainer">
             <p className="CardParaText">
-              { payload.body.join('. ')}
+              { payload.body[0]}
             </p>
           </div>
           <div className="CardFooter">
