@@ -1,39 +1,45 @@
-import Link from 'next/link'
 import PropTypes from 'prop-types'
-import Layout from '../../layouts/Layout'
+import { connect } from 'react-redux'
 
-const User = ({ users }) => (
-  <Layout>
-    <h3> User </h3>
-    {users && (
-      <ul>
-        {users.map((userId) => (
-          <li key={userId}>
-            <Link
-              href={`/user/_id?id=${userId}`}
-              as={`/user/${userId}`}
-            >
-              <a href="#!">
-                User
-                {userId}
-              </a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    ) }
-  </Layout>
+import UserLayout from '../../layouts/UserLayout'
+import isPassAuth from '../../../lib/middleware/isPassAuth'
+import { withTranslation, i18n } from '../../i18n'
+import FarmerWidgets from '../../components/Farmer/Dashboard/FarmerWidgets'
+
+const Index = ({ authInfo, token, t }) => (
+  <UserLayout i18n={i18n}>
+
+    <div className="Container">
+
+      <h3 className="font-en"> Welcome To Digital Myanmar Farm </h3>
+
+      <FarmerWidgets authInfo={authInfo} token={token} />
+
+      <style jsx>
+        {`
+					.Container {
+							background: #fff;
+							border-radius: 1rem;
+							padding: 1rem;
+					}
+				`}
+      </style>
+    </div>
+  </UserLayout>
 )
 
-User.getInitialProps = async () => {
-  const users = await Array.from({ length: 10 }, (_, i) => i + 1)
-  return { users, namespacesRequired: ['common'] }
+Index.getInitialProps = async (context) => {
+  const { authInfo, token } = await isPassAuth(context)
+
+  return {
+    namespacesRequired: ['common'],
+    authInfo,
+    token,
+  }
 }
 
-User.propTypes = {
-  users: PropTypes.oneOfType([
-    PropTypes.array,
-  ]).isRequired,
+Index.propTypes = {
+  t: PropTypes.func.isRequired,
 }
 
-export default User
+export default connect((state) => state)(withTranslation('common')(Index))
