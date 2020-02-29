@@ -14,6 +14,7 @@ import { BASE_API_URL } from '../../../../config'
 
 const UserProfile = ({ token }) => {
   const [isLoading, setIsLoading] = useState(true)
+  const [inputLoading, setInputLoading] = useState(false)
   const [isEdit, setIsEdit] = useState(false)
   const [profile, setProfile] = useState(null)
   const [editProfile, setEditProfile] = useState(null)
@@ -48,8 +49,32 @@ const UserProfile = ({ token }) => {
 
   function changeSkills(value) {
     const profi = _deepCopy(editProfile)
-    profi.skills = value.split(',')
+    profi.skills = _deepCopy(value)
     setEditProfile(_deepCopy(profi))
+  }
+  const validatePayload = ({ name, phone }) => {
+    const errors = []
+
+    if (!name) {
+      errors.push('Name is Required')
+    }
+
+    if (name === '' || name.trim() === '') {
+      errors.push('Name should not emply')
+    }
+
+    if (!phone) {
+      errors.push('Phone is Required')
+    }
+
+    if (phone === '' || phone.trim() === '') {
+      errors.push('Phone should not emply')
+    }
+
+    return {
+      isValid: errors.length === 0,
+      errors,
+    }
   }
 
   const onSubmitUpdate = async () => {
@@ -59,7 +84,39 @@ const UserProfile = ({ token }) => {
       skills: editProfile.skills,
     }
 
-    console.log('payloads', payloads)
+    const { isValid, errors } = validatePayload(payloads)
+
+    if (!isValid) {
+      errors.forEach((mes) => {
+        message.error(mes)
+      })
+      return
+    }
+
+    setInputLoading(true)
+    try {
+      const url = `${BASE_API_URL}/api/v1/user/${profile._id}`
+      const options = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify(payloads),
+      }
+      const response = await fetch(url, options)
+      if (!response.ok) throw response
+      message.success('Successfully Updated')
+      setInputLoading(false)
+      _onEdit()
+    } catch (e) {
+      const errorMessage = await (e.text())
+      const { message: mes, data = [] } = await JSON.parse(errorMessage)
+      if (mes) { message.error(mes) }
+      if (data !== null && data.length > 0) {
+        data.forEach(({ message: mesArr }) => {
+          message.error(mesArr)
+        })
+      }
+      setInputLoading(false)
+    }
   }
 
   useEffect(() => {
@@ -111,8 +168,8 @@ const UserProfile = ({ token }) => {
               className="CustomInput"
               placeholder="Enter Name"
               defaultValue={profile.name}
-              disabled={isLoading}
-              readOnly={isLoading}
+              disabled={inputLoading}
+              readOnly={inputLoading}
               onChange={(e) => _onChange(e, 'name')}
             />
             )}
@@ -131,8 +188,8 @@ const UserProfile = ({ token }) => {
               className="CustomInput"
               placeholder="Enter Phone"
               defaultValue={profile.phone}
-              disabled={isLoading}
-              readOnly={isLoading}
+              disabled={inputLoading}
+              readOnly={inputLoading}
               onChange={(e) => _onChange(e, 'phone')}
             />
             )}
@@ -168,7 +225,7 @@ const UserProfile = ({ token }) => {
               onClick={onSubmitUpdate}
               htmlType="button"
               style={ButtonStyle}
-              loading={isLoading}
+              loading={inputLoading}
             >
               Submit
             </Button>
