@@ -29,4 +29,4 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
   return { pageProps }
 }
 
-export default withRedux(configStore, { debug: false })(appWithTranslation(MyApp))
+export default withRedux(configStore, { ssr: false, debug: false })(appWithTranslation(MyApp))
