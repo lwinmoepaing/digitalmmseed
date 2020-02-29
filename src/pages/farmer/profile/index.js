@@ -9,7 +9,7 @@ import UserProfile from '../../../components/Common/Profile/UserProfile'
 const Index = ({ authInfo, token, t }) => (
   <FarmerLayout i18n={i18n}>
 
-    <UserProfile />
+    <UserProfile token={token} />
 
     <style jsx>
       {`

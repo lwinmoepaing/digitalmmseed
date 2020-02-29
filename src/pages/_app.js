@@ -13,6 +13,12 @@ Router.onRouteChangeComplete = () => Nprogress.done()
 Router.onRouteChangeError = () => Nprogress.done()
 
 class MyApp extends App {
+  static async getInitialProps({ Component, ctx }) {
+  // we can dispatch from here too
+    const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {}
+    return { pageProps }
+  }
+
   render() {
     const { Component, pageProps, store } = this.props
     return (
@@ -21,12 +27,6 @@ class MyApp extends App {
       </Provider>
     )
   }
-}
-
-MyApp.getInitialProps = async ({ Component, ctx }) => {
-  // we can dispatch from here too
-  const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {}
-  return { pageProps }
 }
 
 export default withRedux(configStore, { ssr: false, debug: false })(appWithTranslation(MyApp))
