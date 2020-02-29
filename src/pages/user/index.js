@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import UserLayout from '../../layouts/UserLayout'
-import isPassAuth from '../../../lib/middleware/isPassAuth'
+import isUserMiddleware from '../../../lib/middleware/isUserMiddleware'
 import { withTranslation, i18n } from '../../i18n'
 import UserWidgets from '../../components/User/Dashboard/UserWidgets'
 
@@ -29,7 +29,7 @@ const Index = ({ authInfo, token, t }) => (
 )
 
 Index.getInitialProps = async (context) => {
-  const { authInfo, token } = await isPassAuth(context)
+  const { authInfo, token } = await isUserMiddleware(context)
 
   return {
     namespacesRequired: ['common'],

@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import fetch from 'isomorphic-unfetch'
 import UserLayout from '../../../layouts/UserLayout'
 import { withTranslation, i18n } from '../../../i18n'
-import isPassAuth from '../../../../lib/middleware/isPassAuth'
+import isUserMiddleware from '../../../../lib/middleware/isUserMiddleware'
 import CreateProject from '../../../components/Common/Project/CreateProject'
 import { BASE_API_URL } from '../../../../config'
 
@@ -35,7 +35,7 @@ const UserProfile = ({ token, authInfo }) => {
 }
 
 UserProfile.getInitialProps = async (context) => {
-  const { authInfo, token } = await isPassAuth(context)
+  const { authInfo, token } = await isUserMiddleware(context)
   const url = `${BASE_API_URL}/api/v1/auth/me`
 
   const res = await fetch(url, {

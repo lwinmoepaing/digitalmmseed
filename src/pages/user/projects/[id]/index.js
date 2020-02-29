@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import UserLayout from '../../../../layouts/UserLayout'
 import { withTranslation, i18n } from '../../../../i18n'
-import isPassAuth from '../../../../../lib/middleware/isPassAuth'
+import isUserMiddleware from '../../../../../lib/middleware/isUserMiddleware'
 import ProjectDetail from '../../../../components/Farmer/Project/ProjectDetail'
 
 const UserProfile = ({ token }) => {
@@ -34,7 +34,7 @@ const UserProfile = ({ token }) => {
 }
 
 UserProfile.getInitialProps = async (context) => {
-  const { authInfo, token } = await isPassAuth(context)
+  const { authInfo, token } = await isUserMiddleware(context)
 
   return {
     namespacesRequired: ['common'],

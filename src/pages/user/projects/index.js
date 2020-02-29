@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Tabs } from 'antd'
 import UserLayout from '../../../layouts/UserLayout'
-import isPassAuth from '../../../../lib/middleware/isPassAuth'
+import isUserMiddleware from '../../../../lib/middleware/isUserMiddleware'
 import { withTranslation, i18n } from '../../../i18n'
 import AllProjectsForFarmer from '../../../components/User/Project/AllProjects'
 import ProjectListByStatus from '../../../components/User/Project/ProjectListByStatus'
@@ -14,8 +14,8 @@ const { TabPane } = Tabs
 const Index = ({ authInfo, token, t }) => (
   <UserLayout i18n={i18n}>
 
-    <Tabs defaultActiveKey={1} tabBarStyle={{ backgroun: '#ffffff' }}>
-      <TabPane tab="Over All" key="1">
+    <Tabs defaultActiveKey="OverAll" tabBarStyle={{ backgroun: '#ffffff' }}>
+      <TabPane tab="Over All" key="OverAll">
         <div className="Container">
           <AllProjectsForFarmer token={token} authInfo={authInfo} />
         </div>
@@ -60,7 +60,7 @@ const Index = ({ authInfo, token, t }) => (
 )
 
 Index.getInitialProps = async (context) => {
-  const { authInfo, token } = await isPassAuth(context)
+  const { authInfo, token } = await isUserMiddleware(context)
 
   return {
     namespacesRequired: ['common'],
