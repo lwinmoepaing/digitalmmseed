@@ -41,6 +41,7 @@ const ProjectDetail = ({ token, authInfo, redirect }) => {
       }}
     >
       <img className="img" src={BASE_API_URL + project.headImg} alt="Project Data" />
+
       <style jsx>
         {`
 					.Container {

@@ -4,7 +4,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
 import {
-  Row, Col, message, Alert,
+  Row, Col, message,
 } from 'antd'
 import { memo, useState, useEffect } from 'react'
 import fetch from 'isomorphic-unfetch'
@@ -12,24 +12,31 @@ import { BASE_API_URL } from '../../../../config'
 
 
 const TextEditor = ({
-  project, isEdit, token, authInfo,
+  project, isEdit, token, authInfo, setParentProject,
 }) => {
   const [editProject, setEditProject] = useState(null)
-  const [isDoneClick, setDoneClick] = useState(false)
+  const [isDoneReject, setDoneRejectClick] = useState(false)
 
   const _deepCopy = (str) => JSON.parse(JSON.stringify(str))
 
 
-  const onContactNow = async () => {
-    setDoneClick(true)
+  const onRejectNow = async () => {
+    setDoneRejectClick(true)
     try {
-      const url = `${BASE_API_URL}/api/v1/project/contact/${project._id}`
+      const url = `${BASE_API_URL}/api/v1/project/${project._id}`
       const options = {
-        method: 'POST',
+        method: 'PUT',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({
+          status: 'Reject',
+        }),
       }
       const response = await fetch(url, options)
       if (!response.ok) throw response
+      message.success('Rejected Successfully')
+      setParentProject({
+        status: 'Reject',
+      })
     } catch (e) {
       console.log(e)
     }
@@ -45,6 +52,13 @@ const TextEditor = ({
     <div>
       <Row gutter={[8, 8]}>
         <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }}>
+
+          { project && project.status === 'Pending' && !isDoneReject && (
+            <div className="Container">
+              <div className="ContactNow" onClick={onRejectNow}> Reject ? </div>
+            </div>
+          )}
+
           <div className="Container">
 
             <div>
@@ -73,11 +87,7 @@ const TextEditor = ({
 
           </div>
 
-          <div className="Container">
-            { isContacted(project.contactUsers) || isDoneClick
-              ? <Alert message="You Already Contacted" type="success" showIcon />
-              : <div className="ContactNow" onClick={onContactNow}> Contact Now </div>}
-          </div>
+          <div className="Container" />
 
         </Col>
       </Row>
@@ -129,13 +139,13 @@ const TextEditor = ({
 					}
 
 					.ContactNow {
-						border: 1px solid #97c41a;
+						border: 1px solid #c41a61;
 						border-radius: 1rem;
 						padding: 0 2rem;
 						cursor: pointer;
-						background: #f6ffed;
+						background: #ffedf3;
 						font-weight: bold;
-						color: #97c41a;
+						color: #c41a1a;
 						text-align: center;
 					}
 
