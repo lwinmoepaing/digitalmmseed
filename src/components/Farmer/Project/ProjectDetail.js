@@ -95,6 +95,13 @@ const ProjectDetail = ({ id, token }) => {
     })
   }
 
+  const _setParentProjectUpdate = (payload) => {
+    setProject({
+      ...project,
+      ...payload,
+    })
+  }
+
   const _toggleEdit = (boolean) => {
     setIsEdit(boolean)
   }
@@ -124,6 +131,8 @@ const ProjectDetail = ({ id, token }) => {
             project={project}
             isEdit={isEdit}
             toggleEdit={_toggleEdit}
+            token={token}
+            setParentProject={_setParentProjectUpdate}
           />
           )}
 
