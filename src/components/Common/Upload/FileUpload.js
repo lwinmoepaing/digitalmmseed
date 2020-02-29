@@ -22,6 +22,7 @@ const FileUpload = ({
       if (info.file.status === 'done') {
         message.success(`${info.file.name} file uploaded successfully`)
         const { url } = info.file.response.image
+        console.log(url)
         setImage(url)
       } else if (info.file.status === 'error') {
         message.error(`${info.file.name} file upload failed.`)
@@ -54,7 +55,7 @@ const FileUpload = ({
   const alignStyle = align === 'center' ? {
     left: '50%',
     position: 'absolute',
-    bottom: 73,
+    bottom: 41,
     transform: 'translateX(-50%)',
   } : {}
 
@@ -74,6 +75,7 @@ const FileUpload = ({
 						padding: 1rem;
 						border-radius: 1rem;
 						margin-bottom: 1rem;
+						position: relative;
 					}
 				`}
       </style>

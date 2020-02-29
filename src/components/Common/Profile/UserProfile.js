@@ -105,6 +105,11 @@ const UserProfile = ({ token }) => {
       const response = await fetch(url, options)
       if (!response.ok) throw response
       message.success('Successfully Updated')
+      console.log('profile', profile)
+      setProfile({
+        ...profile,
+        ...payloads,
+      })
       setInputLoading(false)
       _onEdit()
     } catch (e) {
@@ -121,10 +126,11 @@ const UserProfile = ({ token }) => {
   }
 
   const _setImage = (img) => {
-    setProfile({
+    const update = {
       ...profile,
       image: img,
-    })
+    }
+    setProfile(update)
   }
 
 
@@ -333,6 +339,9 @@ const UserProfile = ({ token }) => {
 						width: 120px;
 						height: 120px;
 						margin: 0 auto;
+						border-radius: 120px;
+   					overflow: hidden;
+						margin-bottom: 1.5rem;
 					}
 
 					.imgContainer >img {
