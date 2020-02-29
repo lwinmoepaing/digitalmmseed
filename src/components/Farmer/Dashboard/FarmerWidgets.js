@@ -156,6 +156,7 @@ const FarmerWidgets = ({ authInfo, token }) => {
 
 					.CustomCardStyle {
 						border-radius: 10px;
+						border: 1px solid #97c41a;
 						padding: 1rem;
 						background: #f6ffed;
 					}
@@ -167,7 +168,7 @@ const FarmerWidgets = ({ authInfo, token }) => {
 
 					.Count {
 						text-align: center;
-						color: #97c41a;s
+						color: #97c41a;
 						font-size: 3rem;
 						line-height: 3rem;
 					}
