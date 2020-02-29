@@ -4,13 +4,12 @@ import { connect } from 'react-redux'
 import FarmerLayout from '../../../layouts/FarmerLayout'
 import isPassAuth from '../../../../lib/middleware/isPassAuth'
 import { withTranslation, i18n } from '../../../i18n'
+import UserProfile from '../../../components/Common/Profile/UserProfile'
 
 const Index = ({ authInfo, token, t }) => (
   <FarmerLayout i18n={i18n}>
 
-    <div className="Container">
-      <h1> User Profile</h1>
-    </div>
+    <UserProfile />
 
     <style jsx>
       {`

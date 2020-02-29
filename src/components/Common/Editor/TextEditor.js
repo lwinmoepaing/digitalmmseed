@@ -4,7 +4,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
 import {
-  Select, Row, Col, Button, message,
+  Select, Row, Col, Button, message, Alert,
 } from 'antd'
 import { memo, useState, useEffect } from 'react'
 import { EditFilled, CloseOutlined } from '@ant-design/icons'
@@ -46,9 +46,7 @@ const TextEditor = ({
   }
 
   const validatePayload = ({ title, body, projectDuration }) => {
-    const isValid = false
     const errors = []
-
 
     if (!title) {
       errors.push('Title is Required')
@@ -234,6 +232,8 @@ const TextEditor = ({
             </div>
 
           </div>
+
+          <Alert message=" You Can Edit Only Pending Project " type="warning" showIcon />
         </Col>
         <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }}>
           {editProject && isEdit && (
@@ -260,6 +260,7 @@ const TextEditor = ({
 						background-size: cover;
 						background-position: center center;
 						position: relative;
+						margin-bottom: 1rem;
 					}
 
 					.CustomInput {

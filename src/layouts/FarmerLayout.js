@@ -34,6 +34,8 @@ const FarmerLayout = (props) => {
       const width = window.innerWidth
       if (width < 600 && collapsed === false) {
         setCollapsed(true)
+      } else {
+        setCollapsed(false)
       }
     }
   }, [])
