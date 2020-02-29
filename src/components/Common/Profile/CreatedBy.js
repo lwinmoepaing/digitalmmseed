@@ -12,9 +12,6 @@ const CreatedBy = ({ profile }) => (
     <p>
       {`Email: ${profile.email}` }
     </p>
-    <p>
-      {`Phone: ${profile.phone}` }
-    </p>
 
     <style jsx>
       {`
