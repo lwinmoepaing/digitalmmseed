@@ -8,6 +8,7 @@ import HomeSectionOne from '../components/Home/HomeSectionOne'
 import HomeSectionTwo from '../components/Home/HomeSectionTwo'
 import HomeSectionThree from '../components/Home/HomeSectionThree'
 import HomeSectionFarmerProjects from '../components/Home/HomeSectionFarmerProjects'
+import HomeSectionClientProjects from '../components/Home/HomeSectionClientProjects'
 import HomeWorry from '../components/Home/HomeWorry'
 import isAuthMiddleware from '../../lib/middleware/isAuthMiddleware'
 
@@ -19,6 +20,7 @@ const Index = ({ t }) => (
       <HomeSectionThree t={t} />
       <HomeSectionFarmerProjects t={t} />
       <HomeWorry t={t} />
+      <HomeSectionClientProjects t={t} />
       {/* <CardLoading /> */}
     </div>
 
