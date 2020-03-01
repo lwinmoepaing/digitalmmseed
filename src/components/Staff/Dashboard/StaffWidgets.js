@@ -5,6 +5,8 @@ import { useState, useEffect, memo } from 'react'
 import fetch from 'isomorphic-unfetch'
 import { BASE_API_URL } from '../../../../config'
 import TwoTreeLoading from '../../Common/SVG/TwoTreeLoading'
+import Chart from '../../Common/Chart/Chart'
+import Bar from '../../Common/Chart/Bar'
 
 const StaffWidgets = ({ authInfo, token }) => {
   const [isLoading, setLoading] = useState(true)
@@ -54,8 +56,7 @@ const StaffWidgets = ({ authInfo, token }) => {
 
   return (
     <Row gutter={[16, 16]}>
-
-      <Col xs={{ span: 12 }} md={{ span: 8 }}>
+      <Col xs={{ span: 24 }} md={{ span: 8 }}>
         {isLoading
           ? (
             <Loading />
@@ -71,7 +72,7 @@ const StaffWidgets = ({ authInfo, token }) => {
             </div>
           )}
       </Col>
-      <Col xs={{ span: 12 }} md={{ span: 8 }}>
+      <Col xs={{ span: 24 }} md={{ span: 8 }}>
         {isLoading
           ? (
             <Loading />
@@ -87,7 +88,7 @@ const StaffWidgets = ({ authInfo, token }) => {
             </div>
           )}
       </Col>
-      <Col xs={{ span: 12 }} md={{ span: 8 }}>
+      <Col xs={{ span: 24 }} md={{ span: 8 }}>
         {isLoading
           ? (
             <Loading />
@@ -103,7 +104,7 @@ const StaffWidgets = ({ authInfo, token }) => {
             </div>
           )}
       </Col>
-      <Col xs={{ span: 12 }} md={{ span: 8 }}>
+      <Col xs={{ span: 24 }} md={{ span: 8 }}>
         {isLoading
           ? (
             <Loading />
@@ -119,7 +120,7 @@ const StaffWidgets = ({ authInfo, token }) => {
             </div>
           )}
       </Col>
-      <Col xs={{ span: 12 }} md={{ span: 8 }}>
+      <Col xs={{ span: 24 }} md={{ span: 8 }}>
         {isLoading
           ? (
             <Loading />
@@ -135,7 +136,7 @@ const StaffWidgets = ({ authInfo, token }) => {
             </div>
           )}
       </Col>
-      <Col xs={{ span: 12 }} md={{ span: 8 }}>
+      <Col xs={{ span: 24 }} md={{ span: 8 }}>
         {isLoading
           ? (
             <Loading />
@@ -151,6 +152,25 @@ const StaffWidgets = ({ authInfo, token }) => {
             </div>
           )}
       </Col>
+      <Col xs={{ span: 24 }} md={{ span: 8 }}>
+        {isLoading
+          ? (
+            <Loading />
+          )
+          : (
+            project && <Chart project={project} />
+          )}
+      </Col>
+      <Col xs={{ span: 24 }} md={{ span: 8 }}>
+        {isLoading
+          ? (
+            <Loading />
+          )
+          : (
+            project && <Bar project={project} />
+          )}
+      </Col>
+
       <style jsx>
         {`
 
