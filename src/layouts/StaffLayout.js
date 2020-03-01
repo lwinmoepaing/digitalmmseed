@@ -48,7 +48,7 @@ const StaffLayout = (props) => {
   return (
     <Layout>
       <Head>
-        <title> Farmer Dashboard </title>
+        <title> Staff Dashboard </title>
       </Head>
       <Sider theme="light" trigger={null} collapsible collapsed={collapsed}>
         <div className="logo">
