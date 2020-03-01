@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import StaffLayout from '../../layouts/StaffLayout'
 import isStaffMiddleware from '../../../lib/middleware/isStaffMiddleware'
 import { withTranslation, i18n } from '../../i18n'
-import UserWidgets from '../../components/User/Dashboard/UserWidgets'
+import StaffWidgets from '../../components/Staff/Dashboard/StaffWidgets'
 
 const Index = ({ authInfo, token, t }) => (
   <StaffLayout i18n={i18n}>
@@ -13,7 +13,7 @@ const Index = ({ authInfo, token, t }) => (
 
       <h3 className="font-en"> Welcome To Digital Myanmar Farm </h3>
 
-      <UserWidgets authInfo={authInfo} token={token} />
+      <StaffWidgets authInfo={authInfo} token={token} />
 
       <style jsx>
         {`
