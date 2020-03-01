@@ -63,7 +63,6 @@ const MyLine = ({ project }) => {
       <style jsx>
         {`
 			.DoContainer {
-				max-width: 400px;
 				padding: 1rem;
 				border-radius: 1rem;
 				background: rgb(246, 255, 237);

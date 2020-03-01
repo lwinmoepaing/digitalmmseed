@@ -6,7 +6,7 @@ import AdminLayout from '../../../layouts/AdminLayout'
 import isAdminMiddleware from '../../../../lib/middleware/isAdminMiddleware'
 import { withTranslation, i18n } from '../../../i18n'
 
-import ProjectListByStatus from '../../../components/Staff/Project/ProjectListByStatus'
+import ProjectListByStatus from '../../../components/Admin/Project/ProjectListByStatus'
 
 const { TabPane } = Tabs
 

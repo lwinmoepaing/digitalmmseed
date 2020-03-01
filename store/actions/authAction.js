@@ -35,8 +35,6 @@ export const logout = () => {
 
 export const onSubmitAuth = (email = '', password = '') => async (dispatch) => {
   // eslint-disable-next-line no-alert
-  const Console = console
-  Console.log(email, password)
   // dispath Sending First
   dispatch(loginSending())
   try {

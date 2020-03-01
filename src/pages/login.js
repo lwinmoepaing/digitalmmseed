@@ -3,14 +3,13 @@ import Head from 'next/head'
 import { connect } from 'react-redux'
 import Layout from '../layouts/Layout'
 import LoginForm from '../components/Common/LoginForm/LoginForm'
+import TestingModal from '../components/Common/Modal/TestingModal'
 import { withTranslation, i18n } from '../i18n'
 import { onSubmitAuth } from '../../store/actions/authAction'
 import isAuthMiddleware from '../../lib/middleware/isAuthMiddleware'
 
 
 const Login = (props) => {
-  const Console = console
-  Console.log('In Login Component', props)
   const { t, Auth, onSubmitAuth: onSubmitLogin } = props
   return (
     <Layout i18n={i18n}>
@@ -23,6 +22,8 @@ const Login = (props) => {
           onSubmitAuth={onSubmitLogin}
           Auth={Auth}
         />
+
+        <TestingModal t={t} />
       </div>
     </Layout>
   )
