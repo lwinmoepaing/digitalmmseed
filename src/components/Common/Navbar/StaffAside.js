@@ -9,6 +9,7 @@ import {
   LogoutOutlined,
   UsergroupAddOutlined,
   FlagOutlined,
+  QuestionCircleOutlined,
 } from '@ant-design/icons'
 import { connect } from 'react-redux'
 
@@ -22,8 +23,9 @@ const FarmerAside = (props) => {
     { name: 'Dashboard', url: '/staff', icon: DashboardOutlined },
     { name: 'Farmer Projects', url: '/staff/farmer-projects', icon: CopyOutlined },
     { name: 'User Projects', url: '/staff/user-projects', icon: ProjectOutlined },
-    { name: 'User ', url: '/staff/users', icon: UsergroupAddOutlined },
-    { name: 'Map ', url: '/staff/map', icon: FlagOutlined },
+    { name: 'User', url: '/staff/users', icon: UsergroupAddOutlined },
+    { name: 'Map', url: '/staff/map', icon: FlagOutlined },
+    { name: 'About', url: '/staff/about', icon: QuestionCircleOutlined },
     { name: 'Profile', url: '/staff/profile', icon: SettingFilled },
   ]
 

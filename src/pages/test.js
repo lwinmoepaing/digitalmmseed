@@ -1,4 +1,4 @@
-import { Bar } from 'react-chartjs-2'
+import { Line } from 'react-chartjs-2'
 
 const data = {
   datasets: [{
@@ -46,7 +46,7 @@ const Do = () => (
       className="DoContainer"
     >
       <p> Total Projects </p>
-      <Bar
+      <Line
         data={data}
         width={400}
         options={options}

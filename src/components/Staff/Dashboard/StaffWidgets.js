@@ -7,6 +7,7 @@ import { BASE_API_URL } from '../../../../config'
 import TwoTreeLoading from '../../Common/SVG/TwoTreeLoading'
 import Chart from '../../Common/Chart/Chart'
 import Bar from '../../Common/Chart/Bar'
+import Line from '../../Common/Chart/Line'
 
 const StaffWidgets = ({ authInfo, token }) => {
   const [isLoading, setLoading] = useState(true)
@@ -56,6 +57,33 @@ const StaffWidgets = ({ authInfo, token }) => {
 
   return (
     <Row gutter={[16, 16]}>
+      <Col xs={{ span: 24 }} md={{ span: 8 }}>
+        {isLoading
+          ? (
+            <Loading />
+          )
+          : (
+            project && <Chart project={project} />
+          )}
+      </Col>
+      <Col xs={{ span: 24 }} md={{ span: 8 }}>
+        {isLoading
+          ? (
+            <Loading />
+          )
+          : (
+            project && <Bar project={project} />
+          )}
+      </Col>
+      <Col xs={{ span: 24 }} md={{ span: 8 }}>
+        {isLoading
+          ? (
+            <Loading />
+          )
+          : (
+            project && <Line project={project} />
+          )}
+      </Col>
       <Col xs={{ span: 24 }} md={{ span: 8 }}>
         {isLoading
           ? (
@@ -150,24 +178,6 @@ const StaffWidgets = ({ authInfo, token }) => {
                 <h3 className="Title">  Expired Projects </h3>
               </div>
             </div>
-          )}
-      </Col>
-      <Col xs={{ span: 24 }} md={{ span: 8 }}>
-        {isLoading
-          ? (
-            <Loading />
-          )
-          : (
-            project && <Chart project={project} />
-          )}
-      </Col>
-      <Col xs={{ span: 24 }} md={{ span: 8 }}>
-        {isLoading
-          ? (
-            <Loading />
-          )
-          : (
-            project && <Bar project={project} />
           )}
       </Col>
 

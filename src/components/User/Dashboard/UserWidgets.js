@@ -7,6 +7,7 @@ import { BASE_API_URL } from '../../../../config'
 import TwoTreeLoading from '../../Common/SVG/TwoTreeLoading'
 import Chart from '../../Common/Chart/Chart'
 import Bar from '../../Common/Chart/Bar'
+import Line from '../../Common/Chart/Line'
 
 const FarmerWidgets = ({ authInfo, token }) => {
   const [isLoading, setLoading] = useState(true)
@@ -56,6 +57,33 @@ const FarmerWidgets = ({ authInfo, token }) => {
 
   return (
     <Row gutter={[16, 16]}>
+      <Col xs={{ span: 24 }} md={{ span: 8 }}>
+        {isLoading
+          ? (
+            <Loading />
+          )
+          : (
+            project && <Chart project={project} />
+          )}
+      </Col>
+      <Col xs={{ span: 24 }} md={{ span: 8 }}>
+        {isLoading
+          ? (
+            <Loading />
+          )
+          : (
+            project && <Bar project={project} />
+          )}
+      </Col>
+      <Col xs={{ span: 24 }} md={{ span: 8 }}>
+        {isLoading
+          ? (
+            <Loading />
+          )
+          : (
+            project && <Line project={project} />
+          )}
+      </Col>
       <Col xs={{ span: 24 }} md={{ span: 8 }}>
         {isLoading
           ? (
@@ -152,24 +180,7 @@ const FarmerWidgets = ({ authInfo, token }) => {
             </div>
           )}
       </Col>
-      <Col xs={{ span: 24 }} md={{ span: 8 }}>
-        {isLoading
-          ? (
-            <Loading />
-          )
-          : (
-            project && <Chart project={project} />
-          )}
-      </Col>
-      <Col xs={{ span: 24 }} md={{ span: 8 }}>
-        {isLoading
-          ? (
-            <Loading />
-          )
-          : (
-            project && <Bar project={project} />
-          )}
-      </Col>
+
       <style jsx>
         {`
 

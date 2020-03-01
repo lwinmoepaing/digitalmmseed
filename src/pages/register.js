@@ -20,7 +20,7 @@ const Register = (props) => (
 				.Container {
 					overflow: hidden;
 					max-width: 400px;
-					margin: 0 auto;
+					margin: 1rem auto;
 				}
 			`}
     </style>
