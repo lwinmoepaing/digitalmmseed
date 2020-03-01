@@ -21,7 +21,14 @@ const links = [
 
 const styles = {
   LayoutHeader: {
-    padding: 0, height: '50px', backgroundColor: '#fff', position: 'fixed', width: '100%', zIndex: '10', top: 0, borderBottom: '1px solid #dfdfdf',
+    padding: 0,
+    height: '50px',
+    backgroundColor: '#fff',
+    position: 'fixed',
+    width: '100%',
+    zIndex: '1001',
+    top: 0,
+    borderBottom: '1px solid #dfdfdf',
   },
   MenuLineHeight: { lineHeight: '50px', textAlign: 'right', paddingRight: '1.5rem' },
 }
@@ -53,9 +60,11 @@ const GuestNavbar = (props) => {
     <Layout.Header style={styles.LayoutHeader}>
       <div className="Container">
         <div className="logo">
-          <h3>
-            Digital MM Farm
-          </h3>
+          <Link href="/">
+            <h3 style={{ color: '#52c41a' }}>
+              Digital MM Farm
+            </h3>
+          </Link>
         </div>
 
         <div className="MenuContainer">
@@ -82,7 +91,6 @@ const GuestNavbar = (props) => {
                 <Link href="#!">
                   <a href="#!" onClick={() => onLogout()}>
 
-
                     <LogoutOutlined />
                     {t('logout')}
 
@@ -99,7 +107,6 @@ const GuestNavbar = (props) => {
                 </Link>
               </Menu.Item>
             ) }
-
             <Menu.Item style={{ border: 'none' }}>
               <div>
                 <Radio.Group defaultValue={i18n.language || 'mm'} onChange={changeLocale} buttonStyle="solid" size="small">
@@ -116,6 +123,11 @@ const GuestNavbar = (props) => {
         </div>
 
         <div className="RightNavigator">
+          <Link href="/login">
+            <a href="#!" style={{ marginRight: 15 }}>
+              {t('Login')}
+            </a>
+          </Link>
           <div
             className="ImgContainer"
             onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'mm' : 'en')}
