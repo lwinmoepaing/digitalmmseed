@@ -1,59 +1,36 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-underscore-dangle */
 import {
-  Row, Col, message, Select, Button,
+  Row, Col, message, Select, Button, Radio,
 } from 'antd'
-import {
-  CloseOutlined,
-  EditFilled,
-} from '@ant-design/icons'
 import { useState, useEffect } from 'react'
 import fetch from 'isomorphic-unfetch'
-import EditorLoading from '../Editor/EditorLoading'
-import FileUpload from '../Upload/FileUpload'
 import { BASE_API_URL } from '../../../../config'
 
-const UserProfile = ({ token }) => {
-  const [isLoading, setIsLoading] = useState(true)
+const RegisterProfile = ({ token, type = 'User' }) => {
+  const initProfile = {
+    name: '',
+    email: '',
+    role: 'User',
+    phone: '',
+    password: '',
+    skills: [],
+  }
   const [inputLoading, setInputLoading] = useState(false)
-  const [isEdit, setIsEdit] = useState(false)
-  const [profile, setProfile] = useState(null)
-  const [editProfile, setEditProfile] = useState(null)
 
   const _deepCopy = (str) => JSON.parse(JSON.stringify(str))
 
-  const _onEdit = () => {
-    const toChange = !isEdit
-    if (toChange) {
-      setEditProfile(_deepCopy(profile))
-    }
-    setIsEdit(toChange)
-  }
-
-  const fetchData = async () => {
-    try {
-      const url = `${BASE_API_URL}/api/v1/auth/me`
-      const options = {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-      }
-      const response = await fetch(url, options)
-      const { data } = await response.json()
-      setProfile(data)
-      setIsLoading(false)
-    } catch (e) {
-      message.error(e.message)
-      setIsLoading(false)
-      setProfile(null)
-    }
-  }
+  const [profile, setProfile] = useState(_deepCopy(initProfile))
 
   function changeSkills(value) {
-    const profi = _deepCopy(editProfile)
+    const profi = _deepCopy(profile)
     profi.skills = _deepCopy(value)
-    setEditProfile(_deepCopy(profi))
+    setProfile(_deepCopy(profi))
   }
-  const validatePayload = ({ name, phone }) => {
+
+  const validatePayload = ({
+    name, phone, password, email,
+  }) => {
     const errors = []
 
     if (!name) {
@@ -68,6 +45,28 @@ const UserProfile = ({ token }) => {
       errors.push('Phone should not emply')
     }
 
+    const phRegex = new RegExp('(?=^(09))([0-9]{6,11})$|(?=^(01))([0-9]{6,8})$')
+    if (phone && !phRegex.test(phone)) {
+      errors.push('Phone Pattern Must Be 09-----')
+    }
+
+    if (!password) {
+      errors.push('Password is Required')
+    }
+
+    if (password === '' || password.trim() === '') {
+      errors.push('Password should not emply')
+    }
+
+    if (password && password.length < 6) {
+      errors.push('Password length must be at least 6 characters long')
+    }
+
+    const emailRegx = /\S+@\S+\.\S+/
+    if (!emailRegx.test(email)) {
+      errors.push('Email Not Valid')
+    }
+
     return {
       isValid: errors.length === 0,
       errors,
@@ -75,13 +74,7 @@ const UserProfile = ({ token }) => {
   }
 
   const onSubmitUpdate = async () => {
-    const payloads = {
-      name: editProfile.name,
-      phone: editProfile.phone,
-      skills: editProfile.skills,
-    }
-
-    const { isValid, errors } = validatePayload(payloads)
+    const { isValid, errors } = validatePayload(profile)
 
     if (!isValid) {
       errors.forEach((mes) => {
@@ -89,25 +82,21 @@ const UserProfile = ({ token }) => {
       })
       return
     }
-
     setInputLoading(true)
+
+
     try {
-      const url = `${BASE_API_URL}/api/v1/user/${profile._id}`
+      const url = `${BASE_API_URL}/api/v1/auth`
       const options = {
-        method: 'PUT',
+        method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify(payloads),
+        body: JSON.stringify(profile),
       }
       const response = await fetch(url, options)
       if (!response.ok) throw response
       message.success('Successfully Updated')
-      console.log('profile', profile)
-      setProfile({
-        ...profile,
-        ...payloads,
-      })
+      setProfile(_deepCopy(initProfile))
       setInputLoading(false)
-      _onEdit()
     } catch (e) {
       const errorMessage = await (e.text())
       const { message: mes, data = [] } = await JSON.parse(errorMessage)
@@ -121,27 +110,19 @@ const UserProfile = ({ token }) => {
     }
   }
 
-  const _setImage = (img) => {
-    const update = {
-      ...profile,
-      image: img,
-    }
-    setProfile(update)
-  }
-
-
-  useEffect(() => {
-    fetchData()
-  }, [])
-
   const _onChange = async (e, key) => {
     const changeEdit = {
-      ...editProfile,
+      ...profile,
     }
 
     changeEdit[key] = _deepCopy(e.target.value)
-    setEditProfile(_deepCopy(changeEdit))
+    setProfile(_deepCopy(changeEdit))
   }
+
+  useEffect(() => {
+    const el = document.getElementById('UserName')
+    if (el) el.focus()
+  }, [])
 
   const ButtonStyle = {
     display: 'block',
@@ -155,90 +136,97 @@ const UserProfile = ({ token }) => {
   return (
     <Row gutter={[16, 16]}>
       <Col xs={{ span: 24 }} md={{ span: 12 }}>
-        { isLoading && (
         <div className="Container">
-          <EditorLoading />
-        </div>
-        )}
-        { !isLoading && profile && (
-        <div className="Container">
-          { profile && (
-          <div className={isEdit ? 'CloseButton' : 'EditButton'}>
-            {isEdit
-              ? <CloseOutlined onClick={_onEdit} />
-              : <EditFilled onClick={_onEdit} />}
-          </div>
-          )}
+
+          <h3 className="text-center"> Register Form </h3>
+
           <div className="FieldContainer">
             <h3> User Name </h3>
 
-            {	isEdit && (
             <input
               type="text"
               id="UserName"
               className="CustomInput"
               placeholder="Enter Name"
               defaultValue={profile.name}
+              value={profile.name}
               disabled={inputLoading}
               readOnly={inputLoading}
               onChange={(e) => _onChange(e, 'name')}
             />
-            )}
-            {	!isEdit && (
-            <p>
-              { profile.name }
-            </p>
-            )}
           </div>
+
+          <div className="FieldContainer">
+            <h3> Password </h3>
+
+            <input
+              type="password"
+              id="UserPassword"
+              className="CustomInput"
+              placeholder="Enter Password"
+              defaultValue={profile.password}
+              value={profile.password}
+              disabled={inputLoading}
+              readOnly={inputLoading}
+              onChange={(e) => _onChange(e, 'password')}
+            />
+          </div>
+
+
+          <div className="FieldContainer">
+            <h3> Email </h3>
+
+            <input
+              type="text"
+              id="Email"
+              className="CustomInput"
+              placeholder="Enter Email"
+              defaultValue={profile.email}
+              value={profile.email}
+              disabled={inputLoading}
+              readOnly={inputLoading}
+              onChange={(e) => _onChange(e, 'email')}
+            />
+          </div>
+
           <div className="FieldContainer">
             <h3> Phone </h3>
-            {	isEdit && (
+
             <input
               type="text"
               id="Userphone"
               className="CustomInput"
               placeholder="Enter Phone"
               defaultValue={profile.phone}
+              value={profile.phone}
               disabled={inputLoading}
               readOnly={inputLoading}
               onChange={(e) => _onChange(e, 'phone')}
             />
-            )}
-            {	!isEdit && (
-            <p>
-              { profile.phone }
-            </p>
-            )}
+
           </div>
 
           <div className="FieldContainer">
             <h3> Skills </h3>
-            {isEdit && (
             <Select
               disabled={inputLoading}
               mode="tags"
               style={{ width: '100%' }}
-              defaultValue={editProfile.skills}
               placeholder="Tags Mode"
               onChange={changeSkills}
             />
-            )}
-            {!isEdit && (
-            <p>
-              { profile.skills.join(', ')}
-            </p>
-            )}
           </div>
 
           <div className="FieldContainer">
             <h3> Role </h3>
-            <p>
-              { profile.role }
-            </p>
+            <Radio.Group onChange={(e) => _onChange(e, 'role')} defaultValue={profile.role}>
+              <Radio value="User">User</Radio>
+              <Radio value="Farmer">Farmer</Radio>
+              { type === 'Admin' && <Radio value="Staff">Staff</Radio>}
+            </Radio.Group>
           </div>
 
           <div>
-            {isEdit && (
             <Button
               onClick={onSubmitUpdate}
               htmlType="button"
@@ -247,34 +235,9 @@ const UserProfile = ({ token }) => {
             >
               Submit
             </Button>
-            )}
-          </div>
-        </div>
-        )}
-      </Col>
-      <Col xs={{ span: 24 }} md={{ span: 12 }}>
-        { isLoading && (
-        <div className="Container">
-          <EditorLoading />
-        </div>
-        )}
-
-        { !isLoading && profile && (
-        <div className="Container">
-
-          <div className="imgContainer">
-            <img src={BASE_API_URL + profile.image} alt="profilepicture" />
           </div>
 
-          <FileUpload
-            token={token}
-            type="userId"
-            id={profile._id}
-            setImage={_setImage}
-            align="center"
-          />
         </div>
-        )}
       </Col>
       <style jsx>
         {`
@@ -292,8 +255,13 @@ const UserProfile = ({ token }) => {
 						margin-bottom: .5rem;
 					}
 
-					.FieldContainer > p {
+					.FieldContainer > h3 {
 						margin: 0;
+						font-size: .8em;
+					}
+
+					.FieldContainer > input::placeholder {
+						color: #bbbbbb;
 					}
 
 					.EditButton, .CloseButton {
@@ -346,10 +314,14 @@ const UserProfile = ({ token }) => {
 						object-fit: cover;
 						object-position: center center;
 					}
+
+					.text-center {
+						text-align: center;
+					}
 				`}
       </style>
     </Row>
   )
 }
 
-export default UserProfile
+export default RegisterProfile
