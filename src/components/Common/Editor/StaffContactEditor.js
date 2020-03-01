@@ -4,7 +4,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
 import {
-  Row, Col, message,
+  Row, Col, message, Alert,
 } from 'antd'
 import { memo, useState, useEffect } from 'react'
 import fetch from 'isomorphic-unfetch'
@@ -36,6 +36,28 @@ const TextEditor = ({
       setParentProject({
         status: 'Reject',
       })
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+
+  const onFinished = async () => {
+    setParentProject({
+      status: 'Finished',
+    })
+    try {
+      const url = `${BASE_API_URL}/api/v1/project/${project._id}`
+      const options = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({
+          status: 'Finished',
+        }),
+      }
+      const response = await fetch(url, options)
+      if (!response.ok) throw response
+      message.success('Finished Successfully')
     } catch (e) {
       console.log(e)
     }
@@ -148,7 +170,11 @@ const TextEditor = ({
     <div>
       <Row gutter={[8, 8]}>
         <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }}>
-
+          { project && project.status === 'Finished' && !isDoneReject && (
+          <div className="Container">
+            <Alert message="This Project has Successfully Finished." type="success" showIcon />
+          </div>
+          )}
 
           <div className="Container">
 
@@ -180,7 +206,13 @@ const TextEditor = ({
 
           { project && project.status === 'Pending' && !isDoneReject && (
           <div className="Container">
-            <div className="ContactNow" onClick={onRejectNow}> Reject ? </div>
+            <div className="RejectNow" onClick={onRejectNow}> Reject ? </div>
+          </div>
+          )}
+
+          { project && project.status === 'Working' && (
+          <div className="Container">
+            <div className="FinishNow" onClick={onFinished}> Finished ? </div>
           </div>
           )}
 
@@ -240,7 +272,7 @@ const TextEditor = ({
 						text-align: center
 					}
 
-					.ContactNow {
+					.RejectNow, .FinishNow {
 						border: 1px solid #c41a61;
 						border-radius: 1rem;
 						padding: 0 2rem;
@@ -251,9 +283,17 @@ const TextEditor = ({
 						text-align: center;
 					}
 
-					.ContactNow:hover {
+					.FinishNow {
+						border: 1px solid #1ac48d;
+						background: #edfff6;
+						color: #1ac41f;
+					}
+
+					.RejectNow:hover, .FinishNow:hover {
 						opacity: 0.7;
 					}
+
+
 				`}
       </style>
     </div>
