@@ -63,7 +63,7 @@ const HomeSectionOne = ({ t }) => (
 						display: table-cell;
 						vertical-align: middle;
 						height: 100%;
-						padding: 0 .5rem;
+						padding: 1rem .5rem;
 						max-width: 620px;
 						margin: 0 auto;
 					}
@@ -111,7 +111,7 @@ const HomeSectionOne = ({ t }) => (
 						color: #52c41a;
 						padding: 0.6rem;
 						border-radius: 4px;
-						background: #f7f7f7;
+						background: #ffffff;
 					}
 
 					p {

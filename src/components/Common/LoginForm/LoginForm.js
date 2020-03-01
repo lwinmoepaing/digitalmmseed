@@ -8,6 +8,7 @@ import {
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import { Link } from '../../../i18n'
 
 const openNotificationWithIcon = (type, title, message) => {
   notification[type]({
@@ -108,10 +109,9 @@ const LoginForm = ({
       </Button>
       <Form.Item>
 
-        <span>
-          Or
+        <Link href="/register">
           <a href="#!" style={{ marginLeft: 3 }}>Register now!</a>
-        </span>
+        </Link>
       </Form.Item>
       <style jsx>
         {`
@@ -121,7 +121,6 @@ const LoginForm = ({
 					.LoginFormContainer {
 						max-width: 300px;
 						background-color: #fff;
-						border: 1px solid #dfdfdf;
 						padding: 1rem;
 						border-radius: .8rem;
 						margin: 1rem auto;

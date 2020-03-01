@@ -5,6 +5,7 @@ import {
 } from 'antd'
 import { useState, useEffect } from 'react'
 import fetch from 'isomorphic-unfetch'
+import { useRouter } from 'next/router'
 import { BASE_API_URL } from '../../../../config'
 
 const RegisterProfile = ({ token, type = 'User' }) => {
@@ -16,6 +17,9 @@ const RegisterProfile = ({ token, type = 'User' }) => {
     password: '',
     skills: [],
   }
+
+  const router = useRouter()
+
   const [inputLoading, setInputLoading] = useState(false)
 
   const _deepCopy = (str) => JSON.parse(JSON.stringify(str))
@@ -94,9 +98,10 @@ const RegisterProfile = ({ token, type = 'User' }) => {
       }
       const response = await fetch(url, options)
       if (!response.ok) throw response
-      message.success('Successfully Updated')
+      message.success('Successfully Register')
       setProfile(_deepCopy(initProfile))
       setInputLoading(false)
+      if (type === 'Guest') router.push('/login')
     } catch (e) {
       const errorMessage = await (e.text())
       const { message: mes, data = [] } = await JSON.parse(errorMessage)
@@ -135,7 +140,7 @@ const RegisterProfile = ({ token, type = 'User' }) => {
 
   return (
     <Row gutter={[16, 16]}>
-      <Col xs={{ span: 24 }} md={{ span: 12 }}>
+      <Col xs={{ span: 24 }} md={{ span: type === 'Guest' ? 24 : 12 }}>
         <div className="Container">
 
           <h3 className="text-center"> Register Form </h3>

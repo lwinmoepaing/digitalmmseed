@@ -5594,16 +5594,17 @@ const RegionSearch = () => {
   ]
 
   return (
-    <div className="Conainer">
+    <div className="Container">
       <div className="MapContainer">
         <MapMm parentGet={(v) => {
           setState(v)
         }}
         />
       </div>
-      <div>
+      <div className="DataVisualization font-en">
         <h1> Data Visualization </h1>
-        <h3> Comming </h3>
+        <h3> More Information Comming Soon  </h3>
+        <h3> Our Data'll Help You alot </h3>
         <p>
           { state && `${state} Region` }
         </p>
@@ -5615,15 +5616,44 @@ const RegionSearch = () => {
       </div>
       <style jsx>
         {`
-					.Conainer {
+					.Container {
 						padding: 1rem;
 						background: #ffffff;
 						border-radius: 1rem;
+						min-height: 582px;
 					}
 
 					.MapContainer {
 						max-width: 250px;
-						float: left;
+    				margin: 0 auto;
+					}
+
+					.DataVisualization {
+						padding: 1rem;
+						background: #f3f3f3;
+						border-radius: 1rem;
+						text-align: center;
+					}
+
+					@media screen and (min-width: 677px) {
+						.MapContainer {
+							float: left;
+							margin-right: 3rem;
+						}
+						.MapContainer::after {
+							content:  "";
+							display: table;
+							clear: both;
+						}
+						.DataVisualization {
+							float: left;
+							width: calc(100% - 300px);
+
+						}
+					}
+
+					.MapContainer {
+						max-width: 250px;
 					}
 				`}
       </style>
