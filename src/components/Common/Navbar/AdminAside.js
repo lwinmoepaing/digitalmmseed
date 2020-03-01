@@ -24,8 +24,8 @@ const FarmerAside = (props) => {
     { name: 'Farmer Projects', url: '/admin/farmer-projects', icon: CopyOutlined },
     { name: 'User Projects', url: '/admin/user-projects', icon: ProjectOutlined },
     { name: 'User', url: '/admin/users', icon: UsergroupAddOutlined },
-    { name: 'About', url: '/admin/about', icon: QuestionCircleOutlined },
     { name: 'Map', url: '/admin/map', icon: FlagOutlined },
+    { name: 'About', url: '/admin/about', icon: QuestionCircleOutlined },
     { name: 'Profile', url: '/admin/profile', icon: SettingFilled },
   ]
 

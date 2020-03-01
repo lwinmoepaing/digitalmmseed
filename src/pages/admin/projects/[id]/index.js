@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import StaffLayout from '../../../../layouts/StaffLayout'
+import AdminLayout from '../../../../layouts/AdminLayout'
 import { withTranslation, i18n } from '../../../../i18n'
 import isAdminMiddleware from '../../../../../lib/middleware/isAdminMiddleware'
 import ContactDetail from '../../../../components/Staff/Project/ContactDetail'
@@ -10,7 +10,7 @@ const UserProfile = ({ token, authInfo }) => {
   const { query: { id } } = router
 
   return (
-    <StaffLayout i18n={i18n}>
+    <AdminLayout i18n={i18n}>
       <Head>
         <title>
           Project Data:
@@ -29,7 +29,7 @@ const UserProfile = ({ token, authInfo }) => {
 				}
 			`}
       </style>
-    </StaffLayout>
+    </AdminLayout>
   )
 }
 

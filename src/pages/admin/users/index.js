@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import StaffLayout from '../../../layouts/StaffLayout'
+import AdminLayout from '../../../layouts/AdminLayout'
 import isAdminMiddleware from '../../../../lib/middleware/isAdminMiddleware'
 import { withTranslation, i18n } from '../../../i18n'
 import RegisterProfile from '../../../components/Common/Profile/ResisterProfile'
 
 const UserPage = ({ authInfo, token, t }) => (
-  <StaffLayout i18n={i18n}>
+  <AdminLayout i18n={i18n}>
 
     <RegisterProfile type="Admin" />
 
@@ -20,7 +20,7 @@ const UserPage = ({ authInfo, token, t }) => (
 				}
 			`}
     </style>
-  </StaffLayout>
+  </AdminLayout>
 )
 
 UserPage.getInitialProps = async (context) => {

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { Tabs } from 'antd'
-import StaffLayout from '../../../layouts/StaffLayout'
+import AdminLayout from '../../../layouts/AdminLayout'
 import isAdminMiddleware from '../../../../lib/middleware/isAdminMiddleware'
 import { withTranslation, i18n } from '../../../i18n'
 
@@ -11,7 +11,7 @@ import ProjectListByStatus from '../../../components/Staff/Project/ProjectListBy
 const { TabPane } = Tabs
 
 const Index = ({ authInfo, token, t }) => (
-  <StaffLayout i18n={i18n}>
+  <AdminLayout i18n={i18n}>
 
     <Tabs defaultActiveKey="Pending" tabBarStyle={{ backgroun: '#ffffff' }}>
       <TabPane tab="Pending" key="Pending">
@@ -49,7 +49,7 @@ const Index = ({ authInfo, token, t }) => (
 					}
 				`}
     </style>
-  </StaffLayout>
+  </AdminLayout>
 )
 
 Index.getInitialProps = async (context) => {
