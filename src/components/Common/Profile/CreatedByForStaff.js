@@ -1,7 +1,13 @@
 /* eslint-disable react/prop-types */
-const CreatedBy = ({ profile }) => (
+const CreatedBy = ({ profile, title }) => (
   <div className="Container font-en">
-    <h2 className="text-center"> Created By </h2>
+    <h2 className="text-center">
+      {' '}
+      {title}
+      {' '}
+      By
+      {' '}
+    </h2>
 
     <p>
       {`Name: ${profile.name}` }
@@ -15,9 +21,6 @@ const CreatedBy = ({ profile }) => (
     <p>
       {`Phone: ${profile.phone}` }
     </p>
-    <p>
-      {`Skills: ${profile.skills.join(', ')}` }
-    </p>
 
     <style jsx>
       {`
@@ -27,6 +30,7 @@ const CreatedBy = ({ profile }) => (
 					background: #fff;
 					background-size: cover;
 					background-position: center center;
+					margin-bottom: 1rem;
 				}
 
 				.text-center {

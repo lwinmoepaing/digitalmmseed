@@ -5,7 +5,7 @@ import { withTranslation, i18n } from '../../../i18n'
 import isStaffMiddleware from '../../../../lib/middleware/isStaffMiddleware'
 import ContactDetail from '../../../components/Staff/Project/ContactDetail'
 
-const UserProfile = ({ token }) => {
+const UserProfile = ({ token, authInfo }) => {
   const router = useRouter()
   const { query: { id } } = router
 
@@ -18,7 +18,7 @@ const UserProfile = ({ token }) => {
         </title>
       </Head>
 
-      <ContactDetail id={id} token={token} />
+      <ContactDetail id={id} token={token} authInfo={authInfo} />
 
       <style jsx>
         {`

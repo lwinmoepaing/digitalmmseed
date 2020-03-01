@@ -46,19 +46,31 @@ const ContactDetail = ({ id, token, authInfo }) => {
   }, [])
 
 
-  const ImageContainer = () => (
-    <div
-      className="Container height"
-      style={{
-        backgroundImage: project !== null ? project.headImg : '',
-      }}
-    >
-      <img className="img" src={BASE_API_URL + project.headImg} alt="Project Data" />
-      <span className="status">
-        { project.status }
-      </span>
-      <style jsx>
-        {`
+  const ImageContainer = () => {
+    const style = project.status === 'Pending' ? {
+      background: '#f9dca8',
+    } : project.status === 'Reject' ? {
+      background: '#ff9a9a',
+    } : project.status === 'Expired' ? {
+      background: '#dfdfdf',
+    } : project.status === 'Working' ? {
+      background: '#00effb',
+    } : {
+      background: '#53fb48',
+    }
+    return (
+      <div
+        className="Container height"
+        style={{
+          backgroundImage: project !== null ? project.headImg : '',
+        }}
+      >
+        <img className="img" src={BASE_API_URL + project.headImg} alt="Project Data" />
+        <span className="status" style={style}>
+          { project.status }
+        </span>
+        <style jsx>
+          {`
 					.Container {
 						border-radius: 1rem;
 						overflow: hidden;
@@ -74,12 +86,14 @@ const ContactDetail = ({ id, token, authInfo }) => {
 					}
 
 					.status {
-						position: relative;
+						position: absolute;
 						z-index: 10;
 						background: #fff;
 						display: inline-block;
 						padding: 4px .5rem;
 						border-radius: 1rem;
+						bottom: .3rem;
+						left: .2rem;
 					}
 
 					.img {
@@ -93,9 +107,10 @@ const ContactDetail = ({ id, token, authInfo }) => {
 					}
 			`}
 
-      </style>
-    </div>
-  )
+        </style>
+      </div>
+    )
+  }
 
 
   const _setParentProjectUpdate = (payload) => {
@@ -137,7 +152,9 @@ const ContactDetail = ({ id, token, authInfo }) => {
           { isLoading === true && <div className="Container min-height-220"><EditorLoading type="sm" /></div>}
           { isLoading === true && <div className="Container min-height-220"><EditorLoading type="sm" /></div>}
           { isLoading === false && project !== null && <EditorQRCode id={id} /> }
-          { isLoading === false && project !== null && <CreatedByForStaff profile={project.user} /> }
+          { isLoading === false && project !== null && <CreatedByForStaff profile={project.user} title="Created" /> }
+          { isLoading === false && project !== null && project.acceptedBy && <CreatedByForStaff profile={project.acceptedBy} title="Accepted" /> }
+          { isLoading === false && project !== null && project.assignedBy && <CreatedByForStaff profile={project.assignedBy} title="Assigned" /> }
         </Col>
       </Row>
 
