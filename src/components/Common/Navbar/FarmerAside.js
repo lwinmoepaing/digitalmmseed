@@ -23,8 +23,8 @@ const FarmerAside = (props) => {
     { name: 'Dashboard', url: '/farmer', icon: DashboardOutlined },
     { name: 'My Projects', url: '/farmer/projects', icon: ProjectOutlined },
     { name: 'User Projects', url: '/farmer/user-projects', icon: CopyOutlined },
-    { name: 'Map', url: '/farmer/map', icon: FlagOutlined },
     { name: 'Create Blog', url: '/farmer/blog/create', icon: BookOutlined },
+    { name: 'Map', url: '/farmer/map', icon: FlagOutlined },
     { name: 'About', url: '/farmer/about', icon: QuestionCircleOutlined },
     { name: 'Profile', url: '/farmer/profile', icon: SettingFilled },
   ]

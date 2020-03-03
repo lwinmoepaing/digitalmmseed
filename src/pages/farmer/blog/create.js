@@ -10,7 +10,7 @@ import { withTranslation, i18n } from '../../../i18n'
 const FarmerCreateBlog = ({ authInfo, token, t }) => (
   <FarmerLayout i18n={i18n}>
 
-    <QuillEditor />
+    <QuillEditor token={token} />
     <style jsx>
       {`
 				.Container {
