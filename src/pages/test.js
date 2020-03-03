@@ -1,54 +1,52 @@
-import { Modal, Button } from 'antd'
+/* eslint-disable react/no-danger */
+/* eslint-disable react/prop-types */
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 
-const App = () => {
-  const [visible, setVisible] = useState(false)
+const QuillNoSSRWrapper = dynamic(
+  import('react-quill'), { ssr: false, loading: () => <p>Loading ...</p> },
+)
 
+const modules = {
+  toolbar: [
+    [{ header: '1' }, { header: '2' }, { font: [] }],
+    [{ size: [] }],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [{ list: 'ordered' }, { list: 'bullet' },
+      { indent: '-1' }, { indent: '+1' }],
+    ['image'],
+    ['clean'],
+  ],
+  clipboard: {
+    // toggle to add extra line breaks when pasting HTML:
+    matchVisual: false,
+  },
+}
+/*
+ * Quill editor formats
+ * See https://quilljs.com/docs/formats/
+ */
+const formats = [
+  'header', 'font', 'size',
+  'bold', 'italic', 'underline', 'strike', 'blockquote',
+  'list', 'bullet', 'indent',
+  'link', 'image', 'video',
+]
+
+const Editor = ({ defaultValue = '', onSubmit }) => {
+  const [text, setText] = useState(null)
   return (
     <div>
-      <Button type="dashed" onClick={() => setVisible(true)}>
-        Open Modal
-      </Button>
-      <Modal
-        title="Testing Account For ( WIT project )"
-        visible={visible}
-        onCancel={() => setVisible(false)}
-      >
-        <div className="modalContainer">
-          <p> Admin : admin@gmail.com</p>
-          <p> Admin Password: 123456 </p>
-        </div>
-        <div className="modalContainer">
-          <p> Staff : staff@gmail.com</p>
-          <p> Staff Password: 123456 </p>
-        </div>
-        <div className="modalContainer">
-          <p> Farmer : farmer@gmail.com</p>
-          <p> Farmer Password: 123456 </p>
-        </div>
-        <div className="modalContainer">
-          <p> User : user@gmail.com</p>
-          <p> User Password: 123456 </p>
-        </div>
-
-      </Modal>
-      <style jsx>
-        {`
-					p {
-						margin: 0;
-					}
-
-					.modalContainer {
-						padding: .5rem;
-						border-radius: 1rem;
-						background: #e8e8e8;
-						margin: .5rem 0;
-					}
-				`}
-      </style>
+      <QuillNoSSRWrapper
+        modules={modules}
+        formats={formats}
+        defaultValue={defaultValue}
+        onChange={(e) => setText(e)}
+        theme="snow"
+      />
+      <button type="button" onClick={() => onSubmit(text)}> OnSubmiy </button>
+      <div dangerouslySetInnerHTML={{ __html: text }} />
     </div>
   )
 }
-
-
-export default App
+export default Editor

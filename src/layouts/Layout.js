@@ -33,13 +33,24 @@ const DefaultLayout = ({ children, router, i18n }) => {
         >
           { children }
         </Content>
-        <footer style={{ padding: '1rem' }}>
+        <footer className="Footer">
           © Digital MM Farm 2020. All right reserved.
 
           <a href="tel:+959420059241" style={{ float: 'right' }}> 09420059241 </a>
         </footer>
 
       </Layout>
+
+      <style jsx>
+        {`
+				.Footer {
+					padding: 1rem;
+					background: #dfdfdf;
+					font-size: .9em;
+				}
+			`}
+
+      </style>
     </div>
   )
 }
