@@ -4,7 +4,10 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react'
 import dynamic from 'next/dynamic'
-import { Row, Col, Button } from 'antd'
+import fetch from 'isomorphic-unfetch'
+import {
+  Row, Col, Button, message,
+} from 'antd'
 import FileUpload from '../Upload/FileUpload'
 import { BASE_API_URL } from '../../../../config'
 
@@ -74,17 +77,58 @@ const formats = [
   'link', 'image', 'video',
 ]
 
-const Editor = ({ defaultValue = '', onSubmit, token }) => {
+const Editor = ({ token }) => {
+  const initImage = '/wallpaper/wallpaper.jpg'
   // Text Edit
-  const [text, setText] = useState(null)
+  const [text, setText] = useState('')
+  // Title Edit
+  const [title, setTitle] = useState('')
   // Image Edit
-  const [image, setImage] = useState('/wallpaper/wallpaper.jpg')
+  const [image, setImage] = useState(initImage)
   // Is Loading
-  const [isLoading, setLoading] = useState(true)
+  const [isLoading, setLoading] = useState(false)
 
   // Set Image
   const _setImage = (img) => {
     setImage(img)
+  }
+
+  const clear = () => {
+    setText('')
+    setTitle('')
+    setImage(initImage)
+  }
+
+  const CreatePost = async () => {
+    setLoading(true)
+    try {
+      const url = `${BASE_API_URL}/api/v1/blog`
+      const payloads = {
+        headImg: image,
+        title,
+        body: text,
+      }
+      const options = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify(payloads),
+      }
+      const response = await fetch(url, options)
+      if (!response.ok) throw response
+      message.success('Successfully Updated')
+      clear()
+      setLoading(false)
+    } catch (e) {
+      const errorMessage = await (e.text())
+      const { message: mes, data = [] } = await JSON.parse(errorMessage)
+      if (mes) { message.error(mes) }
+      if (data !== null && data.length > 0) {
+        data.forEach(({ message: mesArr }) => {
+          message.error(mesArr)
+        })
+      }
+      setLoading(false)
+    }
   }
 
 
@@ -103,42 +147,65 @@ const Editor = ({ defaultValue = '', onSubmit, token }) => {
 
         <Col xs={{ span: 24 }} md={{ span: 12 }}>
           <div className="Container">
+            <input
+              type="text"
+              id="Blog Title Text"
+              className="CustomInput"
+              placeholder="Enter Blog Title"
+              disabled={isLoading}
+              readOnly={isLoading}
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
             <QuillNoSSRWrapper
               modules={modules}
               formats={formats}
-              defaultValue={defaultValue}
+              value={text}
               onChange={(e) => setText(e)}
               theme="snow"
             />
             <br />
-            <Button loading={isLoading} type="primary" onClick={() => onSubmit(text)}>
+            <Button loading={isLoading} type="primary" onClick={() => CreatePost()}>
               Submit
             </Button>
           </div>
         </Col>
 
         <Col xs={{ span: 24 }} md={{ span: 12 }}>
-          <div className="Container font-mm" dangerouslySetInnerHTML={{ __html: text }} />
+          <div className="Container font-mm">
+            <h2>{title}</h2>
+            <div dangerouslySetInnerHTML={{ __html: text }} />
+          </div>
         </Col>
       </Row>
 
       <style jsx>
         {`
-				.Container {
-					padding: 1rem;
-					background: #ffffff;
-					border-radius: 1rem;
-					margin-bottom: 1rem;
-				}
+					.Container {
+						padding: 1rem;
+						background: #ffffff;
+						border-radius: 1rem;
+						margin-bottom: 1rem;
+					}
 
-				.Container  img {
-					width: 100%;
-					height: auto;
-				}
+					.Container  img {
+						width: 100%;
+						height: auto;
+					}
 
-				.Container strong {
-					font-weight: bold,
-				}
+					.Container strong {
+						font-weight: bold,
+					}
+
+
+					.CustomInput {
+						width: 100%;
+						background: #f9f9f9;
+						border: 1px solid #efefef;
+						border-radius: 3px;
+						padding: 2px 9px;
+						margin-bottom: 1rem;
+					}
 				`}
 
       </style>

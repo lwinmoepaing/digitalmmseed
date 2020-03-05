@@ -171,7 +171,7 @@ const FarmerSelfCard = ({ payload, edit }) => {
 					}
 
 					.CardTitle {
-						display: -webkit-box!important;
+						display: blockimportant;
 						-webkit-line-clamp: 2;
 						-moz-line-clamp: 2;
 						-ms-line-clamp: 2;
@@ -184,7 +184,7 @@ const FarmerSelfCard = ({ payload, edit }) => {
 						box-orient: vertical;
 						overflow: hidden;
 						text-overflow: ellipsis;
-						white-space: normal;
+						white-space: nowrap;;
 						font-weight: 600;
 						height: 45px;
 						padding-top: 26px;

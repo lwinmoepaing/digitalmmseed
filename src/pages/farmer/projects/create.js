@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 import fetch from 'isomorphic-unfetch'
 import FarmerLayout from '../../../layouts/FarmerLayout'
 import { withTranslation, i18n } from '../../../i18n'
@@ -8,31 +7,27 @@ import isFarmerMiddleware from '../../../../lib/middleware/isFarmerMiddleware'
 import CreateProject from '../../../components/Common/Project/CreateProject'
 import { BASE_API_URL } from '../../../../config'
 
-const UserProfile = ({ token, authInfo }) => {
-  const router = useRouter()
+const UserProfile = ({ token, authInfo }) => (
+  <FarmerLayout i18n={i18n}>
+    <Head>
+      <title>
+        Create Project Data:
+      </title>
+    </Head>
 
-  return (
-    <FarmerLayout i18n={i18n}>
-      <Head>
-        <title>
-          Create Project Data:
-        </title>
-      </Head>
+    <CreateProject token={token} authInfo={authInfo} redirect="farmer" />
 
-      <CreateProject token={token} authInfo={authInfo} redirect="farmer" />
-
-      <style jsx>
-        {`
+    <style jsx>
+      {`
 				.Container {
 					background: #fff;
 					border-radius: 1rem;
 					padding: 1rem;
 				}
 			`}
-      </style>
-    </FarmerLayout>
-  )
-}
+    </style>
+  </FarmerLayout>
+)
 
 UserProfile.getInitialProps = async (context) => {
   const { authInfo, token } = await isFarmerMiddleware(context)
