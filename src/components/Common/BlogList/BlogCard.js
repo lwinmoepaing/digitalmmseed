@@ -1,13 +1,15 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable react/prop-types */
 import { Row, Col } from 'antd'
 import { BASE_API_URL } from '../../../../config'
+import { Router } from '../../../i18n'
 
 const BlogCard = ({ blog, authInfo }) => {
   const goTo = () => {
-    alert(authInfo.role)
+    Router.push(`/${authInfo.role.toLowerCase()}/blog/_id?id=${blog._id}`, `/${authInfo.role.toLowerCase()}/blog/${blog._id}`, { shallow: true })
   }
   return (
     <div className="Container" onClick={goTo}>
@@ -52,6 +54,7 @@ const BlogCard = ({ blog, authInfo }) => {
 			.RightSide {
 				padding: 1.2rem;
 				position: relative;
+				border-left: 1px solid #dfdfdf;
 			}
 
 			.ImageContainer {

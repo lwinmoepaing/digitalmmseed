@@ -6,7 +6,9 @@ const Card = () => (
   <div className="Container">
     <Row>
       <Col xs={{ span: 4 }} md={{ span: 8 }}>
-        <TwoTreeLoading style={{ width: 90 }} />
+        <div style={{ textAlign: 'center' }}>
+          <TwoTreeLoading style={{ width: 40 }} />
+        </div>
       </Col>
       <Col xs={{ span: 20 }} md={{ span: 16 }}>
         <div className="RightSide" />
@@ -48,6 +50,7 @@ const Card = () => (
 				.RightSide {
 					padding: 1.2rem;
 					position: relative;
+					border-left: 1px solid #dfdfdf;
 				}
 
 				.ImageContainer {

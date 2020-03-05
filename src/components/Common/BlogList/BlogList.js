@@ -8,7 +8,7 @@ import BlogCard from './BlogCard'
 import CardPostLoading from '../Card/CardPostLoading'
 
 const AllBlogsForFarmer = (props) => {
-  const { authInfo, token } = props
+  const { authInfo, token, byUserId } = props
   const [blogs, setBlog] = useState([])
   const [isLoading, setLoading] = useState(true)
   const [meta, setMeta] = useState({})
@@ -16,7 +16,7 @@ const AllBlogsForFarmer = (props) => {
 
   const fetchData = async (pageNumber = 1) => {
     setLoading(true)
-    const url = `${BASE_API_URL}/api/v1/blog?page=${pageNumber}`
+    const url = byUserId === true ? `${BASE_API_URL}/api/v1/blog/userId/${authInfo._id}?page=${pageNumber}` : `${BASE_API_URL}/api/v1/blog?page=${pageNumber}`
     try {
       const res = await fetch(url)
       const { data, meta: getMeta } = await res.json()
