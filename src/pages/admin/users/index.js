@@ -9,7 +9,7 @@ import RegisterProfile from '../../../components/Common/Profile/ResisterProfile'
 const UserPage = ({ authInfo, token, t }) => (
   <AdminLayout i18n={i18n}>
 
-    <RegisterProfile type="Admin" />
+    <RegisterProfile type="Admin" t={t} />
 
     <style jsx>
       {`

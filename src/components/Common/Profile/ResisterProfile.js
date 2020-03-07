@@ -8,7 +8,7 @@ import fetch from 'isomorphic-unfetch'
 import { useRouter } from 'next/router'
 import { BASE_API_URL } from '../../../../config'
 
-const RegisterProfile = ({ token, type = 'User' }) => {
+const RegisterProfile = ({ token, type = 'User', t }) => {
   const initProfile = {
     name: '',
     email: '',
@@ -143,16 +143,24 @@ const RegisterProfile = ({ token, type = 'User' }) => {
       <Col xs={{ span: 24 }} md={{ span: type === 'Guest' ? 24 : 12 }}>
         <div className="Container">
 
-          <h3 className="text-center"> Register Form </h3>
+          <h3 className="text-center">
+            {' '}
+            {t('Register Form')}
+            {' '}
+          </h3>
 
           <div className="FieldContainer">
-            <h3> User Name </h3>
+            <h3>
+              {' '}
+              {t('User Name')}
+              {' '}
+            </h3>
 
             <input
               type="text"
               id="UserName"
               className="CustomInput"
-              placeholder="Enter Name"
+              placeholder={t('Enter Name')}
               defaultValue={profile.name}
               value={profile.name}
               disabled={inputLoading}
@@ -162,13 +170,17 @@ const RegisterProfile = ({ token, type = 'User' }) => {
           </div>
 
           <div className="FieldContainer">
-            <h3> Password </h3>
+            <h3>
+              {' '}
+              {t('Password')}
+              {' '}
+            </h3>
 
             <input
               type="password"
               id="UserPassword"
               className="CustomInput"
-              placeholder="Enter Password"
+              placeholder={t('Enter Password')}
               defaultValue={profile.password}
               value={profile.password}
               disabled={inputLoading}
@@ -179,13 +191,17 @@ const RegisterProfile = ({ token, type = 'User' }) => {
 
 
           <div className="FieldContainer">
-            <h3> Email </h3>
+            <h3>
+              {' '}
+              {t('Email')}
+              {' '}
+            </h3>
 
             <input
               type="text"
               id="Email"
               className="CustomInput"
-              placeholder="Enter Email"
+              placeholder={t('Enter Email')}
               defaultValue={profile.email}
               value={profile.email}
               disabled={inputLoading}
@@ -195,13 +211,17 @@ const RegisterProfile = ({ token, type = 'User' }) => {
           </div>
 
           <div className="FieldContainer">
-            <h3> Phone </h3>
+            <h3>
+              {' '}
+              {t('Phone')}
+              {' '}
+            </h3>
 
             <input
               type="text"
               id="Userphone"
               className="CustomInput"
-              placeholder="Enter Phone"
+              placeholder={t('Enter Phone')}
               defaultValue={profile.phone}
               value={profile.phone}
               disabled={inputLoading}
@@ -212,7 +232,11 @@ const RegisterProfile = ({ token, type = 'User' }) => {
           </div>
 
           <div className="FieldContainer">
-            <h3> Skills </h3>
+            <h3>
+              {' '}
+              {t('Skills')}
+              {' '}
+            </h3>
             <Select
               disabled={inputLoading}
               mode="tags"
@@ -223,11 +247,15 @@ const RegisterProfile = ({ token, type = 'User' }) => {
           </div>
 
           <div className="FieldContainer">
-            <h3> Role </h3>
+            <h3>
+              {' '}
+              {t('Role')}
+              {' '}
+            </h3>
             <Radio.Group onChange={(e) => _onChange(e, 'role')} defaultValue={profile.role}>
-              <Radio value="User">User</Radio>
-              <Radio value="Farmer">Farmer</Radio>
-              { type === 'Admin' && <Radio value="Staff">Staff</Radio>}
+              <Radio value="User">{t('User')}</Radio>
+              <Radio value="Farmer">{t('Farmer')}</Radio>
+              { type === 'Admin' && <Radio value="Staff">{t('Staff')}</Radio>}
             </Radio.Group>
           </div>
 
@@ -238,7 +266,7 @@ const RegisterProfile = ({ token, type = 'User' }) => {
               style={ButtonStyle}
               loading={inputLoading}
             >
-              Submit
+              {t('Submit')}
             </Button>
           </div>
 
@@ -261,7 +289,7 @@ const RegisterProfile = ({ token, type = 'User' }) => {
 					}
 
 					.FieldContainer > h3 {
-						margin: 0;
+						margin: .1rem 0;
 						font-size: .8em;
 					}
 

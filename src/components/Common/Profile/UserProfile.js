@@ -13,7 +13,7 @@ import EditorLoading from '../Editor/EditorLoading'
 import FileUpload from '../Upload/FileUpload'
 import { BASE_API_URL } from '../../../../config'
 
-const UserProfile = ({ token }) => {
+const UserProfile = ({ token, t }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [inputLoading, setInputLoading] = useState(false)
   const [isEdit, setIsEdit] = useState(false)
@@ -170,14 +170,18 @@ const UserProfile = ({ token }) => {
           </div>
           )}
           <div className="FieldContainer">
-            <h3> User Name </h3>
+            <h3>
+              {' '}
+              {t('User Name')}
+              {' '}
+            </h3>
 
             {	isEdit && (
             <input
               type="text"
               id="UserName"
               className="CustomInput"
-              placeholder="Enter Name"
+              placeholder={t('Enter Name')}
               defaultValue={profile.name}
               disabled={inputLoading}
               readOnly={inputLoading}
@@ -191,13 +195,17 @@ const UserProfile = ({ token }) => {
             )}
           </div>
           <div className="FieldContainer">
-            <h3> Phone </h3>
+            <h3>
+              {' '}
+              {t('Phone')}
+              {' '}
+            </h3>
             {	isEdit && (
             <input
               type="text"
               id="Userphone"
               className="CustomInput"
-              placeholder="Enter Phone"
+              placeholder={t('Enter Phone')}
               defaultValue={profile.phone}
               disabled={inputLoading}
               readOnly={inputLoading}
@@ -212,7 +220,11 @@ const UserProfile = ({ token }) => {
           </div>
 
           <div className="FieldContainer">
-            <h3> Skills </h3>
+            <h3>
+              {' '}
+              {t('Skills')}
+              {' '}
+            </h3>
             {isEdit && (
             <Select
               disabled={inputLoading}
@@ -231,7 +243,11 @@ const UserProfile = ({ token }) => {
           </div>
 
           <div className="FieldContainer">
-            <h3> Role </h3>
+            <h3>
+              {' '}
+              {t('Role')}
+              {' '}
+            </h3>
             <p>
               { profile.role }
             </p>
@@ -245,7 +261,7 @@ const UserProfile = ({ token }) => {
               style={ButtonStyle}
               loading={inputLoading}
             >
-              Submit
+              {t('Submit')}
             </Button>
             )}
           </div>

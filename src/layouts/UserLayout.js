@@ -12,6 +12,7 @@ import { Layout } from 'antd'
 import PropTypes from 'prop-types'
 import CreateNewProject from '../components/Common/CreateNewProject/CreateNewProject'
 import UserAside from '../components/Common/Navbar/UserAside'
+import SelectLanguage from '../components/Common/SelectLanguage/SelectLanguage'
 
 const UserLayout = (props) => {
   const [collapsed, setCollapsed] = useState(false)
@@ -44,6 +45,7 @@ const UserLayout = (props) => {
     setCollapsed(!collapsed)
   }
 
+  const setLang = (val) => i18n.changeLanguage(val)
 
   return (
     <Layout>
@@ -66,6 +68,7 @@ const UserLayout = (props) => {
             ? <RightOutlined className="trigger" onClick={toggle} />
             : <MenuFoldOutlined className="trigger" onClick={toggle} />}
           <CreateNewProject type="user" />
+          <SelectLanguage setLang={setLang} i18n={i18n} />
         </Header>
         <Content
           className="site-layout-background"

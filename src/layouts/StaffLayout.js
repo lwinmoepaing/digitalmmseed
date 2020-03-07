@@ -12,6 +12,7 @@ import { Layout } from 'antd'
 import PropTypes from 'prop-types'
 
 import StaffAside from '../components/Common/Navbar/StaffAside'
+import SelectLanguage from '../components/Common/SelectLanguage/SelectLanguage'
 
 const StaffLayout = (props) => {
   const [collapsed, setCollapsed] = useState(false)
@@ -44,6 +45,7 @@ const StaffLayout = (props) => {
     setCollapsed(!collapsed)
   }
 
+  const setLang = (val) => i18n.changeLanguage(val)
 
   return (
     <Layout>
@@ -65,6 +67,7 @@ const StaffLayout = (props) => {
           {collapsed
             ? <RightOutlined className="trigger" onClick={toggle} />
             : <MenuFoldOutlined className="trigger" onClick={toggle} />}
+          <SelectLanguage setLang={setLang} i18n={i18n} />
         </Header>
         <Content
           className="site-layout-background"

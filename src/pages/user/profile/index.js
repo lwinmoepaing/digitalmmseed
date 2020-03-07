@@ -9,7 +9,7 @@ import UserProfile from '../../../components/Common/Profile/UserProfile'
 const Index = ({ authInfo, token, t }) => (
   <UserLayout i18n={i18n}>
 
-    <UserProfile token={token} />
+    <UserProfile token={token} t={t} />
 
     <style jsx>
       {`

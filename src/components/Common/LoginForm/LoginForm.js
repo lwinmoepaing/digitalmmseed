@@ -28,6 +28,7 @@ const ButtonStyle = {
 const LoginForm = ({
   Auth,
   onSubmitAuth,
+  t,
 }) => {
   const router = useRouter()
   const [userName, setUserName] = useState('')
@@ -58,7 +59,11 @@ const LoginForm = ({
   }
   return (
     <div className="LoginFormContainer">
-      <h3 className="text-center"> Login Page </h3>
+      <h3 className="text-center">
+        {' '}
+        {t('Login Page')}
+        {' '}
+      </h3>
 
       <div className="InputContainer">
 
@@ -68,7 +73,7 @@ const LoginForm = ({
 
         <input
           className="Input"
-          placeholder="Username"
+          placeholder={t('Useremail')}
           onChange={(e) => {
             setUserName(e.target.value)
           }}
@@ -83,7 +88,7 @@ const LoginForm = ({
 
         <input
           className="Input"
-          placeholder="Password"
+          placeholder={t('Password')}
           type="password"
           onChange={(e) => {
             setUserPassword(e.target.value)
@@ -102,12 +107,15 @@ const LoginForm = ({
         loading={Auth.isLoading}
         style={ButtonStyle}
       >
-        Log in
+        {t('LoginSubmit')}
       </Button>
       <Form.Item>
 
         <Link href="/register">
-          <a href="#!" style={{ marginLeft: 3 }}>Register now!</a>
+          <a href="#!" style={{ marginLeft: 3 }}>
+            {t('Register now')}
+            !
+          </a>
         </Link>
       </Form.Item>
       <style jsx>

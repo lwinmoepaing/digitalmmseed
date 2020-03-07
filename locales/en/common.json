@@ -9,6 +9,7 @@
 	"OurGoals": "Our Goals",
 	"Goal": "Only if poverty can be reduced for  rural family, we can make easy to solve our business solution The Main Fact to reduce poverty of the rural is to get Daily Earning for their life.\tFor example there is poultry.\tYou can get egg daily and so can get earning daily.\tWhen you get the eggs , you have to make small bites who made by rural ladies which is consistent with the Gender Equality. And men are farming and making poultry. Other family, Other villagers also grow maize seeds for poultry, which will be in line with income.",
 	"GoalMessage": "Digital MM Farm can reduce global warming by connecting among the professional agriculturalists and the people wanted to share agricultural technologies, wanted to plant commercially and the people loved plantation.",
+
 	"HowWorks": "How It Works",
 	"HowWorksText": "Any account owner who interested in agriculture and livestock can create a project with their own new ideas.In a project, you can choose to place either agricultural or livestock. Then we will reply back to you before the Project Expired date.",
 
@@ -19,9 +20,29 @@
 
 	"LatestProjectFromFarmer": "Latest Project From Farmers",
 	"LatestProjectFromUser": "Latest Project From Users",
+
 	"DontWorryToUse": "Don't Worry To Use",
 	"DontWorryText": "Our staff are self-explanatory and easy to reach in the nearest rural villages. Meetings are usually held once a month.",
 	"DontWorryCall": "This No can be called to explain you everything you want to know.",
+
+	"Login Page": "Login Page",
+	"Useremail": "User Email",
+	"Password": "Password",
+	"LoginSubmit": "Login",
+	"Register now": "Register now",
+	"Register Form": "Register Form",
+	"Enter Name": "Enter Name",
+	"Enter Password": "Enter Password",
+	"Enter Email": "Enter Email",
+	"Enter Phone": "Enter Phone",
+	"Skills": "Skills",
+	"Role": "Role",
+	"Farmer": "Farmer",
+	"Staff": "Staff",
+	"Submit": "Submit",
+	"Phone": "Phone",
+	"Email": "Email",
+	"User Name": "User Name",
 
 	"TestingAcc": "Testing Acccount!!",
 	"TestingAccMessage": "Testing Account for WIT Project",

@@ -7,13 +7,13 @@ import isAuthMiddleware from '../../lib/middleware/isAuthMiddleware'
 import RegisterProfile from '../components/Common/Profile/ResisterProfile'
 
 
-const Register = (props) => (
+const Register = ({ t }) => (
   <Layout i18n={i18n}>
     <Head>
       <title> Register Page </title>
     </Head>
     <div className="Container">
-      <RegisterProfile type="Guest" />
+      <RegisterProfile type="Guest" t={t} />
     </div>
     <style jsx>
       {`
