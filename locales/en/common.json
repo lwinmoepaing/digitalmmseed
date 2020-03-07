@@ -3,6 +3,7 @@
 	"User": "User",
 	"About": "About",
 	"Login": "Login",
+	"Logout": "Logout",
 	"Welcome": "Welcome To DMmF",
 	"WelcomeText": "This platform can perform connectively among farmers in countryside, gardeners, agriculturalists, and people who interested in agriculture commercially, own businessmen and the people wanted to plant beautiful flowering plants for their gardens.",
 	"OurGoals": "Our Goals",
@@ -20,5 +21,18 @@
 	"LatestProjectFromUser": "Latest Project From Users",
 	"DontWorryToUse": "Don't Worry To Use",
 	"DontWorryText": "Our staff are self-explanatory and easy to reach in the nearest rural villages. Meetings are usually held once a month.",
-	"DontWorryCall": "This No can be called to explain you everything you want to know."
+	"DontWorryCall": "This No can be called to explain you everything you want to know.",
+
+	"TestingAcc": "Testing Acccount!!",
+	"TestingAccMessage": "Testing Account for WIT Project",
+
+	"Dashboard": "Dashboard",
+	"My Projects": "My Projects",
+	"Farmer Projects": "Farmer Projects",
+	"User Projects": "User Projects",
+	"Blog List": "Blog List",
+	"My Blog": "My Blog",
+	"Create Blog": "Create Blog",
+	"Map": "Map",
+	"Profile": "Profile"
 }

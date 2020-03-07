@@ -19,7 +19,7 @@ import { Link, withTranslation } from '../../../i18n'
 import { logout } from '../../../../store/actions/authAction'
 
 const FarmerAside = (props) => {
-  const { router, logout: onLogout } = props
+  const { router, logout: onLogout, t } = props
 
   const links = [
     { name: 'Dashboard', url: '/user', icon: DashboardOutlined },
@@ -48,7 +48,7 @@ const FarmerAside = (props) => {
             <Link href={link.url}>
               <a href="#!">
                 <link.icon />
-                <span>{link.name}</span>
+                <span>{t(link.name)}</span>
               </a>
             </Link>
           </Menu.Item>

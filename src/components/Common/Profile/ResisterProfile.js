@@ -139,7 +139,7 @@ const RegisterProfile = ({ token, type = 'User' }) => {
   }
 
   return (
-    <Row gutter={[16, 16]}>
+    <Row gutter={[16, 16]} justify="center">
       <Col xs={{ span: 24 }} md={{ span: type === 'Guest' ? 24 : 12 }}>
         <div className="Container">
 
