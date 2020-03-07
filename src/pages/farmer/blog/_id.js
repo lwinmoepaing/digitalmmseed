@@ -1,11 +1,12 @@
+/* eslint-disable react/prop-types */
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import FarmerLayout from '../../../layouts/FarmerLayout'
 import { withTranslation, i18n } from '../../../i18n'
 import isFarmerMiddleware from '../../../../lib/middleware/isFarmerMiddleware'
-// import ProjectDetail from '../../../../components/Farmer/Project/ProjectDetail'
+import Blog from '../../../components/Common/BlogList/Blog'
 
-const BlogDetail = ({ token }) => {
+const BlogDetail = ({ token, authInfo }) => {
   const router = useRouter()
   const { query: { id } } = router
 
@@ -13,16 +14,11 @@ const BlogDetail = ({ token }) => {
     <FarmerLayout i18n={i18n}>
       <Head>
         <title>
-          Project Data:
-          {id}
+          Blog Data:
         </title>
       </Head>
 
-      {/* <ProjectDetail id={id} token={token} /> */}
-
-      <div className="Container">
-        {id}
-      </div>
+      <Blog id={id} token={token} authInfo={authInfo} />
 
       <style jsx>
         {`

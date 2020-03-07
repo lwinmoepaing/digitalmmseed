@@ -18,7 +18,6 @@ const ProjectDetail = ({ id, token }) => {
   const [isError, setError] = useState(false)
   // Edit Project
   const [isEdit, setIsEdit] = useState(false)
-  const [editProject, setEditProject] = useState(null)
 
   const fetchData = async () => {
     if (project === null) {
