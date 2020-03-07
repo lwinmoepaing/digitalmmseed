@@ -6,6 +6,7 @@ import EditorLoading from '../Editor/EditorLoading'
 import BlogImageContainer from './BlogImageContainer'
 import BlogContainer from './BlogContainer'
 import EditQuilEditor from '../Editor/EditQuilEditor'
+import Youtube from './Youtube'
 import { BASE_API_URL } from '../../../../config'
 
 /* eslint-disable react/prop-types */
@@ -53,6 +54,7 @@ const Blog = ({ id, authInfo, token }) => {
     <div>
       { isLoading }
       { isLoading === true && <div className="Container"><EditorLoading /></div>}
+      { isLoading === true && <div className="Container"><EditorLoading /></div>}
       { isLoading === false && blog !== null && <BlogImageContainer blog={blog} />}
       { isLoading === false && blog !== null && isEdit === false && (
       <BlogContainer
@@ -72,12 +74,24 @@ const Blog = ({ id, authInfo, token }) => {
         cancel={() => setIsEdit(false)}
       />
       ) }
+      { isLoading === false && blog !== null && blog.youtubeUrl && (
+      <div className="Container Youtube">
+        <Youtube url={blog.youtubeUrl} />
+        <p>{blog.youtubeCaption}</p>
+      </div>
+      )}
+
       <style jsx>
         {`
 					.Container {
 						background: #fff;
 						border-radius: 1rem;
 						padding: 1rem;
+						margin-top: 1rem;
+					}
+
+					.Youtube {
+						max-width: 500px;
 					}
 				`}
       </style>

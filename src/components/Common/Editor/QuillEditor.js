@@ -79,10 +79,15 @@ const formats = [
 
 const Editor = ({ token }) => {
   const initImage = '/wallpaper/wallpaper.jpg'
+  // ForceRender
+  const [forceQuill, setForceQuill] = useState('ForceQuill')
   // Text Edit
   const [text, setText] = useState('')
   // Title Edit
   const [title, setTitle] = useState('')
+  // Youtube
+  const [youtubeUrl, setYoutubeUrl] = useState('')
+  const [youtubeCaption, setYoutubeCaption] = useState('')
   // Image Edit
   const [image, setImage] = useState(initImage)
   // Is Loading
@@ -96,6 +101,9 @@ const Editor = ({ token }) => {
   const clear = () => {
     setText('')
     setTitle('')
+    setYoutubeUrl('')
+    setYoutubeCaption('')
+    setForceQuill(`ForceQuil${Math.random()}`)
     setImage(initImage)
   }
 
@@ -107,6 +115,8 @@ const Editor = ({ token }) => {
         headImg: image,
         title,
         body: text,
+        youtubeUrl,
+        youtubeCaption,
       }
       const options = {
         method: 'POST',
@@ -157,12 +167,33 @@ const Editor = ({ token }) => {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
-            <QuillNoSSRWrapper
-              modules={modules}
-              formats={formats}
-              value={text}
-              onChange={(e) => setText(e)}
-              theme="snow"
+            <div style={{ marginBottom: '1rem' }}>
+              <QuillNoSSRWrapper
+                modules={modules}
+                formats={formats}
+                defaultValue={text}
+                key={forceQuill}
+                onChange={(e) => setText(e)}
+                theme="snow"
+              />
+            </div>
+            <input
+              type="text"
+              className="CustomInput"
+              placeholder="If You Wanna Attach Youtube Url"
+              disabled={isLoading}
+              readOnly={isLoading}
+              value={youtubeUrl}
+              onChange={(e) => setYoutubeUrl(e.target.value)}
+            />
+            <input
+              type="text"
+              className="CustomInput"
+              placeholder="Caption"
+              disabled={isLoading}
+              readOnly={isLoading}
+              value={youtubeCaption}
+              onChange={(e) => setYoutubeCaption(e.target.value)}
             />
             <br />
             <Button loading={isLoading} type="primary" onClick={() => CreatePost()}>
@@ -173,6 +204,7 @@ const Editor = ({ token }) => {
 
         <Col xs={{ span: 24 }} md={{ span: 12 }}>
           <div className="Container font-mm">
+            <div> Preview </div>
             <h2>{title}</h2>
             <div dangerouslySetInnerHTML={{ __html: text }} />
           </div>
