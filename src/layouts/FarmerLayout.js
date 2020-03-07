@@ -12,6 +12,8 @@ import { Layout } from 'antd'
 import PropTypes from 'prop-types'
 
 import FarmerAside from '../components/Common/Navbar/FarmerAside'
+import CreateNewProject from '../components/Common/CreateNewProject/CreateNewProject'
+import SelectLanguage from '../components/Common/SelectLanguage/SelectLanguage'
 
 const FarmerLayout = (props) => {
   const [collapsed, setCollapsed] = useState(false)
@@ -44,6 +46,7 @@ const FarmerLayout = (props) => {
     setCollapsed(!collapsed)
   }
 
+  const setLang = (val) => i18n.changeLanguage(val)
 
   return (
     <Layout>
@@ -61,13 +64,12 @@ const FarmerLayout = (props) => {
         <FarmerAside router={router} />
       </Sider>
       <Layout className="site-layout">
-        <Header className="site-layout-background" style={{ paddingLeft: 14 }}>
+        <Header className="site-layout-background" style={{ paddingLeft: 14, paddingRight: 80 }}>
           {collapsed
             ? <RightOutlined className="trigger" onClick={toggle} />
             : <MenuFoldOutlined className="trigger" onClick={toggle} />}
-          <div className="CreateNewProject">
-            <button type="button" onClick={() => router.push('/farmer/projects/create')}> Create New Project</button>
-          </div>
+          <CreateNewProject type="farmer" />
+          <SelectLanguage setLang={setLang} i18n={i18n} />
         </Header>
         <Content
           className="site-layout-background"

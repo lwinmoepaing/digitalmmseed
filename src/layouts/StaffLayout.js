@@ -61,13 +61,10 @@ const StaffLayout = (props) => {
         <StaffAside router={router} />
       </Sider>
       <Layout className="site-layout">
-        <Header className="site-layout-background" style={{ paddingLeft: 14 }}>
+        <Header className="site-layout-background" style={{ paddingLeft: 14, paddingRight: 80 }}>
           {collapsed
             ? <RightOutlined className="trigger" onClick={toggle} />
             : <MenuFoldOutlined className="trigger" onClick={toggle} />}
-          {/* <div className="CreateNewProject">
-            <button type="button" onClick={() => router.push('/farmer/projects/create')}> Create New Project</button>
-          </div> */}
         </Header>
         <Content
           className="site-layout-background"

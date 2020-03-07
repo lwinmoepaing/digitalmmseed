@@ -55,7 +55,6 @@ const GuestNavbar = (props) => {
     return i18n.changeLanguage(value)
   }
 
-
   return (
     <Layout.Header style={styles.LayoutHeader}>
       <div className="Container">

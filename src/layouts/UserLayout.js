@@ -10,7 +10,7 @@ import {
 import { Layout } from 'antd'
 
 import PropTypes from 'prop-types'
-
+import CreateNewProject from '../components/Common/CreateNewProject/CreateNewProject'
 import UserAside from '../components/Common/Navbar/UserAside'
 
 const UserLayout = (props) => {
@@ -61,13 +61,11 @@ const UserLayout = (props) => {
         <UserAside router={router} />
       </Sider>
       <Layout className="site-layout">
-        <Header className="site-layout-background" style={{ paddingLeft: 14 }}>
+        <Header className="site-layout-background" style={{ paddingLeft: 14, paddingRight: 80 }}>
           {collapsed
             ? <RightOutlined className="trigger" onClick={toggle} />
             : <MenuFoldOutlined className="trigger" onClick={toggle} />}
-          <div className="CreateNewProject">
-            <button type="button" onClick={() => router.push('/user/projects/create')}> Create New Project</button>
-          </div>
+          <CreateNewProject type="user" />
         </Header>
         <Content
           className="site-layout-background"
@@ -121,27 +119,6 @@ const UserLayout = (props) => {
 						padding: 1rem;
 						max-width: 1300px;
 						margin: 0 auto;
-					}
-
-					.CreateNewProject {
-						display: inline-block;
-    				float: right;
-					}
-
-					.CreateNewProject > button {
-						height: 33px;
-						line-height: 20px;
-						border: 1px solid #97c41a;
-						border-radius: 1rem;
-						padding: 0 2rem;
-						cursor: pointer;
-						background: #f6ffed;
-						font-weight: bold;
-						color: #97c41a;
-					}
-
-					.CreateNewProject > button:hover {
-						opacity: 0.5;
 					}
 				`}
       </style>
