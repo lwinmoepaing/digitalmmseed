@@ -11,7 +11,7 @@ import ProjectListByStatus from '../../../components/Staff/Project/ProjectListBy
 const { TabPane } = Tabs
 
 const Index = ({ authInfo, token, t }) => (
-  <StaffLayout i18n={i18n}>
+  <StaffLayout i18n={i18n} t={t}>
 
     <Tabs defaultActiveKey="Pending" tabBarStyle={{ backgroun: '#ffffff' }}>
       <TabPane tab="Pending" key="Pending">

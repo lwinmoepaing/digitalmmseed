@@ -8,7 +8,7 @@ import QuillEditor from '../../../components/Common/Editor/QuillEditor'
 import { withTranslation, i18n } from '../../../i18n'
 
 const FarmerCreateBlog = ({ authInfo, token, t }) => (
-  <StaffLayout i18n={i18n}>
+  <StaffLayout i18n={i18n} t={t}>
 
     <QuillEditor token={token} />
     <style jsx>

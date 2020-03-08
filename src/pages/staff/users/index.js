@@ -7,7 +7,7 @@ import { withTranslation, i18n } from '../../../i18n'
 import RegisterProfile from '../../../components/Common/Profile/ResisterProfile'
 
 const UserPage = ({ authInfo, token, t }) => (
-  <StaffLayout i18n={i18n}>
+  <StaffLayout i18n={i18n} t={t}>
 
     <RegisterProfile t={t} />
 

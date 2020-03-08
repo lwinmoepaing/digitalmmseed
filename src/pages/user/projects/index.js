@@ -12,7 +12,7 @@ const { TabPane } = Tabs
 
 
 const Index = ({ authInfo, token, t }) => (
-  <UserLayout i18n={i18n}>
+  <UserLayout i18n={i18n} t={t}>
 
     <Tabs defaultActiveKey="OverAll" tabBarStyle={{ backgroun: '#ffffff' }}>
       <TabPane tab="Over All" key="OverAll">

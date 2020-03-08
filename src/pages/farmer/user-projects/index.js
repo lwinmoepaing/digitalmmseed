@@ -7,7 +7,7 @@ import { withTranslation, i18n } from '../../../i18n'
 import ProjectListForContact from '../../../components/Farmer/Project/ProjectListForContact'
 
 const Index = ({ authInfo, token, t }) => (
-  <FarmerLayout i18n={i18n}>
+  <FarmerLayout i18n={i18n} t={t}>
     <div className={`Container ${i18n.language === 'mm' ? ' font-mm' : ''}`}>
       <h3> Projects From User </h3>
       <ProjectListForContact from="user" token={token} authInfo={authInfo} status="Pending" />

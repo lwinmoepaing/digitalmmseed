@@ -7,7 +7,7 @@ import { withTranslation, i18n } from '../../i18n'
 import FarmerWidgets from '../../components/Farmer/Dashboard/FarmerWidgets'
 
 const Index = ({ authInfo, token, t }) => (
-  <FarmerLayout i18n={i18n}>
+  <FarmerLayout i18n={i18n} t={t}>
 
     <div className="Container">
 

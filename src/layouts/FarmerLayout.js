@@ -17,7 +17,9 @@ import SelectLanguage from '../components/Common/SelectLanguage/SelectLanguage'
 
 const FarmerLayout = (props) => {
   const [collapsed, setCollapsed] = useState(false)
-  const { children, i18n, router } = props
+  const {
+    children, i18n, router, t,
+  } = props
   const { Header, Sider, Content } = Layout
 
   if (typeof window !== 'undefined') {
@@ -68,7 +70,7 @@ const FarmerLayout = (props) => {
           {collapsed
             ? <RightOutlined className="trigger" onClick={toggle} />
             : <MenuFoldOutlined className="trigger" onClick={toggle} />}
-          <CreateNewProject type="farmer" />
+          <CreateNewProject t={t} type="farmer" />
           <SelectLanguage setLang={setLang} i18n={i18n} />
         </Header>
         <Content

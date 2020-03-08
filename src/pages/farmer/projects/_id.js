@@ -11,7 +11,7 @@ const UserProfile = ({ token }) => {
   const { query: { id } } = router
 
   return (
-    <FarmerLayout i18n={i18n}>
+    <FarmerLayout i18n={i18n} t={t}>
       <Head>
         <title>
           Project Data:

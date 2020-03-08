@@ -16,7 +16,9 @@ import SelectLanguage from '../components/Common/SelectLanguage/SelectLanguage'
 
 const UserLayout = (props) => {
   const [collapsed, setCollapsed] = useState(false)
-  const { children, i18n, router } = props
+  const {
+    children, i18n, router, t,
+  } = props
   const { Header, Sider, Content } = Layout
 
   if (typeof window !== 'undefined') {
@@ -67,7 +69,7 @@ const UserLayout = (props) => {
           {collapsed
             ? <RightOutlined className="trigger" onClick={toggle} />
             : <MenuFoldOutlined className="trigger" onClick={toggle} />}
-          <CreateNewProject type="user" />
+          <CreateNewProject t={t} type="user" />
           <SelectLanguage setLang={setLang} i18n={i18n} />
         </Header>
         <Content

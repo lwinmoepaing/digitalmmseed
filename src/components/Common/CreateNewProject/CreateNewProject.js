@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-const CreateNewProject = ({ router, type }) => (
+const CreateNewProject = ({ router, type, t }) => (
   <div className="CreateNewProject">
-    <button type="button" onClick={() => router.push(`/${type}/projects/create`)}>CreateNewProject</button>
+    <button type="button" onClick={() => router.push(`/${type}/projects/create`)}>{t('CreateNewProject')}</button>
     <style jsx>
       {`
 				.CreateNewProject {

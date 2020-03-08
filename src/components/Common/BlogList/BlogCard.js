@@ -19,7 +19,7 @@ const BlogCard = ({ blog, authInfo }) => {
         </Col>
         <Col xs={{ span: 20 }} md={{ span: 16 }}>
           <div className="RightSide">
-            <h2>
+            <h2 className="font-mm">
               {blog.title}
             </h2>
             <p>

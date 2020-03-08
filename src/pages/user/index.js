@@ -7,7 +7,7 @@ import { withTranslation, i18n } from '../../i18n'
 import UserWidgets from '../../components/User/Dashboard/UserWidgets'
 
 const Index = ({ authInfo, token, t }) => (
-  <UserLayout i18n={i18n}>
+  <UserLayout i18n={i18n} t={t}>
 
     <div className="Container">
 

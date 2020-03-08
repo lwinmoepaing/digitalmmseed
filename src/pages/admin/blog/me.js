@@ -7,7 +7,7 @@ import BlogList from '../../../components/Common/BlogList/BlogList'
 import { withTranslation, i18n } from '../../../i18n'
 
 const FarmerCreateBlog = ({ authInfo, token, t }) => (
-  <AdminLayout i18n={i18n}>
+  <AdminLayout i18n={i18n} t={t}>
 
     <div className="Container">
       <p>

@@ -7,7 +7,7 @@ import { withTranslation, i18n } from '../../../i18n'
 import UserProfile from '../../../components/Common/Profile/UserProfile'
 
 const Index = ({ authInfo, token, t }) => (
-  <AdminLayout i18n={i18n}>
+  <AdminLayout i18n={i18n} t={t}>
 
     <UserProfile token={token} t={t} />
 

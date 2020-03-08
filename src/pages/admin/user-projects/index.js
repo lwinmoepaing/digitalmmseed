@@ -11,7 +11,7 @@ import ProjectListByStatus from '../../../components/Admin/Project/ProjectListBy
 const { TabPane } = Tabs
 
 const Index = ({ authInfo, token, t }) => (
-  <AdminLayout i18n={i18n}>
+  <AdminLayout i18n={i18n} t={t}>
 
     <Tabs defaultActiveKey="Pending" tabBarStyle={{ backgroun: '#ffffff' }}>
       <TabPane tab="Pending" key="Pending">

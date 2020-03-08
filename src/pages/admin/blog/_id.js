@@ -11,7 +11,7 @@ const BlogDetail = ({ token, authInfo }) => {
   const { query: { id } } = router
 
   return (
-    <AdminLayout i18n={i18n}>
+    <AdminLayout i18n={i18n} t={t}>
       <Head>
         <title>
           Blog Data:

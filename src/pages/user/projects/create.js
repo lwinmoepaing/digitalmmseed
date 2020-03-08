@@ -12,7 +12,7 @@ const UserProfile = ({ token, authInfo }) => {
   const router = useRouter()
 
   return (
-    <UserLayout i18n={i18n}>
+    <UserLayout i18n={i18n} t={t}>
       <Head>
         <title>
           Create Project Data:

@@ -7,7 +7,7 @@ import { withTranslation, i18n } from '../../i18n'
 import About from '../../components/Common/About/About'
 
 const Index = ({ authInfo, token, t }) => (
-  <UserLayout i18n={i18n}>
+  <UserLayout i18n={i18n} t={t}>
     <About t={t} />
   </UserLayout>
 )

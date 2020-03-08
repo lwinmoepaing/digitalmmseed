@@ -10,7 +10,7 @@ const UserProfile = ({ token, authInfo }) => {
   const { query: { id } } = router
 
   return (
-    <StaffLayout i18n={i18n}>
+    <StaffLayout i18n={i18n} t={t}>
       <Head>
         <title>
           Project Data:

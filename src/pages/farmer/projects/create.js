@@ -8,7 +8,7 @@ import CreateProject from '../../../components/Common/Project/CreateProject'
 import { BASE_API_URL } from '../../../../config'
 
 const UserProfile = ({ token, authInfo }) => (
-  <FarmerLayout i18n={i18n}>
+  <FarmerLayout i18n={i18n} t={t}>
     <Head>
       <title>
         Create Project Data:

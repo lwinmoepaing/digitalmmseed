@@ -7,7 +7,7 @@ import { withTranslation, i18n } from '../../i18n'
 import StaffWidgets from '../../components/Staff/Dashboard/StaffWidgets'
 
 const Index = ({ authInfo, token, t }) => (
-  <StaffLayout i18n={i18n}>
+  <StaffLayout i18n={i18n} t={t}>
 
     <div className="Container">
 

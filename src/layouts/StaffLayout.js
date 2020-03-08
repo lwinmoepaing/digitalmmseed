@@ -16,7 +16,9 @@ import SelectLanguage from '../components/Common/SelectLanguage/SelectLanguage'
 
 const StaffLayout = (props) => {
   const [collapsed, setCollapsed] = useState(false)
-  const { children, i18n, router } = props
+  const {
+    children, i18n, router, t,
+  } = props
   const { Header, Sider, Content } = Layout
 
   if (typeof window !== 'undefined') {
@@ -121,27 +123,6 @@ const StaffLayout = (props) => {
 						padding: 1rem;
 						max-width: 1300px;
 						margin: 0 auto;
-					}
-
-					.CreateNewProject {
-						display: inline-block;
-    				float: right;
-					}
-
-					.CreateNewProject > button {
-						height: 33px;
-						line-height: 20px;
-						border: 1px solid #97c41a;
-						border-radius: 1rem;
-						padding: 0 2rem;
-						cursor: pointer;
-						background: #f6ffed;
-						font-weight: bold;
-						color: #97c41a;
-					}
-
-					.CreateNewProject > button:hover {
-						opacity: 0.5;
 					}
 				`}
       </style>

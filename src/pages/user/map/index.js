@@ -7,7 +7,7 @@ import { withTranslation, i18n } from '../../../i18n'
 import RegionSearch from '../../../components/Common/Map/RegionSearch'
 
 const Index = ({ authInfo, token, t }) => (
-  <UserLayout i18n={i18n}>
+  <UserLayout i18n={i18n} t={t}>
 
     <RegionSearch />
 

@@ -8,7 +8,7 @@ import isFarmerMiddleware from '../../../../lib/middleware/isFarmerMiddleware'
 import { withTranslation, i18n } from '../../../i18n'
 
 const Index = ({ authInfo, token, t }) => (
-  <FarmerLayout i18n={i18n}>
+  <FarmerLayout i18n={i18n} t={t}>
 
     <RegionSearch />
 
