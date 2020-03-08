@@ -12,6 +12,7 @@ import HomeSectionFarmerProjects from '../components/Home/HomeSectionFarmerProje
 import HomeSectionClientProjects from '../components/Home/HomeSectionClientProjects'
 import HomeWorry from '../components/Home/HomeWorry'
 import HomeSectionBlog from '../components/Home/HomeSectionBlog'
+import HomeContact from '../components/Home/HomeContact'
 
 const Index = ({ t }) => (
   <Layout i18n={i18n}>
@@ -23,7 +24,7 @@ const Index = ({ t }) => (
       <HomeWorry t={t} />
       <HomeSectionClientProjects t={t} />
       <HomeSectionBlog t={t} />
-      {/* <CardLoading /> */}
+      <HomeContact t={t} />
     </div>
 
     <style jsx>
