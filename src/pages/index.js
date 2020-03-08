@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import Layout from '../layouts/Layout'
 import { withTranslation, i18n } from '../i18n'
+import isAuthMiddleware from '../../lib/middleware/isAuthMiddleware'
 
 import HomeSectionOne from '../components/Home/HomeSectionOne'
 import HomeSectionTwo from '../components/Home/HomeSectionTwo'
@@ -10,7 +11,7 @@ import HomeSectionThree from '../components/Home/HomeSectionThree'
 import HomeSectionFarmerProjects from '../components/Home/HomeSectionFarmerProjects'
 import HomeSectionClientProjects from '../components/Home/HomeSectionClientProjects'
 import HomeWorry from '../components/Home/HomeWorry'
-import isAuthMiddleware from '../../lib/middleware/isAuthMiddleware'
+import HomeSectionBlog from '../components/Home/HomeSectionBlog'
 
 const Index = ({ t }) => (
   <Layout i18n={i18n}>
@@ -21,6 +22,7 @@ const Index = ({ t }) => (
       <HomeSectionFarmerProjects t={t} />
       <HomeWorry t={t} />
       <HomeSectionClientProjects t={t} />
+      <HomeSectionBlog t={t} />
       {/* <CardLoading /> */}
     </div>
 

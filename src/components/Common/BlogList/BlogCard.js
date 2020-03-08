@@ -9,7 +9,12 @@ import { Router } from '../../../i18n'
 
 const BlogCard = ({ blog, authInfo }) => {
   const goTo = () => {
-    Router.push(`/${authInfo.role.toLowerCase()}/blog/_id?id=${blog._id}`, `/${authInfo.role.toLowerCase()}/blog/${blog._id}`, { shallow: true })
+    if (authInfo) {
+      Router.push(`/${authInfo.role.toLowerCase()}/blog/_id?id=${blog._id}`, `/${authInfo.role.toLowerCase()}/blog/${blog._id}`, { shallow: true })
+      return
+    }
+
+    Router.push('/login')
   }
   return (
     <div className="Container" onClick={goTo}>
