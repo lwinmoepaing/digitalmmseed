@@ -36,10 +36,9 @@ const HomeContact = ({ t }) => (
           <div className="ContactList">
             <div className="mb-1">
               <HomeOutlined />
+              {' '}
               {t('Location')}
             </div>
-            {' '}
-
             <p>
               South Dagon , Yangon
             </p>
