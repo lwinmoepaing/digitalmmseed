@@ -6,7 +6,7 @@ import { withTranslation, i18n } from '../../../../i18n'
 import isAdminMiddleware from '../../../../../lib/middleware/isAdminMiddleware'
 import Blog from '../../../../components/Common/BlogList/Blog'
 
-const BlogDetail = ({ token, authInfo }) => {
+const BlogDetail = ({ token, authInfo, t }) => {
   const router = useRouter()
   const { query: { id } } = router
 

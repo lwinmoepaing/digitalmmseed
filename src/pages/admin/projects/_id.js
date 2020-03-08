@@ -5,7 +5,7 @@ import { withTranslation, i18n } from '../../../i18n'
 import isAdminMiddleware from '../../../../lib/middleware/isAdminMiddleware'
 import ContactDetail from '../../../components/Staff/Project/ContactDetail'
 
-const UserProfile = ({ token, authInfo }) => {
+const UserProfile = ({ token, authInfo, t }) => {
   const router = useRouter()
   const { query: { id } } = router
 

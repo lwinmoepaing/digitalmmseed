@@ -6,7 +6,7 @@ import { withTranslation, i18n } from '../../../i18n'
 import isFarmerMiddleware from '../../../../lib/middleware/isFarmerMiddleware'
 import ProjectDetail from '../../../components/Farmer/Project/ProjectDetail'
 
-const UserProfile = ({ token }) => {
+const UserProfile = ({ token, authInfo, t }) => {
   const router = useRouter()
   const { query: { id } } = router
 

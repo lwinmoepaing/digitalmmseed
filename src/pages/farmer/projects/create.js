@@ -7,7 +7,7 @@ import isFarmerMiddleware from '../../../../lib/middleware/isFarmerMiddleware'
 import CreateProject from '../../../components/Common/Project/CreateProject'
 import { BASE_API_URL } from '../../../../config'
 
-const UserProfile = ({ token, authInfo }) => (
+const UserProfile = ({ token, authInfo, t }) => (
   <FarmerLayout i18n={i18n} t={t}>
     <Head>
       <title>
