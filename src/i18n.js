@@ -1,11 +1,11 @@
 import NextI18Next from 'next-i18next'
 
-const languages = ['en', 'mm']
+const languages = ['en', 'mm', 'jp']
 
 const options = {
   preload: languages,
   defaultLanguage: 'mm',
-  otherLanguages: ['en'],
+  otherLanguages: ['en', 'jp'],
   localePath: 'locales',
   keySeparator: false,
 }

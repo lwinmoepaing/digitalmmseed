@@ -18,8 +18,9 @@ const SelectLanguage = ({ setLang, i18n }) => {
       style={styles}
       onChange={handleChange}
     >
-      <Option value="en">EN</Option>
       <Option value="mm">MM</Option>
+      <Option value="jp">JP</Option>
+      <Option value="en">EN</Option>
     </Select>
   )
 }

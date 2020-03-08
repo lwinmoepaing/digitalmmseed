@@ -109,11 +109,20 @@ const GuestNavbar = (props) => {
             <Menu.Item style={{ border: 'none' }}>
               <div>
                 <Radio.Group defaultValue={i18n.language || 'mm'} onChange={changeLocale} buttonStyle="solid" size="small">
-                  <Radio.Button key="en" value="en">
-                    <img style={{ width: 25, height: 15 }} src="/svg/en.svg" alt="enimage" />
+                  <Radio.Button key="mm" value="mm">
+                    <div className="ShowLogoContainer">
+                      <img src="/svg/mm.svg" alt="mmimage" />
+                    </div>
                   </Radio.Button>
-                  <Radio.Button key="cn" value="mm">
-                    <img style={{ width: 35, height: 14 }} src="/svg/mm.svg" alt="mmimage" />
+                  <Radio.Button key="jp" value="jp">
+                    <div className="ShowLogoContainer">
+                      <img src="/svg/jp.svg" alt="jpimage" />
+                    </div>
+                  </Radio.Button>
+                  <Radio.Button key="en" value="en">
+                    <div className="ShowLogoContainer">
+                      <img src="/svg/en.svg" alt="enimage" />
+                    </div>
                   </Radio.Button>
                 </Radio.Group>
               </div>
@@ -187,6 +196,28 @@ const GuestNavbar = (props) => {
 						position: absolute;
 						top: 0;
 						left: 0;
+					}
+
+					.ShowLogoContainer {
+						width: 35px;
+						height: 17px;
+						position: relative;
+						overflow: hidden;
+						top: 3px;
+					}
+
+					.ShowLogoContainer > img {
+						border: 1px solid #dfdfdf;
+						width: auto;
+						height: 100%;
+						display: inline-block;
+						position: absolute;
+						object-fit: contain;
+						object-position: center center;
+						top: 0;
+						left: 50%;
+						transform: translateX(-50%);
+						border-radius: 4px;
 					}
 				`}
       </style>
