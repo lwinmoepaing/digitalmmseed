@@ -4,7 +4,7 @@ const SupportBy = ({ t }) => (
   <div className="Container font-en">
     <p className="title"> Supported By </p>
 
-    <img className="image" src="/svg/wit.svg" alt="witImage" />
+    <img className="image" src="/svg/Wit.svg" alt="witImage" />
 
     <p className="title Spiceworks">  Wit from Spiceworks Myanmar  </p>
     <style jsx>
