@@ -6,7 +6,7 @@ const { Title } = Typography
 const HomeWorry = ({ t }) => (
   <div style={{ padding: '3rem 0 4rem 0', backgroundColor: '#f5f5f5' }}>
     <div>
-      <Title level={4} style={{ textAlign: 'center', color: 'rgb(82, 196, 26)' }}>
+      <Title level={4} style={{ textAlign: 'center', color: 'rgb(82, 196, 26)', paddingBottom: '1rem' }}>
         {t('DontWorryToUse')}
       </Title>
       <p style={{ maxWidth: 600, textAlign: 'center', margin: '.5rem auto' }}>

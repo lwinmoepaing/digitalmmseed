@@ -12,6 +12,7 @@ import HomeSectionFarmerProjects from '../components/Home/HomeSectionFarmerProje
 import HomeSectionClientProjects from '../components/Home/HomeSectionClientProjects'
 import HomeWorry from '../components/Home/HomeWorry'
 import HomeSectionBlog from '../components/Home/HomeSectionBlog'
+import SupportBy from '../components/Home/SupportBy'
 import HomeContact from '../components/Home/HomeContact'
 
 const Index = ({ t }) => (
@@ -23,6 +24,7 @@ const Index = ({ t }) => (
       <HomeSectionFarmerProjects t={t} />
       <HomeWorry t={t} />
       <HomeSectionClientProjects t={t} />
+      <SupportBy t={t} />
       <HomeSectionBlog t={t} />
       <HomeContact t={t} />
     </div>
