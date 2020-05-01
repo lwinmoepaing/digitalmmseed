@@ -69,7 +69,7 @@ const UserLayout = (props) => {
           {collapsed
             ? <RightOutlined className="trigger" onClick={toggle} />
             : <MenuFoldOutlined className="trigger" onClick={toggle} />}
-          <CreateNewProject t={t} type="user" />
+          <CreateNewProject router={router} t={t} type="user" />
           <SelectLanguage setLang={setLang} i18n={i18n} />
         </Header>
         <Content

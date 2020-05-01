@@ -63,10 +63,10 @@ const Do = ({ project }) => {
       <style jsx>
         {`
 				.DoContainer {
-					padding: 1rem;
+					padding: 1.5rem 1rem;
 					border-radius: 1rem;
-					background: rgb(246, 255, 237);
-					border: 1px solid rgb(151, 196, 26);
+					background: #ffffff;
+    			box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
 				}
 
 				p {

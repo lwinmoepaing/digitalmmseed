@@ -70,7 +70,7 @@ const FarmerLayout = (props) => {
           {collapsed
             ? <RightOutlined className="trigger" onClick={toggle} />
             : <MenuFoldOutlined className="trigger" onClick={toggle} />}
-          <CreateNewProject t={t} type="farmer" />
+          <CreateNewProject router={router} t={t} type="farmer" />
           <SelectLanguage setLang={setLang} i18n={i18n} />
         </Header>
         <Content

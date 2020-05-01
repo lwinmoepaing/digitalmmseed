@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
@@ -18,7 +19,6 @@ const Index = ({ authInfo, token, t }) => (
       <style jsx>
         {`
 					.Container {
-							background: #fff;
 							border-radius: 1rem;
 							padding: 1rem;
 					}

@@ -18,7 +18,6 @@ const Index = ({ authInfo, token, t }) => (
       <style jsx>
         {`
 					.Container {
-							background: #fff;
 							border-radius: 1rem;
 							padding: 1rem;
 					}
