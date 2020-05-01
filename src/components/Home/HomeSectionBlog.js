@@ -50,8 +50,8 @@ const HomeSectionBlog = (props) => {
   return (
     <div
       style={{
-        padding: '3rem 1rem 2rem 1rem',
-        backgroundColor: '#f5f5f5',
+        padding: '3rem 1rem 4rem 1rem',
+        backgroundColor: '#ffffff',
         width: '100%',
         overflow: 'hidden',
       }}

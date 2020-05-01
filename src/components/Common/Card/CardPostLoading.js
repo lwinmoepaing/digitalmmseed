@@ -31,6 +31,7 @@ const Card = () => (
 					height: 122px;
 					width: 100%;
 					background: #f3f3f3;
+
 				}
 
 				img {
@@ -40,11 +41,12 @@ const Card = () => (
 				}
 
 				.Container {
-					border: 1px solid #dfdfdf;
 					border-radius: 3px;
 					cursor: pointer;
-					background: #fafafa;
 					overflow: hidden;
+					background: #ffffff;
+					box-shadow:  13px 13px 25px #dbdbdb,
+											-13px -13px 25px #ffffff;
 				}
 
 				.RightSide {

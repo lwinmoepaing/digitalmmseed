@@ -45,6 +45,7 @@ const HomeSectionFarmerProjects = ({ t }) => {
         ? <CardLoading />
         :				(
           <Carousel
+            containerClass="carousel-container"
             responsive={CarouselResponsive}
           >
             {projects.map((project) => (

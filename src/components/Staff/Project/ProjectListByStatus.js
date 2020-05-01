@@ -8,7 +8,7 @@ import CardTreeLoading from '../../Common/Card/CardTreeLoading'
 
 const ProjectListByStatus = (props) => {
   const {
-    authInfo, token, status, userRole,
+    status, userRole,
   } = props
   const [projects, setProject] = useState([])
   const [isLoading, setLoading] = useState(true)

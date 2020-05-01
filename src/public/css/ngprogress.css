@@ -338,9 +338,27 @@
 	}
 }
 
+.ant-tabs-bar.ant-tabs-top-bar {
+	background: #ffffff;
+	border-radius: 1rem;
+}
 
 .ant-tabs-nav-scroll {
-	background: #ffff;
-	padding: 0.2rem .5rem;
 	border-radius: 1rem;
+	padding: 0.2rem .5rem;
+}
+
+input:focus {
+	outline: #52c41a auto 2px;
+	outline-color: #52c41a;
+	outline-style: auto;
+	outline-width: 2px;
+}
+
+input {
+	background-color: #fff;
+}
+
+.carousel-container {
+	min-height: 437px;
 }

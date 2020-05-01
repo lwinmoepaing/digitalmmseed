@@ -36,11 +36,13 @@ const About = ({ t }) => (
     <style jsx>
       {`
 				.Container {
-					background: #ffffff;
 					padding: 1rem;
 					border-radius: 1rem;
 					max-width: 600px;
 					margin: 1rem auto;
+					background: #ffffff;
+					box-shadow:  20px 20px 60px #d9d9d9,
+											-20px -20px 60px #ffffff;
 				}
 
 				.MessageContainer {

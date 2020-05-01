@@ -33,6 +33,7 @@ const Index = ({ t }) => (
       {`
 				.Container {
 					min-height: 160vh;
+					background: #fff;
 				}
 			`}
     </style>

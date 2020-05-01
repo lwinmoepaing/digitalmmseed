@@ -20,8 +20,6 @@ const AllProjectsForFarmer = (props) => {
       const res = await fetch(url)
       const { data, meta: getMeta } = await res.json()
 
-      console.log('Data', data)
-      console.log('meta', getMeta)
       setProject(data)
       setMeta(getMeta)
       setLoading(false)

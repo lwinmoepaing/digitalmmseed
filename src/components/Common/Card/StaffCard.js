@@ -39,9 +39,12 @@ const StaffCard = ({ payload, edit, userRole }) => {
 
         <style jsx>
           {`.Status {
+						display: inline-block;
 						background: red;
 						padding: 0 1rem;
 						border-radius: 1rem;
+						box-shadow:  4px 4px 8px #e6e6e6,
+             -4px -4px 8px #ffffff;
 					}`}
 
         </style>
@@ -91,10 +94,11 @@ const StaffCard = ({ payload, edit, userRole }) => {
 						max-width: 216px;
 						min-height: 290px;
 						margin: 0 auto;
-						border: 1px solid #dfdfdf;
 						cursor: pointer;
-						background: #fff;
 						overflow: hidden;
+						background: #ffffff;
+						box-shadow:  20px 20px 60px #d9d9d9,
+												-20px -20px 60px #ffffff;
 					}
 
 					.CardHeader {

@@ -96,11 +96,13 @@ const HomeSectionTwo = ({ t }) => (
 
 				.CustomCardStyle {
 					display: flex;
-					background: rgb(255, 255, 255);
 					padding: 1rem;
 					border-radius: .5rem;
 					width: 100%;
 					min-height: 150px;
+					background: #ffffff;
+					box-shadow:  5px 5px 10px #ededed,
+             -5px -5px 10px #ffffff;
 				}
 
 				.CardLeft {

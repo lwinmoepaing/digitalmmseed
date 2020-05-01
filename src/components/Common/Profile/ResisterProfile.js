@@ -277,19 +277,23 @@ const RegisterProfile = ({ token, type = 'User', t }) => {
 					.Container {
 						padding: 1rem;
 						background-color: #ffffff;
-						border-radius: 1rem;
+						border-top-right-radius: 1rem;
+						border-top-left-radius: 1rem;
+						border-bottom-right-radius: 1rem;
+						border-bottom-left-radius: 1rem;
+						overflow: hidden;
 						position: relative;
+						box-shadow:  7px 7px 14px #e0e0e0;
 					}
 
 					.FieldContainer {
-						background: #f5f5f5;
 						padding: .8rem;
 						border-radius: 1rem;
 						margin-bottom: .5rem;
 					}
 
 					.FieldContainer > h3 {
-						margin: .1rem 0;
+						margin: .2rem 0;
 						font-size: .8em;
 					}
 
@@ -326,7 +330,6 @@ const RegisterProfile = ({ token, type = 'User', t }) => {
 
 					.CustomInput {
 						width: 100%;
-						background: #f9f9f9;
 						border: 1px solid #efefef;
 						border-radius: 3px;
 						padding: 2px 9px;

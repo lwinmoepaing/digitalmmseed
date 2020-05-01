@@ -11,11 +11,14 @@ const SupportBy = ({ t }) => (
       {`
 				.Container {
 					padding: 1rem;
-					max-width: 700px;
-					margin: 1rem auto;
-					background: #fff;
-					border-radius: 3px;
+					width: 700px;
+					max-width: 90%;
+					margin: 1rem auto 2rem auto;
+					border-radius: 1rem;
 					font-family: GTWalsheimProRegular;
+					background: #ffffff;
+					box-shadow:  4px 4px 20px #dedede,
+											-12px -12px 33px #ffffff;
 				}
 
 				.title {

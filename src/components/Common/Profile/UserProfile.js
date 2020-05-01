@@ -299,10 +299,11 @@ const UserProfile = ({ token, t }) => {
 						background-color: #ffffff;
 						border-radius: 1rem;
 						position: relative;
+						box-shadow:  7px 7px 14px #e0e0e0,
+             -7px -7px 14px #ffffff;
 					}
 
 					.FieldContainer {
-						background: #f5f5f5;
 						padding: .8rem;
 						border-radius: 1rem;
 						margin-bottom: .5rem;
@@ -341,8 +342,8 @@ const UserProfile = ({ token, t }) => {
 
 					.CustomInput {
 						width: 100%;
-						background: #f9f9f9;
-						border: 1px solid #efefef;
+						background: #ffffff;
+						border: 1px solid #dfdfdf;
 						border-radius: 3px;
 						padding: 2px 9px;
 					}

@@ -7,7 +7,7 @@ import UserSelfCard from '../../Common/Card/UserSelfCard'
 import CardTreeLoading from '../../Common/Card/CardTreeLoading'
 
 const AllProjectsForFarmer = (props) => {
-  const { authInfo, token } = props
+  const { authInfo } = props
   const [projects, setProject] = useState([])
   const [isLoading, setLoading] = useState(true)
   const [meta, setMeta] = useState({})

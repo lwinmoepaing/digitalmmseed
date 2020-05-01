@@ -46,8 +46,11 @@ const Index = ({ t }) => (
 					background: #ffffff;
 					padding: 1rem;
 					border-radius: 1rem;
-					max-width: 600px;
+					width: 600px;
+					max-width: 90%;
 					margin: 1rem auto;
+					box-shadow:  13px 13px 25px #ededed,
+             -13px -13px 25px #ffffff;
 				}
 
 				.MessageContainer {

@@ -4,7 +4,7 @@ import { Typography } from 'antd'
 const { Title } = Typography
 
 const HomeWorry = ({ t }) => (
-  <div style={{ padding: '3rem 0 4rem 0', backgroundColor: '#f5f5f5' }}>
+  <div style={{ padding: '3rem 0 4rem 0' }}>
     <div>
       <Title level={4} style={{ textAlign: 'center', color: 'rgb(82, 196, 26)', paddingBottom: '1rem' }}>
         {t('DontWorryToUse')}

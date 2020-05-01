@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   Form, Button, notification,
 } from 'antd'
@@ -60,9 +61,7 @@ const LoginForm = ({
   return (
     <div className="LoginFormContainer">
       <h3 className="text-center">
-        {' '}
         {t('Login Page')}
-        {' '}
       </h3>
 
       <div className="InputContainer">
@@ -129,6 +128,8 @@ const LoginForm = ({
 						padding: 1rem;
 						border-radius: .8rem;
 						margin: 1rem auto;
+						box-shadow:  7px 7px 14px #e0e0e0,
+             -7px -7px 14px #ffffff;
 					}
 
 					.LoginFormButton {

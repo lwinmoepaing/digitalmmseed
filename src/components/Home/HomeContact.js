@@ -113,6 +113,8 @@ const HomeContact = ({ t }) => (
 				border-radius: 1rem;
 				padding: 1rem;
 				margin: 0 auto;
+				box-shadow:  6px 6px 12px #cccccc,
+										-6px -6px 12px #ffffff;
 			}
 
 			.ContactList {

@@ -59,10 +59,11 @@ const CustomCard = ({ payload }) => {
 						max-width: 216px;
 						height: 290px;
 						margin: 0 auto;
-						border: 1px solid #dfdfdf;
 						cursor: pointer;
-						background: #fff;
 						overflow: hidden;
+						background: #ffffff;
+						box-shadow:  20px 20px 60px #d9d9d9,
+												-20px -20px 60px #ffffff;
 					}
 
 					.CardHeader {

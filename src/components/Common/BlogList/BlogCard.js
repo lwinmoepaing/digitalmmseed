@@ -49,17 +49,20 @@ const BlogCard = ({ blog, authInfo }) => {
 			}
 
 			.Container {
-				border: 1px solid #dfdfdf;
 				border-radius: 3px;
 				cursor: pointer;
 				background: #fafafa;
 				overflow: hidden;
+				background: #ffffff;
+				box-shadow:  13px 13px 25px #dbdbdb,
+										-13px -13px 25px #ffffff;
 			}
 
 			.RightSide {
 				padding: 1.2rem;
 				position: relative;
 				border-left: 1px solid #dfdfdf;
+				min-height: 148px;
 			}
 
 			.ImageContainer {
