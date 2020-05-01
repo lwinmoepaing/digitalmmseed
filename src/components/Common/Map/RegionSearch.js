@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react'
+import CustomTilt from '../CustomTilt'
 
 const MapMm = ({ parentGet }) => {
   const [hovered] = useState(false)
@@ -5601,59 +5602,90 @@ const RegionSearch = () => {
         }}
         />
       </div>
-      <div className="DataVisualization font-en">
-        <h1> Data Visualization </h1>
-        <h3> More Information Comming Soon  </h3>
-        <h3> Our Data'll Help You alot </h3>
-        <p>
-          { state && `${state} Region` }
-        </p>
-        <p>
-          { state && mapArray.find((data) => data.name === state).percentage}
-          {' '}
-          Agriculture
-        </p>
+
+      <div className="DataVisualizationContainer">
+        <CustomTilt rotateSpeed={15}>
+          <div className="DataVisualization font-en">
+            <h1> Data Visualization </h1>
+            <h3> More Information Comming Soon  </h3>
+            <h3> Our Data will Help You alot </h3>
+            <p className="Region">
+              { state && `${state} Region` }
+            </p>
+            <p>
+              { state && (
+              <span className="Percentage">
+                {mapArray.find((data) => data.name === state).percentage}
+              </span>
+              )}
+              {' '}
+              Agriculture
+            </p>
+          </div>
+        </CustomTilt>
       </div>
+
       <style jsx>
         {`
+					.Region {
+						font-size: 1rem;
+						font-weight: bold;
+						margin-top: 1rem;
+					}
+
+					.Percentage {
+						height: 33px;
+						line-height: 20px;
+						border-radius: 1rem;
+						padding: 0 .3rem;
+						cursor: pointer;
+						background: #f6ffed;
+						font-weight: bold;
+						color: #97c41a;
+						font-size: 1rem;
+					}
+
 					.Container {
 						padding: 1rem;
-						background: #ffffff;
 						border-radius: 1rem;
 						min-height: 582px;
+						display: flex;
+						flex-direction: column;
 					}
 
 					.MapContainer {
-						max-width: 250px;
-    				margin: 0 auto;
+						flex: 1;
+					}
+
+					.DataVisualizationContainer {
+						flex: 1;
+						text-align: center;
+						align-self: center;
+						justify-content: center;
 					}
 
 					.DataVisualization {
 						padding: 1rem;
-						background: #f3f3f3;
 						border-radius: 1rem;
-						text-align: center;
+						max-width: 350px;
+						background: #ffffff;
+						box-shadow:  9px 9px 18px #cdd0d5,
+             -9px -9px 18px #ffffff;
+						margin-top: 1rem;
 					}
 
-					@media screen and (min-width: 677px) {
-						.MapContainer {
-							float: left;
-							margin-right: 3rem;
-						}
-						.MapContainer::after {
-							content:  "";
-							display: table;
-							clear: both;
+					@media screen and (min-width: 800px) {
+						.Container {
+							display: flex;
+							flex-direction: row;
+							justify-content: space-around;
 						}
 						.DataVisualization {
-							float: left;
-							width: calc(100% - 300px);
-
+							margin: 0 auto;
 						}
-					}
-
-					.MapContainer {
-						max-width: 250px;
+						.MapContainer {
+							max-width: 250px;
+						}
 					}
 				`}
       </style>

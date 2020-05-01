@@ -154,7 +154,7 @@ const EditQuilEditor = ({
               {title}
             </h2>
             <AuthContainer blog={blog} />
-            <div dangerouslySetInnerHTML={{ __html: text }} />
+            <div className="font-bold" dangerouslySetInnerHTML={{ __html: text }} />
           </div>
         </Col>
       </Row>
@@ -163,9 +163,11 @@ const EditQuilEditor = ({
         {`
 					.Container {
 						padding: 1rem;
-						background: #ffffff;
 						border-radius: 1rem;
 						margin-bottom: 1rem;
+						background: #ffffff;
+						box-shadow:  20px 20px 60px #d9d9d9,
+             -20px -20px 60px #ffffff;
 					}
 
 					.Container  img {
@@ -188,6 +190,12 @@ const EditQuilEditor = ({
 						border-radius: 3px;
 						padding: 2px 9px;
 						margin-bottom: 1rem;
+					}
+
+					.font-bold {
+						font-family: 'Padauk';
+						font-size: 16px;
+						line-height: 1.7em;
 					}
 				`}
 

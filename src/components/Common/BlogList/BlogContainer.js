@@ -32,7 +32,7 @@ const BlogContainer = ({
       </p>
     </div>
 
-    <div dangerouslySetInnerHTML={{ __html: blog.body }} />
+    <div className="font-mm font-bold" dangerouslySetInnerHTML={{ __html: blog.body }} />
     <style jsx>
       {`
 				.Container {
@@ -40,6 +40,11 @@ const BlogContainer = ({
 					border-radius: 1rem;
 					padding: 1rem;
 					position: relative;
+					width: 700px;
+					margin: 0 auto 1rem auto;
+					max-width: 90%;
+					box-shadow:  20px 20px 60px #d9d9d9,
+             -20px -20px 60px #ffffff;
 				}
 				.EditButton, .CloseButton {
 					display: inline-block;
@@ -84,6 +89,11 @@ const BlogContainer = ({
 					border-radius: 40px;
 					object-fit: cover;
 					object-position: center center;
+				}
+				.font-bold {
+					font-family: 'Padauk';
+					font-size: 16px;
+					line-height: 1.7em;
 				}
 			`}
     </style>

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import UserLayout from '../../../../layouts/UserLayout'
@@ -5,7 +6,7 @@ import { withTranslation, i18n } from '../../../../i18n'
 import isUserMiddleware from '../../../../../lib/middleware/isUserMiddleware'
 import ProjectDetail from '../../../../components/Farmer/Project/ProjectDetail'
 
-const UserProfile = ({ token, authInfo, t }) => {
+const UserProfile = ({ token, t }) => {
   const router = useRouter()
   const { query: { id } } = router
 

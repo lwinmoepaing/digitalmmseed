@@ -18,7 +18,11 @@ const BlogImageContainer = ({ blog }) => (
 					background-size: cover;
 					background-position: center center;
 					position: relative;
-					margin-bottom: 1rem;
+					width: 700px;
+					margin: 0 auto 1rem auto;
+					max-width: 90%;
+					box-shadow:  20px 20px 60px #d9d9d9,
+             -20px -20px 60px #ffffff;
 				}
 
 				.height {

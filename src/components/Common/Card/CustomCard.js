@@ -5,51 +5,54 @@ import { CheckOutlined } from '@ant-design/icons'
 import { BASE_API_URL } from '../../../../config'
 import { Router } from '../../../i18n'
 
+import CustomTilt from '../CustomTilt'
+
 const CustomCard = ({ payload }) => {
   const profileImage = `${BASE_API_URL}${payload.user.image}`
   const headImage = `${BASE_API_URL}${payload.headImg}`
   return (
-    <div className="CardContainer" key={`${Math.random()}`}>
-      <div className="Card">
-        <div className="CardHeader">
-          <img className="CardImage" src={headImage} alt="CardImage" />
-          <div className="CardProfile">
-            <img className="CardImage" src={profileImage} alt="CardImage" />
+    <CustomTilt rotateSpeed={15}>
+      <div className="CardContainer" key={`${Math.random()}`}>
+        <div className="Card">
+          <div className="CardHeader">
+            <img className="CardImage" src={headImage} alt="CardImage" />
+            <div className="CardProfile">
+              <img className="CardImage" src={profileImage} alt="CardImage" />
+            </div>
+            <div className="CardUserName">
+              { payload.user.name }
+            </div>
+            <div className="CardCategory">
+              <span className="CardCategoryText font-en">
+                {payload.projectCategory}
+              </span>
+            </div>
           </div>
-          <div className="CardUserName">
-            { payload.user.name }
-          </div>
-          <div className="CardCategory">
-            <span className="CardCategoryText font-en">
-              {payload.projectCategory}
-            </span>
+          <div className="CardBody">
+            <div className="CardTitle">
+              { payload.title }
+            </div>
+            <div className="CardParaContainer">
+              <p className="CardParaText">
+                { payload.body[0] }
+              </p>
+            </div>
+            <div className="CardFooter">
+              <Button
+                className="heartBeat"
+                size="small"
+                shape="round"
+                type="primary"
+                icon={<CheckOutlined />}
+                onClick={() => Router.push('/login')}
+              >
+                Invest Now
+              </Button>
+            </div>
           </div>
         </div>
-        <div className="CardBody">
-          <div className="CardTitle">
-            { payload.title }
-          </div>
-          <div className="CardParaContainer">
-            <p className="CardParaText">
-              { payload.body[0] }
-            </p>
-          </div>
-          <div className="CardFooter">
-            <Button
-              className="heartBeat"
-              size="small"
-              shape="round"
-              type="primary"
-              icon={<CheckOutlined />}
-              onClick={() => Router.push('/login')}
-            >
-              Invest Now
-            </Button>
-          </div>
-        </div>
-      </div>
-      <style jsx>
-        {`
+        <style jsx>
+          {`
 					.CardContainer {
 						min-height: 150px;
 					}
@@ -190,9 +193,10 @@ const CustomCard = ({ payload }) => {
 						text-align: center;
 					}
 				`}
-      </style>
+        </style>
 
-    </div>
+      </div>
+    </CustomTilt>
   )
 }
 export default CustomCard

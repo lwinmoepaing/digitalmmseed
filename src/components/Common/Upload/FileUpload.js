@@ -62,7 +62,7 @@ const FileUpload = ({
   return (
     <div className="Container font-en">
       <Upload {...fileProps} fileList={cusFile}>
-        <Button type="dashed" style={alignStyle}>
+        <Button type="dashed" block style={alignStyle}>
           <UploadOutlined />
           Upload Image
         </Button>

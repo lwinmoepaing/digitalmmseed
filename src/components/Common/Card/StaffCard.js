@@ -9,6 +9,7 @@ import { Button } from 'antd'
 import { CheckOutlined } from '@ant-design/icons'
 import { BASE_API_URL } from '../../../../config'
 import { Router } from '../../../i18n'
+import CustomTilt from '../CustomTilt'
 
 const StaffCard = ({ payload, edit, userRole }) => {
   const profileImage = `${BASE_API_URL}${payload.user.image}`
@@ -53,38 +54,40 @@ const StaffCard = ({ payload, edit, userRole }) => {
   }
 
   return (
-    <div className="CardContainer">
-      <div className="Card" onClick={goDetail}>
-        <div className="CardHeader">
-          <img className="CardImage" src={headImage} alt="CardImage" />
-          <div className="CardProfile">
-            <img className="CardImage" src={profileImage} alt="CardImage" />
+
+    <CustomTilt rotateSpeed={15}>
+      <div className="CardContainer">
+        <div className="Card" onClick={goDetail}>
+          <div className="CardHeader">
+            <img className="CardImage" src={headImage} alt="CardImage" />
+            <div className="CardProfile">
+              <img className="CardImage" src={profileImage} alt="CardImage" />
+            </div>
+            <div className="CardUserName">
+              { payload.user.name }
+            </div>
+            <div className="CardCategory">
+              <span className="CardCategoryText font-en">
+                {payload.projectCategory}
+              </span>
+            </div>
           </div>
-          <div className="CardUserName">
-            { payload.user.name }
-          </div>
-          <div className="CardCategory">
-            <span className="CardCategoryText font-en">
-              {payload.projectCategory}
-            </span>
+          <div className="CardBody">
+            <div className="CardTitle">
+              { payload.title }
+            </div>
+            <div className="CardParaContainer">
+              <p className="CardParaText">
+                { payload.body[0]}
+              </p>
+            </div>
+            <div className="CardFooter">
+              <Status />
+            </div>
           </div>
         </div>
-        <div className="CardBody">
-          <div className="CardTitle">
-            { payload.title }
-          </div>
-          <div className="CardParaContainer">
-            <p className="CardParaText">
-              { payload.body[0]}
-            </p>
-          </div>
-          <div className="CardFooter">
-            <Status />
-          </div>
-        </div>
-      </div>
-      <style jsx>
-        {`
+        <style jsx>
+          {`
 					.CardContainer {
 						min-height: 150px;
 					}
@@ -227,9 +230,10 @@ const StaffCard = ({ payload, edit, userRole }) => {
 
 
 				`}
-      </style>
+        </style>
 
-    </div>
+      </div>
+    </CustomTilt>
   )
 }
 export default StaffCard

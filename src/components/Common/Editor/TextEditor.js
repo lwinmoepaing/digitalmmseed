@@ -139,7 +139,7 @@ const TextEditor = ({
   return (
     <div>
       <Row gutter={[8, 8]}>
-        <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }}>
+        <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 16 }}>
           <div className="Container">
 
             { project && project.status === 'Pending' && !isLoading && (
@@ -204,9 +204,9 @@ const TextEditor = ({
 
             <div>
               <label htmlFor="ProjectDuration"> Project Category </label>
-              {	isEdit && !isLoading && (
+              {	isEdit && (
               <div>
-                <Select style={{ width: '100%' }} defaultValue={project.projectCategory} size="small" onChange={(value) => _onChange(value, 'projectCategory')}>
+                <Select disabled={isLoading} style={{ width: '100%' }} defaultValue={project.projectCategory} size="small" onChange={(value) => _onChange(value, 'projectCategory')}>
                   <Option value="AnimalHusbandry">Animal Husbandry</Option>
                   <Option value="Agriculture">Agriculture</Option>
                   <Option value="Both">Both</Option>
@@ -234,16 +234,16 @@ const TextEditor = ({
 
           <Alert message=" You Can Edit Only Pending Project " type="warning" showIcon />
         </Col>
-        <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }}>
+        <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 8 }}>
           {editProject && isEdit && (
-          <div className="Container">
+          <div className="Container ContainerNotBackground">
             <h3 className="text-center"> Preview </h3>
             <FarmerSelfCard payload={editProject} edit />
           </div>
           )}
 
           {project && !isEdit && (
-          <div className="Container">
+          <div className="Container ContainerNotBackground">
             <h3 className="text-center"> Preview </h3>
             <FarmerSelfCard payload={project} edit />
           </div>
@@ -262,12 +262,18 @@ const TextEditor = ({
 						margin-bottom: 1rem;
 					}
 
+					.ContainerNotBackground {
+						background-color: transparent;
+					}
+
 					.CustomInput {
 						width: 100%;
 						background: #f9f9f9;
 						border: 1px solid #efefef;
 						border-radius: 3px;
 						padding: 2px 9px;
+						margin-top: 5px;
+						margin-bottom: 5px;
 					}
 
 					.EditButton, .CloseButton {
@@ -295,6 +301,10 @@ const TextEditor = ({
 					}
 					.text-center {
 						text-align: center
+					}
+
+					label {
+						margin-top: 5px;
 					}
 				`}
       </style>

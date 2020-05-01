@@ -142,8 +142,8 @@ const TextEditor = ({
   return (
     <div>
       <Row gutter={[8, 8]}>
-        <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }}>
-          <div className="Container">
+        <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 16 }}>
+          <div className="Container Card-Shadow">
 
             <div>
               <label htmlFor="EditText"> Title </label>
@@ -215,8 +215,8 @@ const TextEditor = ({
           </div>
 
         </Col>
-        <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }}>
-          <div className="Container">
+        <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 8 }}>
+          <div className="Container Container-Not-Background">
             <h3 className="text-center"> Preview </h3>
             {
 							editProject && <FarmerSelfCard payload={editProject} edit />
@@ -236,12 +236,23 @@ const TextEditor = ({
 						margin-bottom: 1rem;
 					}
 
+					.Card-Shadow {
+						box-shadow:  7px 7px 14px #e0e0e0,
+             -7px -7px 14px #ffffff;
+					}
+
+					.Container-Not-Background {
+						padding-top: 0;
+						background-color: transparent;
+					}
+
 					.CustomInput {
 						width: 100%;
-						background: #f9f9f9;
 						border: 1px solid #efefef;
 						border-radius: 3px;
 						padding: 2px 9px;
+						margin-top: .5rem;
+						margin-bottom: 1rem;
 					}
 
 					.EditButton, .CloseButton {

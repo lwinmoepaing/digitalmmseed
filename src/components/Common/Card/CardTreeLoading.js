@@ -1,15 +1,17 @@
 /* eslint-disable react/no-array-index-key */
 import { Row, Col } from 'antd'
 import TwoTreeLoading from '../SVG/TwoTreeLoading'
+import CustomTilt from '../CustomTilt'
 
 const Card = () => (
-  <div className="TreeContainer">
-    <div className="TreeLoadingContainer">
-      <TwoTreeLoading style={{ width: 90 }} />
-    </div>
-    <div style={{ textAlign: 'center', color: 'green' }}> Loading ...</div>
-    <style jsx>
-      {`
+  <CustomTilt rotateSpeed={15}>
+    <div className="TreeContainer">
+      <div className="TreeLoadingContainer">
+        <TwoTreeLoading style={{ width: 90 }} />
+      </div>
+      <div style={{ textAlign: 'center', color: 'green' }}> Loading ...</div>
+      <style jsx>
+        {`
 				.TreeContainer {
 					border-radius: 7px;
 					max-width: 216px;
@@ -29,8 +31,9 @@ const Card = () => (
 					background: #f3f3f3;
 				}
 			`}
-    </style>
-  </div>
+      </style>
+    </div>
+  </CustomTilt>
 )
 
 const Arr = Array.from({ length: 8 }).fill(0)

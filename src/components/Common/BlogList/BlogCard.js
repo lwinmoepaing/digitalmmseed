@@ -6,6 +6,7 @@
 import { Row, Col } from 'antd'
 import { BASE_API_URL } from '../../../../config'
 import { Router } from '../../../i18n'
+import CustomTilt from '../CustomTilt'
 
 const BlogCard = ({ blog, authInfo }) => {
   const goTo = () => {
@@ -17,30 +18,31 @@ const BlogCard = ({ blog, authInfo }) => {
     Router.push('/login')
   }
   return (
-    <div className="Container" onClick={goTo}>
-      <Row>
-        <Col xs={{ span: 4 }} md={{ span: 8 }}>
-          <img src={BASE_API_URL + blog.headImg} alt={blog.title} />
-        </Col>
-        <Col xs={{ span: 20 }} md={{ span: 16 }}>
-          <div className="RightSide">
-            <h2 className="font-mm">
-              {blog.title}
-            </h2>
-            <p>
-              written By
-              {' '}
-              {blog.author.name}
-            </p>
-            <div className="ImageContainer">
-              <img src={BASE_API_URL + blog.author.image} alt={blog.title} />
+    <CustomTilt>
+      <div className="Container" onClick={goTo}>
+        <Row>
+          <Col xs={{ span: 4 }} md={{ span: 8 }}>
+            <img src={BASE_API_URL + blog.headImg} alt={blog.title} />
+          </Col>
+          <Col xs={{ span: 20 }} md={{ span: 16 }}>
+            <div className="RightSide">
+              <h2 className="font-mm">
+                {blog.title}
+              </h2>
+              <p>
+                written By
+                {' '}
+                {blog.author.name}
+              </p>
+              <div className="ImageContainer">
+                <img src={BASE_API_URL + blog.author.image} alt={blog.title} />
+              </div>
             </div>
-          </div>
-        </Col>
-      </Row>
+          </Col>
+        </Row>
 
-      <style jsx>
-        {`
+        <style jsx>
+          {`
 
 			img {
 				width: 100%;
@@ -86,8 +88,9 @@ const BlogCard = ({ blog, authInfo }) => {
 
 		`}
 
-      </style>
-    </div>
+        </style>
+      </div>
+    </CustomTilt>
   )
 }
 

@@ -53,8 +53,10 @@ const Blog = ({ id, authInfo, token }) => {
   return (
     <div>
       { isLoading }
+
       { isLoading === true && <div className="Container"><EditorLoading /></div>}
       { isLoading === true && <div className="Container"><EditorLoading /></div>}
+
       { isLoading === false && blog !== null && <BlogImageContainer blog={blog} />}
       { isLoading === false && blog !== null && isEdit === false && (
       <BlogContainer
@@ -85,13 +87,19 @@ const Blog = ({ id, authInfo, token }) => {
         {`
 					.Container {
 						background: #fff;
+						width: 700px;
+						max-width: 90%;
 						border-radius: 1rem;
 						padding: 1rem;
-						margin-top: 1rem;
+						margin: 1rem auto 1rem auto;
 					}
 
 					.Youtube {
-						max-width: 500px;
+						width: 700px;
+						max-width: 90%;
+						margin: 0 auto 2rem auto;
+						box-shadow:  20px 20px 60px #d9d9d9,
+             -20px -20px 60px #ffffff;
 					}
 				`}
       </style>

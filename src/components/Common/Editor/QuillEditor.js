@@ -146,17 +146,20 @@ const Editor = ({ token }) => {
     <div>
       <Row gutter={[16, 16]}>
         <Col xs={{ span: 24 }}>
+
+          <ImageContainer img={image} />
+
           <FileUpload
             token={token}
             setImage={_setImage}
             type=""
             id=""
           />
-          <ImageContainer img={image} />
         </Col>
 
         <Col xs={{ span: 24 }} md={{ span: 12 }}>
           <div className="Container">
+            <div className="text-center"> Create Form </div>
             <input
               type="text"
               id="Blog Title Text"
@@ -204,7 +207,7 @@ const Editor = ({ token }) => {
 
         <Col xs={{ span: 24 }} md={{ span: 12 }}>
           <div className="Container font-mm">
-            <div> Preview </div>
+            <div className="text-center"> Post Preview </div>
             <h2>{title}</h2>
             <div dangerouslySetInnerHTML={{ __html: text }} />
           </div>
@@ -215,9 +218,11 @@ const Editor = ({ token }) => {
         {`
 					.Container {
 						padding: 1rem;
-						background: #ffffff;
 						border-radius: 1rem;
 						margin-bottom: 1rem;
+						background: #ffffff;
+						box-shadow:  20px 20px 60px #d9d9d9,
+             -20px -20px 60px #ffffff;
 					}
 
 					.Container  img {
@@ -229,14 +234,17 @@ const Editor = ({ token }) => {
 						font-weight: bold,
 					}
 
-
 					.CustomInput {
 						width: 100%;
-						background: #f9f9f9;
+						background: #ffffff;
 						border: 1px solid #efefef;
 						border-radius: 3px;
 						padding: 2px 9px;
 						margin-bottom: 1rem;
+					}
+
+					.text-center {
+						text-align: center;
 					}
 				`}
 

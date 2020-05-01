@@ -21,9 +21,7 @@ const ProjectDetail = ({ token, authInfo, redirect }) => {
     user: authInfo,
     status: 'Pending',
   }
-  const [isLoading, setLoading] = useState(true)
   const [project, setProject] = useState(null)
-  const [isError, setError] = useState(false)
   // Edit Project
 
   useEffect(() => {
@@ -87,6 +85,8 @@ const ProjectDetail = ({ token, authInfo, redirect }) => {
       <Row gutter={[16, 16]}>
         <Col xs={{ span: 24 }}>
 
+          { project && <ImageContainer />}
+
           { project && (
           <FileUpload
             token={token}
@@ -96,9 +96,15 @@ const ProjectDetail = ({ token, authInfo, redirect }) => {
           />
           )}
 
-          { project && <ImageContainer />}
 
-          { project && <CreateTextEditor project={project} authInfo={authInfo} token={token} redirect={redirect} />}
+          { project && (
+          <CreateTextEditor
+            project={project}
+            authInfo={authInfo}
+            token={token}
+            redirect={redirect}
+          />
+          )}
 
         </Col>
       </Row>

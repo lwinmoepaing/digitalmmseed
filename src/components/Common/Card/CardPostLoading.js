@@ -1,21 +1,28 @@
 /* eslint-disable react/no-array-index-key */
 import { Row, Col } from 'antd'
 import TwoTreeLoading from '../SVG/TwoTreeLoading'
+import CustomTilt from '../CustomTilt'
 
 const Card = () => (
-  <div className="Container">
-    <Row>
-      <Col xs={{ span: 4 }} md={{ span: 8 }}>
-        <div style={{ textAlign: 'center' }}>
-          <TwoTreeLoading style={{ width: 40 }} />
-        </div>
-      </Col>
-      <Col xs={{ span: 20 }} md={{ span: 16 }}>
-        <div className="RightSide" />
-      </Col>
-    </Row>
-    <style jsx>
-      {`
+  <CustomTilt>
+    <div className="Container">
+      <Row>
+        <Col xs={{ span: 4 }} md={{ span: 8 }}>
+          <div className="LeftSide">
+            <TwoTreeLoading style={{ width: 40 }} />
+          </div>
+        </Col>
+        <Col xs={{ span: 20 }} md={{ span: 16 }}>
+          <div className="RightSide" />
+        </Col>
+      </Row>
+      <style jsx>
+        {`
+				.LeftSide {
+					text-align: center;
+					border-right: 1px solid #dfdfdf;
+				}
+
 				.TreeContainer {
 					border-radius: 7px;
 					height: 260px;
@@ -52,7 +59,6 @@ const Card = () => (
 				.RightSide {
 					padding: 1.2rem;
 					position: relative;
-					border-left: 1px solid #dfdfdf;
 				}
 
 				.ImageContainer {
@@ -75,8 +81,9 @@ const Card = () => (
 				}
 
 			`}
-    </style>
-  </div>
+      </style>
+    </div>
+  </CustomTilt>
 )
 
 const Arr = Array.from({ length: 8 }).fill(0)

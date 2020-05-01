@@ -348,7 +348,7 @@
 	padding: 0.2rem .5rem;
 }
 
-input:focus {
+input:focus, textarea:focus {
 	outline: #52c41a auto 2px;
 	outline-color: #52c41a;
 	outline-style: auto;
@@ -361,4 +361,8 @@ input {
 
 .carousel-container {
 	min-height: 437px;
+}
+
+p {
+	font-weight: bold;
 }

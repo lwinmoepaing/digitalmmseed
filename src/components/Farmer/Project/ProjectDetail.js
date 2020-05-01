@@ -11,7 +11,6 @@ import TextEditor from '../../Common/Editor/TextEditor'
 import EditorLoading from '../../Common/Editor/EditorLoading'
 import EditorQRCode from '../../Common/Editor/EditorQrCode'
 
-
 const ProjectDetail = ({ id, token }) => {
   const [isLoading, setLoading] = useState(true)
   const [project, setProject] = useState(null)
@@ -115,6 +114,7 @@ const ProjectDetail = ({ id, token }) => {
           { isLoading === true && <div className="Container"><EditorLoading /></div>}
           { isLoading === true && <div className="Container"><EditorLoading /></div>}
 
+          { isLoading === false && project !== null && <ImageContainer />}
 
           { isLoading === false && project !== null && project.status === 'Pending' && (
             <FileUpload
@@ -125,7 +125,6 @@ const ProjectDetail = ({ id, token }) => {
             />
           )}
 
-          { isLoading === false && project !== null && <ImageContainer />}
           { isLoading === false && project !== null && (
           <TextEditor
             project={project}
