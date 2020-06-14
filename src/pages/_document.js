@@ -12,7 +12,7 @@ class AppDocument extends Document {
             content="Digital Myanmar Farming"
           />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-					<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+					<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"  />
           <link rel="preload" as="font" href="/fonts/GT-Walsheim-Pro-Regular.woff" type="font/woff2" crossOrigin="anonymous" />
           <link href="/font.css" rel="stylesheet" />
           <link
